@@ -1,0 +1,304 @@
+.asia-report {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    perspective: 100px;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .nav {
+        display: flex;
+        position: sticky;
+        top: 0;
+        justify-content: center;
+        z-index: 111111;
+        background-color: var(--tui-color-brand);
+        padding: var(--tui-spacing-large);
+        width: 100%;
+
+        .items-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+            max-width: var(--width-page-max);
+            gap: var(--tui-spacing-large);
+
+            .nav-item {
+                color: var(--tui-color-text-on-accent);
+            }
+        }
+    }
+
+    .section {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex-shrink: 0;
+        z-index: 1;
+        background-color: #ffffff;
+        width: 100%;
+        min-height: 60vh;
+        overflow-y: auto;
+
+        .section-content {
+            display: flex;
+            flex-direction: column;
+            padding: var(--tui-spacing-ultra-large);
+            width: 100%;
+            max-width: var(--width-page-max);
+            gap: var(--tui-spacing-large);
+        }
+    }
+
+    .logo {
+        width: 12rem;
+    }
+
+    .adb-logo {
+        height: 4rem;
+    }
+
+    .hero {
+        position: relative;
+        background-image: url('../../resources/img/hero-bg.jpg');
+        width: 100%;
+        height: 90vh;
+
+        .hero-content {
+            .heading-description {
+                font-family: var(--tui-font-family-heading);
+                font-size: var(--tui-font-size-extra-large);
+                font-weight: var(--tui-font-weight-heading);
+            }
+
+            .description {
+                .description-heading {
+                    width: 40rem;
+                    font-size: var(--tui-font-size-large);
+                }
+                .description-paragraph {
+                    width: 40rem;
+                    font-size: var(--tui-font-size-small);
+                }
+            }
+
+            .hero-footer {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                padding: var(--tui-spacing-large);
+                gap: var(--tui-spacing-large);
+            }
+        }
+    }
+
+    .divider-image {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex-shrink: 0;
+        justify-content: flex-end;
+        transform-style: preserve-3d;
+        background-color: transparent;
+        width: 100%;
+        height: 400px;
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateZ(-20px) scale(1.2);
+            z-index: -100;
+            background-color: transparent;
+            width: 100vw;
+            height: 600px;
+            object-position: center center;
+            object-fit: cover;
+        }
+
+        .image-caption-container {
+            max-width: var(--width-page-max);
+
+            .image-caption {
+                padding: var(--tui-spacing-large);
+                color: #ffffff;
+            }
+        }
+    }
+
+    .glance {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex-shrink: 0;
+        z-index: 1;
+        background-color: #ffffff;
+        width: 100%;
+        overflow-y: auto;
+
+        .glance-content {
+            display: flex;
+            flex-direction: column;
+            padding: var(--tui-spacing-ultra-large);
+            width: 100%;
+            max-width: var(--width-page-max);
+            gap: var(--tui-spacing-large);
+        }
+
+        .video-iframe {
+            width: 100%;
+            height: 60vh;
+        }
+
+        .bubbles-chart {
+            width: 100%;
+            height: auto;
+        }
+
+        .pie-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--tui-spacing-medium);
+
+            .pie {
+                height: 5rem;
+            }
+        }
+    }
+
+    .key-findings {
+        width: 100%;
+
+        .key-findings-content {
+            gap: var(--tui-spacing-large);
+        }
+    }
+
+    .cost-of-disaster {
+        .top-container {
+            .description {
+                .description-paragraph {
+                    width: 30rem;
+                    font-size: var(--tui-font-size-small);
+                }
+            }
+        }
+
+        .bottom-container {
+            display: flex;
+            gap: var(--tui-spacing-large);
+            overflow-x: scroll;
+
+            .spotlight-item {
+                position: relative;
+                flex-shrink: 0;
+                width: 24rem;
+                height: 12rem;
+
+                .spotlight-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .caption {
+                    position: absolute;
+                    bottom: 0;
+                    padding: var(--tui-spacing-small);
+                    color: #ffffff;
+
+                    .heading {
+                        font-weight: var(--tui-font-weight-bold);
+                    }
+                }
+            }
+        }
+    }
+
+    .download {
+        min-height: unset;
+
+        .download-content {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: var(--tui-spacing-ultra-large);
+            gap: var(--tui-spacing-extra-large);
+
+            .left-content {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 20rem;
+
+                .book-cover {
+                    height: 16rem;
+                    object-fit: cover;
+                }
+            }
+
+            .right-content {
+                display: flex;
+                align-items: flex-start;
+                align-self: stretch;
+                flex-direction: column;
+                gap: var(--tui-spacing-large);
+
+                .download-link {
+                    display: flex;
+                    align-items: center;
+                    color: var(--tui-font-color-text);
+                    font-weight: var(--tui-font-weight-bold);
+                    gap: var(--tui-spacing-extra-small);
+                }
+
+                .select-section-container {
+                    display: flex;
+                    flex-direction: column;
+                    border: var(--tui-width-separator-thin) solid var(--tui-color-separator);
+                    padding: var(--tui-spacing-extra-large);
+                    gap: var(--tui-spacing-medium);
+
+                    .select-input {
+                        width: 20rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer {
+        position: relative;
+        background-image: url('../../resources/img/philippines-2.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100vw;
+        color: #ffffff;
+
+        .footer-content {
+            display: flex;
+        }
+    }
+}
+
+.select-input {
+    .input-section {
+        border-radius: 0.25rem;
+        background-color: var(--tui-filter-background-color);
+        height: 2.5rem;
+
+        >*{
+            padding-right: 0;
+            width: 4.5rem;
+        }:hover{
+            background-color: unset;
+        }
+    }
+}

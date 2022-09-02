@@ -1,0 +1,11 @@
+.key-messages-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: var(--tui-spacing-large);
+
+    .key-message {
+        border: var(--tui-width-separator-thin) solid var(--tui-color-separator);
+        padding: var(--tui-spacing-large);
+    }
+}
