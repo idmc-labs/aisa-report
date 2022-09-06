@@ -8,8 +8,10 @@ import { SelectInput } from '@togglecorp/toggle-ui';
 
 import TooltipIcon from '#components/TooltipIcon';
 import Header from '#components/Header';
+import TextOutput from '#components/TextOutput';
 
 import idmcLogo from '#resources/img/idmc.svg';
+import nrcLogo from '#resources/img/nrc.png';
 import adbLogo from '#resources/img/adb.png';
 import bubbles from '#resources/img/bubbles.png';
 import pieEa from '#resources/img/pie_ea.png';
@@ -43,6 +45,8 @@ import {
     wayForwardListItem3,
     wayForwardListItem4,
     wayForwardListItem5,
+    contactParagraph,
+    copyrightParagraph,
 } from './data';
 
 import DisasterDashboard from './DisasterDashboard';
@@ -71,7 +75,6 @@ const sectionOptions = [
 
 const sectionKeySelector = (section: { key: string }) => section.key;
 const sectionLabelSelector = (section: { label: string }) => section.label;
-const pageSelector = (section: { startPage?: string }) => section.startPage;
 
 interface Props {
     className?: string;
@@ -516,7 +519,64 @@ function AsiaReport(props: Props) {
             </section>
             <section className={_cs(styles.footer, styles.section)}>
                 <div className={_cs(styles.footerContent, styles.sectionContent)}>
-                    A
+                    <div className={styles.leftContainer}>
+                        <div className={styles.logoContainer}>
+                            <img
+                                className={styles.logo}
+                                src={idmcLogo}
+                                alt=""
+                            />
+                            <img
+                                className={styles.logo}
+                                src={nrcLogo}
+                                alt=""
+                            />
+                        </div>
+                        <Header
+                            heading="Contact"
+                            headingDescription="Internal Displacement Monitoring Center (IDMC)"
+                            hideHeadingBorder
+                        />
+                        <div>
+                            <div className={styles.paragraph}>
+                                Humanitarian Hub Office, La Voie Creuse 16, 1202 Geneva, Switzerland
+                            </div>
+                            <TextOutput
+                                label="General Inquiries"
+                                value={(
+                                    <a
+                                        className={styles.link}
+                                        href="mailto:info@idmc.ch"
+                                    >
+                                        info@idmc.ch
+                                    </a>
+                                )}
+                            />
+                            <TextOutput
+                                label="Media Inquiries"
+                                value={(
+                                    <a
+                                        className={styles.link}
+                                        href="mailto:media@idmc.ch"
+                                    >
+                                        media@idmc.ch
+                                    </a>
+                                )}
+                            />
+                        </div>
+                        <div className={styles.paragraph}>
+                            {copyrightParagraph}
+                        </div>
+                    </div>
+                    <div className={styles.rightContainer}>
+                        <Header
+                            heading="About us"
+                            hideHeadingBorder
+                        />
+                        <div className={styles.paragraph}>
+                            {contactParagraph}
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>

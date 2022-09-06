@@ -276,14 +276,51 @@
 
     .footer {
         position: relative;
-        background-image: url('../../resources/img/philippines-2.jpg');
+        background-image: url('../../resources/img/hero-bg.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         width: 100vw;
-        color: #ffffff;
 
         .footer-content {
             display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: var(--tui-spacing-medium);
+
+            .paragraph {
+                width: 32rem;
+                font-size: var(--tui-font-size-small);
+            }
+
+            .left-container {
+                display: flex;
+                flex-direction: column;
+                flex-shrink: 0;
+                gap: var(--tui-spacing-medium);
+
+                .logo-container {
+                    display: flex;
+                    gap: var(--tui-spacing-small);
+
+                    .logo {
+                        width: auto;
+                        height: 2rem;
+                    }
+                }
+
+                .link {
+                    text-decoration: underline;
+                    color: var(--tui-font-color-text);
+                    font-weight: var(--tui-font-weight-heading);
+                }
+            }
+
+            .right-container {
+                display: flex;
+                flex-direction: column;
+                flex-shrink: 0;
+                gap: var(--tui-spacing-medium);
+            }
         }
     }
 }
