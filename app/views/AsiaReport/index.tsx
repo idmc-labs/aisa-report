@@ -30,7 +30,7 @@ import philippines2 from '#resources/img/philippines-2.jpg';
 import tent from '#resources/img/tent.jpg';
 import vanautu from '#resources/img/vanautu.jpg';
 import vietnam from '#resources/img/vietnam.jpg';
-import bookCover from '#resources/img/bookCover.jpg';
+import bookCover from '#resources/img/book-cover.png';
 
 import {
     heroParagraph1,

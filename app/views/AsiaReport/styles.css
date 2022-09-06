@@ -288,7 +288,7 @@
             gap: var(--tui-spacing-medium);
 
             .paragraph {
-                width: 32rem;
+                max-width: 30rem;
                 font-size: var(--tui-font-size-small);
             }
 
