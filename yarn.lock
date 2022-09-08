@@ -1420,6 +1420,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.18.9":
+  version "7.19.0"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.19.0.tgz#22b11c037b094d27a8a2504ea4dcff00f50e2259"
+  integrity sha512-eR8Lo9hnDS7tqkO7NsV+mKvCmv5boaXFSZ70DnfhcgiEne8hv9oCEd36Klw74EtizEqLsy4YnW8UWwpBVolHZA==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.16.0", "@babel/template@^7.16.7", "@babel/template@^7.3.3":
   version "7.16.7"
   resolved "https://registry.npmjs.org/@babel/template/-/template-7.16.7.tgz"
@@ -2800,6 +2807,15 @@
   integrity sha512-wA2EaVetff8s/5hCCWcxy+T5IUeuH8uHnZ9FWi2szNC+kioRhSJHWGOPb0hGFmD8WRivPqnSntmKH8yg+uGE5Q==
   dependencies:
     "@babel/runtime" "^7.18.3"
+    content-type "^1.0.4"
+    tslib "^2.4.0"
+
+"@tanem/svg-injector@^10.1.32":
+  version "10.1.32"
+  resolved "https://registry.yarnpkg.com/@tanem/svg-injector/-/svg-injector-10.1.32.tgz#e0cc9bb83c683dc578cc77057be0dc22ee116cec"
+  integrity sha512-fu1lx9D1D9I55i8lXH9r8b9malXmkvNH2ZdNI6MTEBVs0DCFJJiy6iz/Scm5Lp2RriSuNjni8h32ojylyKPsJQ==
+  dependencies:
+    "@babel/runtime" "^7.18.9"
     content-type "^1.0.4"
     tslib "^2.4.0"
 

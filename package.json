@@ -38,6 +38,7 @@
         "@babel/runtime": "^7.17.9",
         "@mapbox/mapbox-gl-draw": "^1.3.0",
         "@sentry/react": "^6.19.7",
+        "@tanem/svg-injector": "^10.1.32",
         "@togglecorp/fujs": "^1.9.3",
         "@togglecorp/re-map": "^0.1.3",
         "@togglecorp/toggle-ui": "^0.14.2",

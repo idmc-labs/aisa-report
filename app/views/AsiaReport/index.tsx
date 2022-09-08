@@ -48,6 +48,7 @@ import {
     contactParagraph,
     copyrightParagraph,
 } from './data';
+import CostOfDisasterImage from './CostOfDisasterImage';
 
 import DisasterDashboard from './DisasterDashboard';
 import KeyMessagesContent from './KeyMessagesContent';
@@ -423,28 +424,33 @@ function AsiaReport(props: Props) {
                         headingSize="large"
                         hideHeadingBorder
                     />
-                    <div className={styles.description}>
-                        <p className={styles.descriptionParagraph}>
-                            {wayForwardParagraph1}
-                        </p>
-                        <p className={styles.descriptionParagraph}>
-                            {wayForwardListItem1}
-                        </p>
-                        <p className={styles.descriptionParagraph}>
-                            {wayForwardListItem2}
-                        </p>
-                        <p className={styles.descriptionParagraph}>
-                            {wayForwardListItem3}
-                        </p>
-                        <p className={styles.descriptionParagraph}>
-                            {wayForwardListItem4}
-                        </p>
-                        <p className={styles.descriptionParagraph}>
-                            {wayForwardListItem5}
-                        </p>
-                        <p className={styles.descriptionParagraph}>
-                            {wayForwardParagraph2}
-                        </p>
+                    <div className={styles.wayForwardContainer}>
+                        <div className={styles.description}>
+                            <p className={styles.descriptionParagraph}>
+                                {wayForwardParagraph1}
+                            </p>
+                            <p className={styles.descriptionParagraph}>
+                                {wayForwardListItem1}
+                            </p>
+                            <p className={styles.descriptionParagraph}>
+                                {wayForwardListItem2}
+                            </p>
+                            <p className={styles.descriptionParagraph}>
+                                {wayForwardListItem3}
+                            </p>
+                            <p className={styles.descriptionParagraph}>
+                                {wayForwardListItem4}
+                            </p>
+                            <p className={styles.descriptionParagraph}>
+                                {wayForwardListItem5}
+                            </p>
+                            <p className={styles.descriptionParagraph}>
+                                {wayForwardParagraph2}
+                            </p>
+                        </div>
+                        <CostOfDisasterImage
+                            className={styles.svg}
+                        />
                     </div>
                 </div>
             </section>

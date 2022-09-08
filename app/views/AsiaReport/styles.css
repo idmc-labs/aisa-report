@@ -221,6 +221,30 @@
         }
     }
 
+    .way-forward {
+        .way-forward-content {
+            .way-forward-container {
+                display: flex;
+                align-items: flex-start;
+                gap: var(--tui-spacing-medium);
+
+                .description {
+                    width: 60rem;
+
+                    .description-paragraph {
+                        width: 36rem;
+                        font-size: var(--tui-font-size-small);
+                    }
+                }
+
+                .svg {
+                    flex-grow: 1;
+                    min-width: 20rem;
+                }
+            }
+        }
+    }
+
     .download {
         min-height: unset;
 
