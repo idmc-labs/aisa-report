@@ -66,7 +66,7 @@
         position: relative;
         background-image: url('../../resources/img/hero-bg.jpg');
         width: 100%;
-        height: 90vh;
+        min-height: 90vh;
 
         .hero-content {
             .heading-description {
@@ -77,11 +77,11 @@
 
             .description {
                 .description-heading {
-                    width: 40rem;
+                    max-width: 40rem;
                     font-size: var(--tui-font-size-large);
                 }
                 .description-paragraph {
-                    width: 40rem;
+                    max-width: 40rem;
                     font-size: var(--tui-font-size-small);
                 }
             }
@@ -182,11 +182,20 @@
 
     .cost-of-disaster {
         .top-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--tui-spacing-large);
+
             .description {
                 .description-paragraph {
-                    width: 30rem;
+                    max-width: 32rem;
                     font-size: var(--tui-font-size-small);
                 }
+            }
+
+            .svg {
+                flex-grow: 1;
+                min-width: 20rem;
             }
         }
 
@@ -202,9 +211,24 @@
                 height: 12rem;
 
                 .spotlight-image {
+                    border-radius: 10px;
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                }
+
+                &:after {
+                    display: flex;
+                    position: absolute;
+                    top: var(--tui-spacing-extra-small);
+                    left: var(--tui-spacing-extra-small);
+                    align-items: center;
+                    background-color: var(--color-disaster);
+                    padding: 0 0.4rem;
+                    color: #ffffff;
+                    font-size: var(--tui-font-size-extra-small);
+                    font-weight: var(--tui-font-weight-bold);
+                    content: 'SPOTLIGHT';
                 }
 
                 .caption {
@@ -216,6 +240,10 @@
                     .heading {
                         font-weight: var(--tui-font-weight-bold);
                     }
+
+                    .sub-heading {
+                        font-size: var(--tui-font-size-small);
+                    }
                 }
             }
         }
@@ -223,23 +251,20 @@
 
     .way-forward {
         .way-forward-content {
-            .way-forward-container {
-                display: flex;
-                align-items: flex-start;
-                gap: var(--tui-spacing-medium);
-
-                .description {
-                    width: 60rem;
-
-                    .description-paragraph {
-                        width: 36rem;
-                        font-size: var(--tui-font-size-small);
-                    }
+            .description {
+                .description-paragraph {
+                    font-size: var(--tui-font-size-small);
                 }
 
-                .svg {
-                    flex-grow: 1;
-                    min-width: 20rem;
+                .list-container {
+                    display: flex;
+                    align-items: stretch;
+                    flex-wrap: wrap;
+                    gap: var(--tui-spacing-large);
+
+                    .item {
+                        width: 18rem;
+                    }
                 }
             }
         }
@@ -252,6 +277,7 @@
             display: flex;
             align-items: center;
             flex-direction: row;
+            flex-wrap: wrap;
             justify-content: space-around;
             padding: var(--tui-spacing-ultra-large);
             gap: var(--tui-spacing-extra-large);
@@ -298,6 +324,30 @@
         }
     }
 
+    .id-trends {
+        .id-trends-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--tui-spacing-large);
+
+            .regional-breakdown {
+                display: flex;
+                gap: var(--tui-spacing-large);
+
+                .regional-breakdown-tabs {
+                    display: flex;
+                    align-items: stretch;
+                    flex-direction: column;
+                    gap: var(--tui-spacing-small);
+
+                    .tab {
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+
     .footer {
         position: relative;
         background-image: url('../../resources/img/hero-bg.jpg');
@@ -319,7 +369,6 @@
             .left-container {
                 display: flex;
                 flex-direction: column;
-                flex-shrink: 0;
                 gap: var(--tui-spacing-medium);
 
                 .logo-container {
@@ -342,7 +391,6 @@
             .right-container {
                 display: flex;
                 flex-direction: column;
-                flex-shrink: 0;
                 gap: var(--tui-spacing-medium);
             }
         }
@@ -361,5 +409,31 @@
         }:hover{
             background-color: unset;
         }
+    }
+}
+
+.way-forward-list-item {
+    display: flex;
+    flex-direction: column;
+    border: var(--tui-width-separator-thin) solid var(--tui-color-separator);
+    border-radius: 10px;
+    padding: var(--tui-spacing-medium);
+    gap: var(--tui-spacing-large);
+
+    .order {
+        display: flex;
+        align-items: center;
+        align-self: flex-start;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: var(--color-disaster);
+        width: 2.5rem;
+        height: 2.5rem;
+        color: #ffffff;
+        font-family: var(--tui-font-family-heading);
+    }
+
+    .description {
+        font-size: var(--tui-font-size-small);
     }
 }

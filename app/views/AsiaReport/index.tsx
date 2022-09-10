@@ -9,6 +9,10 @@ import { SelectInput } from '@togglecorp/toggle-ui';
 import TooltipIcon from '#components/TooltipIcon';
 import Header from '#components/Header';
 import TextOutput from '#components/TextOutput';
+import Tabs from '#components/Tabs';
+import TabPanel from '#components/Tabs/TabPanel';
+import TabList from '#components/Tabs/TabList';
+import Tab from '#components/Tabs/Tab';
 
 import idmcLogo from '#resources/img/idmc.svg';
 import nrcLogo from '#resources/img/nrc.png';
@@ -19,6 +23,13 @@ import pieCwa from '#resources/img/pie_cwa.png';
 import pieSa from '#resources/img/pie_sa.png';
 import pieSea from '#resources/img/pie_sea.png';
 import pieTp from '#resources/img/pie_tp.png';
+
+import chartAllRegions from '#resources/img/all_chart.svg';
+import chartEa from '#resources/img/ea_chart.svg';
+import chartCwa from '#resources/img/cwa_chart.svg';
+import chartSa from '#resources/img/sa_chart.svg';
+import chartSea from '#resources/img/sea_chart.svg';
+import chartTp from '#resources/img/tp_chart.svg';
 
 import china from '#resources/img/china.jpg';
 import indonesia from '#resources/img/indonesia.jpg';
@@ -56,6 +67,31 @@ import KeyFindingsContent from './KeyFindingsContent';
 
 import styles from './styles.css';
 
+interface WayForwardListItemProps {
+    className?: string;
+    order: string;
+    description: string;
+}
+
+function WayForwardListItem(props: WayForwardListItemProps) {
+    const {
+        className,
+        order,
+        description,
+    } = props;
+
+    return (
+        <div className={_cs(styles.wayForwardListItem, className)}>
+            <div className={styles.order}>
+                {order}
+            </div>
+            <div className={styles.description}>
+                {description}
+            </div>
+        </div>
+    );
+}
+
 const sectionOptions = [
     {
         key: '1st-section',
@@ -74,6 +110,8 @@ const sectionOptions = [
     },
 ];
 
+type ChartSelections = 'all' | 'ea' | 'sea' | 'cwa' | 'tp' | 'sa';
+
 const sectionKeySelector = (section: { key: string }) => section.key;
 const sectionLabelSelector = (section: { label: string }) => section.label;
 
@@ -87,6 +125,7 @@ function AsiaReport(props: Props) {
     } = props;
 
     const [selectedSection, setSelectedSection] = useState<string | undefined>(undefined);
+    const [selectedChart, setSelectedChart] = useState<ChartSelections>('all');
 
     const pageSuffix = useMemo(() => {
         const selectedSectionObj = sectionOptions.find(
@@ -303,13 +342,95 @@ function AsiaReport(props: Props) {
                 </div>
             </div>
             <section className={_cs(styles.idTrends, styles.section)}>
-                <div className={_cs(styles.idTrends, styles.sectionContent)}>
+                <div className={_cs(styles.idTrendsContent, styles.sectionContent)}>
                     <Header
                         heading="Internal Displacement Trends in Asia and the Pacific (2010-2021)"
                         headingSize="large"
                         hideHeadingBorder
                     />
                     <DisasterDashboard />
+                    <Tabs
+                        value={selectedChart}
+                        onChange={setSelectedChart}
+                        variant="secondary"
+                    >
+                        <div className={styles.regionalBreakdown}>
+                            <div className={styles.regionalBreakdownTabs}>
+                                <Tab
+                                    className={styles.tab}
+                                    name="all"
+                                >
+                                    All Regions
+                                </Tab>
+                                <Tab
+                                    className={styles.tab}
+                                    name="ea"
+                                >
+                                    East Asia
+                                </Tab>
+                                <Tab
+                                    className={styles.tab}
+                                    name="sea"
+                                >
+                                    Southeast Asia
+                                </Tab>
+                                <Tab
+                                    className={styles.tab}
+                                    name="sa"
+                                >
+                                    South Asia
+                                </Tab>
+                                <Tab
+                                    className={styles.tab}
+                                    name="cwa"
+                                >
+                                    Central and West Asia
+                                </Tab>
+                                <Tab
+                                    className={styles.tab}
+                                    name="tp"
+                                >
+                                    The Pacific
+                                </Tab>
+                            </div>
+                            <TabPanel name="all">
+                                <img
+                                    src={chartAllRegions}
+                                    alt=""
+                                />
+                            </TabPanel>
+                            <TabPanel name="ea">
+                                <img
+                                    src={chartEa}
+                                    alt=""
+                                />
+                            </TabPanel>
+                            <TabPanel name="sea">
+                                <img
+                                    src={chartSea}
+                                    alt=""
+                                />
+                            </TabPanel>
+                            <TabPanel name="cwa">
+                                <img
+                                    src={chartCwa}
+                                    alt=""
+                                />
+                            </TabPanel>
+                            <TabPanel name="sa">
+                                <img
+                                    src={chartSa}
+                                    alt=""
+                                />
+                            </TabPanel>
+                            <TabPanel name="tp">
+                                <img
+                                    src={chartTp}
+                                    alt=""
+                                />
+                            </TabPanel>
+                        </div>
+                    </Tabs>
                 </div>
             </section>
             <div className={styles.dividerImage}>
@@ -340,6 +461,9 @@ function AsiaReport(props: Props) {
                                 {costOfDisasterParagraph2}
                             </p>
                         </div>
+                        <CostOfDisasterImage
+                            className={styles.svg}
+                        />
                     </div>
                     <div className={styles.bottomContainer}>
                         <div className={styles.spotlightItem}>
@@ -352,7 +476,7 @@ function AsiaReport(props: Props) {
                                 <div className={styles.heading}>
                                     Spotlight 1
                                 </div>
-                                <div>
+                                <div className={styles.subHeading}>
                                     Food related displacement in Jakarta, Indonesia
                                 </div>
                             </div>
@@ -367,7 +491,7 @@ function AsiaReport(props: Props) {
                                 <div className={styles.heading}>
                                     Spotlight 2
                                 </div>
-                                <div>
+                                <div className={styles.subHeading}>
                                     Food related displacement in Jakarta, Indonesia
                                 </div>
                             </div>
@@ -382,7 +506,7 @@ function AsiaReport(props: Props) {
                                 <div className={styles.heading}>
                                     Spotlight 2
                                 </div>
-                                <div>
+                                <div className={styles.subHeading}>
                                     Food related displacement in Jakarta, Indonesia
                                 </div>
                             </div>
@@ -397,7 +521,7 @@ function AsiaReport(props: Props) {
                                 <div className={styles.heading}>
                                     Spotlight 2
                                 </div>
-                                <div>
+                                <div className={styles.subHeading}>
                                     Food related displacement in Jakarta, Indonesia
                                 </div>
                             </div>
@@ -424,33 +548,40 @@ function AsiaReport(props: Props) {
                         headingSize="large"
                         hideHeadingBorder
                     />
-                    <div className={styles.wayForwardContainer}>
-                        <div className={styles.description}>
-                            <p className={styles.descriptionParagraph}>
-                                {wayForwardParagraph1}
-                            </p>
-                            <p className={styles.descriptionParagraph}>
-                                {wayForwardListItem1}
-                            </p>
-                            <p className={styles.descriptionParagraph}>
-                                {wayForwardListItem2}
-                            </p>
-                            <p className={styles.descriptionParagraph}>
-                                {wayForwardListItem3}
-                            </p>
-                            <p className={styles.descriptionParagraph}>
-                                {wayForwardListItem4}
-                            </p>
-                            <p className={styles.descriptionParagraph}>
-                                {wayForwardListItem5}
-                            </p>
-                            <p className={styles.descriptionParagraph}>
-                                {wayForwardParagraph2}
-                            </p>
+                    <div className={styles.description}>
+                        <p className={styles.descriptionParagraph}>
+                            {wayForwardParagraph1}
+                        </p>
+                        <div className={styles.listContainer}>
+                            <WayForwardListItem
+                                order="1"
+                                description={wayForwardListItem1}
+                                className={styles.item}
+                            />
+                            <WayForwardListItem
+                                order="2"
+                                description={wayForwardListItem2}
+                                className={styles.item}
+                            />
+                            <WayForwardListItem
+                                order="3"
+                                description={wayForwardListItem3}
+                                className={styles.item}
+                            />
+                            <WayForwardListItem
+                                order="4"
+                                description={wayForwardListItem4}
+                                className={styles.item}
+                            />
+                            <WayForwardListItem
+                                order="5"
+                                description={wayForwardListItem5}
+                                className={styles.item}
+                            />
                         </div>
-                        <CostOfDisasterImage
-                            className={styles.svg}
-                        />
+                        <p className={styles.descriptionParagraph}>
+                            {wayForwardParagraph2}
+                        </p>
                     </div>
                 </div>
             </section>
@@ -544,9 +675,9 @@ function AsiaReport(props: Props) {
                             hideHeadingBorder
                         />
                         <div>
-                            <div className={styles.paragraph}>
+                            <p className={styles.paragraph}>
                                 Humanitarian Hub Office, La Voie Creuse 16, 1202 Geneva, Switzerland
-                            </div>
+                            </p>
                             <TextOutput
                                 label="General Inquiries"
                                 value={(
@@ -570,18 +701,18 @@ function AsiaReport(props: Props) {
                                 )}
                             />
                         </div>
-                        <div className={styles.paragraph}>
+                        <p className={styles.paragraph}>
                             {copyrightParagraph}
-                        </div>
+                        </p>
                     </div>
                     <div className={styles.rightContainer}>
                         <Header
                             heading="About us"
                             hideHeadingBorder
                         />
-                        <div className={styles.paragraph}>
+                        <p className={styles.paragraph}>
                             {contactParagraph}
-                        </div>
+                        </p>
                     </div>
                 </div>
             </section>
