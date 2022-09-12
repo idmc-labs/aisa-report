@@ -173,8 +173,18 @@
         }
     }
 
+    .key-messages {
+        width: 100%;
+        min-height: unset;
+
+        .key-messages-content {
+            gap: var(--tui-spacing-large);
+        }
+    }
+
     .key-findings {
         width: 100%;
+        min-height: unset;
 
         .key-findings-content {
             gap: var(--tui-spacing-large);
@@ -185,6 +195,7 @@
         .top-container {
             display: flex;
             flex-wrap: wrap;
+            justify-content: space-between;
             gap: var(--tui-spacing-large);
 
             .description {
@@ -197,54 +208,94 @@
             .svg {
                 flex-grow: 1;
                 min-width: 20rem;
+                max-width: 30rem;
             }
         }
 
         .bottom-container {
             display: flex;
+            position: relative;
             gap: var(--tui-spacing-large);
-            overflow-x: scroll;
-            overflow-y: hidden;
+            overflow: none;
 
-            .spotlight-item {
-                position: relative;
+            .carousel-button {
+                display: none;
+                position: absolute;
                 flex-shrink: 0;
-                width: 24rem;
-                height: 12rem;
+                border-radius: 50%;
+                background-color: rgba(0, 0, 0, 0.5);
+                padding: 0;
+                width: 2rem;
+                height: 2rem;
+                color: #ffffff;
+                font-size: var(--tui-font-size-small);
 
-                .spotlight-image {
-                    border-radius: 10px;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
+                &.prev {
+                    top: 50%;
+                    left: var(--tui-spacing-medium);
+                    transform: translateY(-50%);
+                    z-index: 1;
                 }
 
-                &:after {
-                    display: flex;
-                    position: absolute;
-                    top: var(--tui-spacing-extra-small);
-                    left: var(--tui-spacing-extra-small);
-                    align-items: center;
-                    background-color: #ffffff;
-                    padding: 0 0.4rem;
-                    color: var(--color-disaster);
-                    font-size: var(--tui-font-size-extra-small);
-                    font-weight: var(--tui-font-weight-bold);
-                    content: 'SPOTLIGHT';
+                &.next {
+                    top: 50%;
+                    right: var(--tui-spacing-medium);
+                    transform: translateY(-50%);
+                    z-index: 1;
                 }
+            }
 
-                .caption {
-                    position: absolute;
-                    bottom: 0;
-                    padding: var(--tui-spacing-small);
-                    color: #ffffff;
+            &:hover {
+                .carousel-button {
+                    display: block;
+                }
+            }
 
-                    .heading {
-                        font-weight: var(--tui-font-weight-bold);
+            .item-list {
+                display: flex;
+                flex-shrink: 0;
+                gap: var(--tui-spacing-large);
+
+                .spotlight-item {
+                    position: relative;
+                    flex-shrink: 0;
+                    width: 20rem;
+                    height: 12rem;
+
+                    .spotlight-image {
+                        border-radius: var(--tui-border-radius-medium);
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
                     }
 
-                    .sub-heading {
-                        font-size: var(--tui-font-size-medium);
+                    &:after {
+                        display: flex;
+                        position: absolute;
+                        top: var(--tui-spacing-extra-small);
+                        left: var(--tui-spacing-extra-small);
+                        align-items: center;
+                        background-color: #ffffff;
+                        padding: 0 0.4rem;
+                        color: var(--color-disaster);
+                        font-size: var(--tui-font-size-extra-small);
+                        font-weight: var(--tui-font-weight-bold);
+                        content: 'SPOTLIGHT';
+                    }
+
+                    .caption {
+                        position: absolute;
+                        bottom: 0;
+                        padding: var(--tui-spacing-small);
+                        color: #ffffff;
+
+                        .heading {
+                            font-weight: var(--tui-font-weight-bold);
+                        }
+
+                        .sub-heading {
+                            font-size: var(--tui-font-size-medium);
+                        }
                     }
                 }
             }
@@ -350,12 +401,15 @@
 
             .regional-breakdown {
                 display: flex;
+                flex-direction: column;
                 gap: var(--tui-spacing-large);
 
                 .regional-breakdown-tabs {
                     display: flex;
                     align-items: stretch;
-                    flex-direction: column;
+                    flex-wrap: wrap;
+                    border-bottom: var(--tui-width-separator-thin) solid var(--tui-color-separator);
+                    padding: var(--tui-spacing-small) 0;
                     gap: var(--tui-spacing-small);
 
                     .tab {
@@ -450,7 +504,6 @@
         width: 2.5rem;
         height: 2.5rem;
         color: #ffffff;
-        font-family: var(--tui-font-family-heading);
     }
 
     .description {

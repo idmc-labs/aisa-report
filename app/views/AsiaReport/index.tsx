@@ -14,6 +14,9 @@ import Tabs from '#components/Tabs';
 import TabPanel from '#components/Tabs/TabPanel';
 import Tab from '#components/Tabs/Tab';
 import ButtonLikeLink from '#components/ButtonLikeLink';
+import Carousel from '#components/Carousel';
+import CarouselItem from '#components/Carousel/CarouselItem';
+import CarouselButton from '#components/Carousel/CarouselButton';
 
 import idmcLogo from '#resources/img/idmc.svg';
 import nrcLogo from '#resources/img/nrc.png';
@@ -144,6 +147,30 @@ function AsiaReport(props: Props) {
         if (elementToScrollTo) {
             elementToScrollTo.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+    }, []);
+    const [visibleItems, setVisibleItems] = useState(3);
+    const debounceTimeoutRef = React.useRef<number>();
+    React.useEffect(() => {
+        const onNumberOfVisibleItemsChange = () => {
+            window.clearTimeout(debounceTimeoutRef.current);
+            debounceTimeoutRef.current = window.setTimeout(() => {
+                const width = document.documentElement.clientWidth;
+                if (width < 710) {
+                    setVisibleItems(1);
+                } else if (width < 1200) {
+                    setVisibleItems(2);
+                } else {
+                    setVisibleItems(3);
+                }
+            }, 200);
+        };
+
+        window.addEventListener('resize', onNumberOfVisibleItemsChange);
+        onNumberOfVisibleItemsChange();
+
+        return () => {
+            window.removeEventListener('resize', onNumberOfVisibleItemsChange);
+        };
     }, []);
 
     return (
@@ -491,68 +518,93 @@ function AsiaReport(props: Props) {
                             className={styles.svg}
                         />
                     </div>
-                    <div className={styles.bottomContainer}>
-                        <div className={styles.spotlightItem}>
-                            <img
-                                className={styles.spotlightImage}
-                                src={vanautu}
-                                alt=""
-                            />
-                            <div className={styles.caption}>
-                                <div className={styles.heading}>
-                                    Spotlight 1
+                    <Carousel
+                        className={styles.bottomContainer}
+                        numberOfVisibleItems={visibleItems}
+                    >
+                        <CarouselButton
+                            className={_cs(styles.carouselButton, styles.prev)}
+                            action="prev"
+                        />
+                        <div className={styles.itemList}>
+                            <CarouselItem
+                                className={styles.spotlightItem}
+                                order={1}
+                            >
+                                <img
+                                    className={styles.spotlightImage}
+                                    src={vanautu}
+                                    alt=""
+                                />
+                                <div className={styles.caption}>
+                                    <div className={styles.heading}>
+                                        Spotlight 1
+                                    </div>
+                                    <div className={styles.subHeading}>
+                                        Food related displacement in Jakarta, Indonesia
+                                    </div>
                                 </div>
-                                <div className={styles.subHeading}>
-                                    Food related displacement in Jakarta, Indonesia
+                            </CarouselItem>
+                            <CarouselItem
+                                className={styles.spotlightItem}
+                                order={2}
+                            >
+                                <img
+                                    className={styles.spotlightImage}
+                                    src={philippines2}
+                                    alt=""
+                                />
+                                <div className={styles.caption}>
+                                    <div className={styles.heading}>
+                                        Spotlight 2
+                                    </div>
+                                    <div className={styles.subHeading}>
+                                        Food related displacement in Jakarta, Indonesia
+                                    </div>
                                 </div>
-                            </div>
+                            </CarouselItem>
+                            <CarouselItem
+                                className={styles.spotlightItem}
+                                order={3}
+                            >
+                                <img
+                                    className={styles.spotlightImage}
+                                    src={nepal}
+                                    alt=""
+                                />
+                                <div className={styles.caption}>
+                                    <div className={styles.heading}>
+                                        Spotlight 3
+                                    </div>
+                                    <div className={styles.subHeading}>
+                                        Food related displacement in Jakarta, Indonesia
+                                    </div>
+                                </div>
+                            </CarouselItem>
+                            <CarouselItem
+                                className={styles.spotlightItem}
+                                order={4}
+                            >
+                                <img
+                                    className={styles.spotlightImage}
+                                    src={japan}
+                                    alt=""
+                                />
+                                <div className={styles.caption}>
+                                    <div className={styles.heading}>
+                                        Spotlight 4
+                                    </div>
+                                    <div className={styles.subHeading}>
+                                        Food related displacement in Jakarta, Indonesia
+                                    </div>
+                                </div>
+                            </CarouselItem>
                         </div>
-                        <div className={styles.spotlightItem}>
-                            <img
-                                className={styles.spotlightImage}
-                                src={philippines2}
-                                alt=""
-                            />
-                            <div className={styles.caption}>
-                                <div className={styles.heading}>
-                                    Spotlight 2
-                                </div>
-                                <div className={styles.subHeading}>
-                                    Food related displacement in Jakarta, Indonesia
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.spotlightItem}>
-                            <img
-                                className={styles.spotlightImage}
-                                src={nepal}
-                                alt=""
-                            />
-                            <div className={styles.caption}>
-                                <div className={styles.heading}>
-                                    Spotlight 2
-                                </div>
-                                <div className={styles.subHeading}>
-                                    Food related displacement in Jakarta, Indonesia
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.spotlightItem}>
-                            <img
-                                className={styles.spotlightImage}
-                                src={japan}
-                                alt=""
-                            />
-                            <div className={styles.caption}>
-                                <div className={styles.heading}>
-                                    Spotlight 2
-                                </div>
-                                <div className={styles.subHeading}>
-                                    Food related displacement in Jakarta, Indonesia
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <CarouselButton
+                            className={_cs(styles.carouselButton, styles.next)}
+                            action="next"
+                        />
+                    </Carousel>
                 </div>
             </section>
             <div className={styles.dividerImage}>

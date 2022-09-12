@@ -9,22 +9,34 @@ import CarouselContext from './CarouselContext';
 
 import styles from './styles.css';
 
-const CAROUSEL_ITEM_CHANGE_DURATION = 5; // in seconds
+const CAROUSEL_ITEM_CHANGE_DURATION = 2; // in seconds
 
 function bound(value: number, min: number, max: number) {
-    const bounded = Math.max(Math.min(value, max), min);
-    return bounded;
+    const diff = (max - min + 1); // 5
+
+    if (value > max) {
+        return ((value - min) % diff) + min;
+    }
+
+    if (value < min) {
+        const minDiff = (min - value) - 1; // 0 -> 2
+        return max - (minDiff % diff);
+    }
+
+    return value;
 }
 
 interface Props {
     className?: string;
     children: React.ReactNode;
+    numberOfVisibleItems?: number;
 }
 
 function Carousel(props: Props) {
     const {
         className,
         children,
+        numberOfVisibleItems = 1,
     } = props;
 
     const autoChangeTimerRef = React.useRef<number>(CAROUSEL_ITEM_CHANGE_DURATION);
@@ -81,6 +93,7 @@ function Carousel(props: Props) {
 
     React.useEffect(() => {
         let intervalId: number;
+
         if (shouldAnimate) {
             intervalId = window.setInterval(decreaseTimer, 1000);
         }
@@ -127,6 +140,7 @@ function Carousel(props: Props) {
                 };
             });
         }
+        // TODO: Not needed for now
         // setActiveItem(newValueOrSetter);
     }, []);
 
@@ -179,6 +193,7 @@ function Carousel(props: Props) {
         unregisterItem,
         shouldAnimate,
         setShouldAnimate,
+        numberOfVisibleItems,
     }), [
         itemState,
         setActiveItemSafe,
@@ -186,6 +201,7 @@ function Carousel(props: Props) {
         unregisterItem,
         shouldAnimate,
         setShouldAnimate,
+        numberOfVisibleItems,
     ]);
 
     return (

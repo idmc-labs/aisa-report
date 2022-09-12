@@ -1,8 +1,13 @@
 .carousel-button {
     padding: var(--tui-spacing-small);
+    width: 4rem;
     color: rgba(0, 0, 0, .3);
 
     &.active {
-        color: var(--tui-color-brand);
+        color: var(--tui-color-disaster);
+    }
+
+    :hover {
+        color: var(--tui-color-text);
     }
 }

@@ -8,6 +8,7 @@ export interface CarouselContextProps {
     setActiveItem: React.Dispatch<React.SetStateAction<number | undefined>>;
     registerItem: (order: number) => void;
     unregisterItem: (order: number) => void;
+    numberOfVisibleItems: number;
 }
 
 const CarouselContext = React.createContext<CarouselContextProps>({
@@ -30,6 +31,7 @@ const CarouselContext = React.createContext<CarouselContextProps>({
         // eslint-disable-next-line no-console
         console.warn('CarouselContext::unregisterItem called before it was initialized');
     },
+    numberOfVisibleItems: 1,
 });
 
 export default CarouselContext;

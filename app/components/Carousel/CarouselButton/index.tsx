@@ -9,7 +9,7 @@ import {
     IoEllipse,
 } from 'react-icons/io5';
 
-import RawButton from '#components/RawButton';
+import { RawButton } from '@togglecorp/toggle-ui';
 import CarouselContext from '../CarouselContext';
 
 import styles from './styles.css';
@@ -73,9 +73,9 @@ function CarouselButton(props: Props) {
             onClick={handleClick}
         >
             {/* eslint-disable-next-line react/destructuring-assignment */}
-            {props.action === 'next' && <IoChevronForward />}
+            {props.action === 'next' && <IoChevronForward size="var(--tui-font-size-small)" />}
             {/* eslint-disable-next-line react/destructuring-assignment */}
-            {props.action === 'prev' && <IoChevronBack />}
+            {props.action === 'prev' && <IoChevronBack size="var(--tui-font-size-small)" />}
             {/* eslint-disable-next-line react/destructuring-assignment */}
             {props.action === 'set' && <IoEllipse />}
         </RawButton>
