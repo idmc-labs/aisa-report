@@ -28,7 +28,8 @@
             gap: var(--tui-spacing-large);
 
             .nav-item {
-                color: var(--tui-color-text-on-accent);
+                color: #ffffff;
+                font-weight: var(--tui-font-weight-bold);
             }
         }
     }
@@ -47,7 +48,7 @@
         .section-content {
             display: flex;
             flex-direction: column;
-            padding: var(--tui-spacing-ultra-large);
+            padding: var(--tui-spacing-ultra-large) var(--tui-spacing-mega-large);
             width: 100%;
             max-width: var(--width-page-max);
             gap: var(--tui-spacing-large);
@@ -82,7 +83,7 @@
                 }
                 .description-paragraph {
                     max-width: 40rem;
-                    font-size: var(--tui-font-size-small);
+                    font-size: var(--tui-font-size-medium);
                 }
             }
 
@@ -105,7 +106,7 @@
         transform-style: preserve-3d;
         background-color: transparent;
         width: 100%;
-        height: 400px;
+        height: 320px;
 
         .background {
             position: absolute;
@@ -189,7 +190,7 @@
             .description {
                 .description-paragraph {
                     max-width: 32rem;
-                    font-size: var(--tui-font-size-small);
+                    font-size: var(--tui-font-size-medium);
                 }
             }
 
@@ -203,6 +204,7 @@
             display: flex;
             gap: var(--tui-spacing-large);
             overflow-x: scroll;
+            overflow-y: hidden;
 
             .spotlight-item {
                 position: relative;
@@ -223,9 +225,9 @@
                     top: var(--tui-spacing-extra-small);
                     left: var(--tui-spacing-extra-small);
                     align-items: center;
-                    background-color: var(--color-disaster);
+                    background-color: #ffffff;
                     padding: 0 0.4rem;
-                    color: #ffffff;
+                    color: var(--color-disaster);
                     font-size: var(--tui-font-size-extra-small);
                     font-weight: var(--tui-font-weight-bold);
                     content: 'SPOTLIGHT';
@@ -242,7 +244,7 @@
                     }
 
                     .sub-heading {
-                        font-size: var(--tui-font-size-small);
+                        font-size: var(--tui-font-size-medium);
                     }
                 }
             }
@@ -253,7 +255,7 @@
         .way-forward-content {
             .description {
                 .description-paragraph {
-                    font-size: var(--tui-font-size-small);
+                    font-size: var(--tui-font-size-medium);
                 }
 
                 .list-container {
@@ -274,50 +276,66 @@
         min-height: unset;
 
         .download-content {
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: var(--tui-spacing-ultra-large);
-            gap: var(--tui-spacing-extra-large);
+            min-height: unset;
 
-            .left-content {
+            .top-content {
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                width: 20rem;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                padding: var(--tui-spacing-ultra-large);
+                gap: var(--tui-spacing-extra-large);
 
-                .book-cover {
-                    height: 16rem;
-                    object-fit: cover;
-                }
-            }
-
-            .right-content {
-                display: flex;
-                align-items: flex-start;
-                align-self: stretch;
-                flex-direction: column;
-                gap: var(--tui-spacing-large);
-
-                .download-link {
+                .left-content {
                     display: flex;
                     align-items: center;
-                    color: var(--tui-font-color-text);
-                    font-weight: var(--tui-font-weight-bold);
-                    gap: var(--tui-spacing-extra-small);
+                    justify-content: center;
+                    width: 20rem;
+
+                    .book-cover {
+                        height: 16rem;
+                        object-fit: cover;
+                    }
                 }
 
-                .select-section-container {
+                .right-content {
                     display: flex;
+                    align-items: flex-start;
+                    align-self: stretch;
                     flex-direction: column;
-                    border: var(--tui-width-separator-thin) solid var(--tui-color-separator);
-                    padding: var(--tui-spacing-extra-large);
-                    gap: var(--tui-spacing-medium);
+                    background-color: var(--tui-color-background);
 
-                    .select-input {
-                        width: 20rem;
+                    .download-link {
+                        display: flex;
+                        align-items: center;
+                        color: var(--tui-font-color-text);
+                        font-weight: var(--tui-font-weight-bold);
+                        gap: var(--tui-spacing-extra-small);
+                    }
+
+                    .links-container {
+                        display: flex;
+                        flex-direction: column;
+                        padding: var(--tui-spacing-large);
+                        gap: var(--tui-spacing-large);
+                    }
+
+                    .select-section-container {
+                        display: flex;
+                        flex-direction: column;
+                        border: var(--tui-width-separator-thin) solid var(--tui-color-separator);
+                        background-color: var(--tui-color-foreground);
+                        padding: var(--tui-spacing-large);
+                        gap: var(--tui-spacing-large);
+
+                        .select-input {
+                            width: 20rem;
+                        }
+
+                        .button {
+                            width: fit-content;
+                        }
                     }
                 }
             }
@@ -363,12 +381,13 @@
 
             .paragraph {
                 max-width: 30rem;
-                font-size: var(--tui-font-size-small);
+                font-size: var(--tui-font-size-medium);
             }
 
             .left-container {
                 display: flex;
                 flex-direction: column;
+                flex-grow: 1;
                 gap: var(--tui-spacing-medium);
 
                 .logo-container {
@@ -391,6 +410,7 @@
             .right-container {
                 display: flex;
                 flex-direction: column;
+                flex-grow: 1;
                 gap: var(--tui-spacing-medium);
             }
         }
@@ -426,7 +446,7 @@
         align-self: flex-start;
         justify-content: center;
         border-radius: 50%;
-        background-color: var(--color-disaster);
+        background-color: var(--tui-color-brand);
         width: 2.5rem;
         height: 2.5rem;
         color: #ffffff;
@@ -434,6 +454,6 @@
     }
 
     .description {
-        font-size: var(--tui-font-size-small);
+        font-size: var(--tui-font-size-medium);
     }
 }

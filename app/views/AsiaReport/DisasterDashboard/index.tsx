@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useMemo, useCallback, useState } from 'react';
 import {
     MultiSelectInput,
 } from '@togglecorp/toggle-ui';
+import {
+    _cs,
+} from '@togglecorp/fujs';
 import {
     gql,
     useQuery,
 } from '@apollo/client';
 import {
-    IoDownloadOutline,
+    // IoDownloadOutline,
     IoExitOutline,
 } from 'react-icons/io5';
 
@@ -26,8 +29,6 @@ import {
 } from 'recharts';
 
 import {
-    CountryProfileQuery,
-    CountryProfileQueryVariables,
     DisasterDataQuery,
     DisasterDataQueryVariables,
     CategoryStatisticsType,
@@ -41,7 +42,11 @@ import SliderInput from '#components/SliderInput';
 import Container from '#components/Container';
 import TooltipIcon from '#components/TooltipIcon';
 
-import { formatNumber } from '#utils/common';
+import {
+    formatNumber,
+    countries,
+    regions,
+} from '#utils/common';
 
 import useDebouncedValue from '../../../hooks/useDebouncedValue';
 
@@ -50,22 +55,39 @@ import { countryMetadata } from './data';
 import styles from './styles.css';
 
 const DRUPAL_ENDPOINT = process.env.REACT_APP_DRUPAL_ENDPOINT as string || '';
-const REST_ENDPOINT = process.env.REACT_APP_REST_ENDPOINT as string;
 
 function suffixDrupalEndpoing(path: string) {
     return `${DRUPAL_ENDPOINT}${path}`;
 }
 
+/*
+const REST_ENDPOINT = process.env.REACT_APP_REST_ENDPOINT as string;
+
 function suffixGiddRestEndpoint(path: string) {
     return `${REST_ENDPOINT}${path}`;
 }
+*/
 
 const disasterCategoryKeySelector = (d: CategoryStatisticsType) => d.label;
+const regionKeySelector = (region: { key: string }) => region.key;
+const regionLabelSelector = (region: { value: string }) => region.value;
+
+const countryKeySelector = (country: { iso3: string }) => country.iso3;
+const countryLabelSelector = (country: { name: string }) => country.name;
 
 const START_YEAR = 2010;
 const END_YEAR = 2021;
 
 const giddLink = suffixDrupalEndpoing('/database/displacement-data');
+
+const disasterColorSchemes = [
+    // 'rgb(6, 23, 158)',
+    // 'rgb(8, 56, 201)',
+    // 'rgb(8, 116, 226)',
+    'rgb(1, 142, 202)',
+    'rgb(45, 183, 226)',
+    'rgb(94, 217, 238)',
+];
 
 const categoricalColorScheme = [
     'rgb(6, 23, 158)',
@@ -78,50 +100,19 @@ const categoricalColorScheme = [
 
 const chartMargins = { top: 16, left: 5, right: 5, bottom: 5 };
 
-const COUNTRY_PROFILE = gql`
-    query CountryProfile($iso3: String!) {
-        country(iso3: $iso3) {
-            id
-            name
-            boundingBox
-            description
-            backgroundImage {
-                name
-                url
-            }
-            overviews {
-                description
-                id
-                year
-                updatedAt
-            }
-            contactPersonDescription
-            contactPersonImage {
-                url
-                name
-            }
-            essentialLinks
-            displacementDataDescription
-            internalDisplacementDescription
-        }
-        conflictStatistics(filters: { countriesIso3: [$iso3] }) {
-            newDisplacements
-            totalIdps
-        }
-        disasterStatistics(filters: { countriesIso3: [$iso3] }) {
-            newDisplacements
-
-            categories {
-                label
-                total
-            }
-        }
-    }
-`;
-
 const DISASTER_DATA = gql`
-    query DisasterData($countryIso3: String!, $startYear: Int, $endYear: Int, $categories: [String!]) {
-        disasterStatistics(filters: { countriesIso3: [$countryIso3], endYear: $endYear, startYear: $startYear, categories: $categories}) {
+    query DisasterData(
+        $countryIso3: [String!],
+        $startYear: Int,
+        $endYear: Int,
+        $categories: [String!],
+    ) {
+        disasterStatistics(filters: {
+            countriesIso3: $countryIso3,
+            endYear: $endYear,
+            startYear: $startYear,
+            categories: $categories,
+        }) {
             newDisplacements
             totalEvents
             categories {
@@ -129,6 +120,11 @@ const DISASTER_DATA = gql`
                 total
             }
             timeseries {
+                country {
+                    id
+                    iso3
+                    countryName
+                }
                 total
                 year
             }
@@ -137,30 +133,40 @@ const DISASTER_DATA = gql`
 `;
 
 interface Props {
-    iso3?: string;
+    className?: string;
 }
 
 function CountryProfile(props: Props) {
     const {
-        iso3: currentCountry = 'NPL',
+        className,
     } = props;
 
     // Disaster section
     const [disasterCategories, setDisasterCategories] = useState<string[]>([]);
+    const [regionValues, setRegionValues] = useState<string[]>([]);
+    const [countriesValues, setCountriesValues] = useState<string[]>([]);
     const [disasterTimeRangeActual, setDisasterTimeRange] = useState([START_YEAR, END_YEAR]);
     const disasterTimeRange = useDebouncedValue(disasterTimeRangeActual);
 
-    const {
-        previousData,
-        data: countryProfileData = previousData,
-    } = useQuery<CountryProfileQuery, CountryProfileQueryVariables>(
-        COUNTRY_PROFILE,
-        {
-            variables: {
-                iso3: currentCountry,
-            },
-        },
-    );
+    const handleRegionValueChange = useCallback((newVal: string[]) => {
+        setRegionValues(newVal);
+        setCountriesValues([]);
+    }, []);
+
+    const selectedCountries = useMemo(() => {
+        if (regionValues.length === 0 && countriesValues.length === 0) {
+            return [];
+        }
+        if (countriesValues.length > 0) {
+            return countriesValues;
+        }
+        return regions
+            .filter((region) => regionValues.includes(region.key))
+            .map((region) => region.countries).flat();
+    }, [
+        regionValues,
+        countriesValues,
+    ]);
 
     const {
         previousData: previousDisasterData,
@@ -172,7 +178,7 @@ function CountryProfile(props: Props) {
         DISASTER_DATA,
         {
             variables: {
-                countryIso3: currentCountry,
+                countryIso3: selectedCountries,
                 startYear: disasterTimeRange[0],
                 endYear: disasterTimeRange[1],
                 categories: disasterCategories,
@@ -180,9 +186,61 @@ function CountryProfile(props: Props) {
         },
     );
 
+    const isMultiline = selectedCountries.length > 1 && selectedCountries.length < 5;
+
+    const lineChartData = useMemo(() => {
+        const data = disasterData?.disasterStatistics?.timeseries;
+        if (!data) {
+            return undefined;
+        }
+        /*
+        if (selectedCountries.length < 6) {
+            const itemsGroupedByCountry = listToGroupList(
+                data,
+                (item) => item.country.id,
+                (item) => ({ ...item, countryName: item.country.countryName }),
+            );
+            return Object.values(itemsGroupedByCountry);
+        }
+        */
+        if (isMultiline) {
+            return data.map((item) => ({
+                [item.country.iso3]: item.total,
+                year: item.year,
+                total: Number(item.total),
+            }));
+        }
+        return data.reduce(
+            (acc, item) => {
+                const itemInAccIndex = acc.findIndex(
+                    (accItem) => accItem.year === Number(item.year),
+                );
+                if (itemInAccIndex === -1) {
+                    return [
+                        ...acc,
+                        {
+                            year: Number(item.year),
+                            total: item.total,
+                        },
+                    ];
+                }
+                const newItem = {
+                    year: Number(item.year),
+                    total: item.total + acc[itemInAccIndex].total,
+                };
+                acc.splice(itemInAccIndex, 1);
+                return ([
+                    ...acc,
+                    newItem,
+                ]);
+            },
+            [] as { year: number; total: number}[],
+        );
+    }, [disasterData, isMultiline]);
+
     return (
         <Container
-            className={styles.displacementData}
+            className={_cs(className, styles.displacementData)}
             heading={countryMetadata.disasterHeader}
             headingSize="small"
             headerClassName={styles.disasterHeader}
@@ -194,8 +252,13 @@ function CountryProfile(props: Props) {
             )}
             footerActions={(
                 <>
+                    {/*
                     <ButtonLikeLink
-                        href={suffixGiddRestEndpoint(`/countries/${currentCountry}/disaster-export/?start_year=${disasterTimeRange[0]}&end_year=${disasterTimeRange[1]}&hazard_type=${disasterCategories.join(',')}`)}
+                        href={suffixGiddRestEndpoint(`/countries/
+                        ${currentCountry}/disaster-export/
+                        ?start_year=${disasterTimeRange[0]}
+                        &end_year=${disasterTimeRange[1]}
+                        &hazard_type=${disasterCategories.join(',')}`)}
                         target="_blank"
                         className={styles.disasterButton}
                         rel="noopener noreferrer"
@@ -205,6 +268,7 @@ function CountryProfile(props: Props) {
                     >
                         Download Disaster Data
                     </ButtonLikeLink>
+                    */}
                     <ButtonLikeLink
                         href={giddLink}
                         className={styles.disasterButton}
@@ -220,18 +284,40 @@ function CountryProfile(props: Props) {
             )}
             filters={(
                 <>
-                    <SliderInput
-                        className={styles.timeRangeContainer}
-                        hideValues
-                        min={START_YEAR}
-                        max={END_YEAR}
-                        labelDescription={`${disasterTimeRangeActual[0]} - ${disasterTimeRangeActual[1]}`}
-                        step={1}
-                        minDistance={0}
-                        value={disasterTimeRangeActual}
-                        onChange={setDisasterTimeRange}
+                    <Header
+                        heading="Regions"
+                        headingSize="extraSmall"
+                        description={(
+                            <MultiSelectInput
+                                className={styles.selectInput}
+                                inputSectionClassName={styles.inputSection}
+                                placeholder="Regions"
+                                name="regions"
+                                value={regionValues}
+                                options={regions}
+                                keySelector={regionKeySelector}
+                                labelSelector={regionLabelSelector}
+                                onChange={handleRegionValueChange}
+                            />
+                        )}
                     />
-                    <div />
+                    <Header
+                        heading="Countries"
+                        headingSize="extraSmall"
+                        description={(
+                            <MultiSelectInput
+                                className={styles.selectInput}
+                                inputSectionClassName={styles.inputSection}
+                                placeholder="Countries"
+                                name="countries"
+                                value={countriesValues}
+                                options={countries}
+                                keySelector={countryKeySelector}
+                                labelSelector={countryLabelSelector}
+                                onChange={setCountriesValues}
+                            />
+                        )}
+                    />
                     <Header
                         heading="Disaster Category"
                         headingSize="extraSmall"
@@ -242,12 +328,23 @@ function CountryProfile(props: Props) {
                                 placeholder="Disaster Category"
                                 name="disasterCategory"
                                 value={disasterCategories}
-                                options={countryProfileData?.disasterStatistics.categories}
+                                options={disasterData?.disasterStatistics.categories}
                                 keySelector={disasterCategoryKeySelector}
                                 labelSelector={disasterCategoryKeySelector}
                                 onChange={setDisasterCategories}
                             />
                         )}
+                    />
+                    <SliderInput
+                        className={styles.timeRangeContainer}
+                        hideValues
+                        min={START_YEAR}
+                        max={END_YEAR}
+                        labelDescription={`${disasterTimeRangeActual[0]} - ${disasterTimeRangeActual[1]}`}
+                        step={1}
+                        minDistance={0}
+                        value={disasterTimeRangeActual}
+                        onChange={setDisasterTimeRange}
                     />
                 </>
             )}
@@ -272,11 +369,11 @@ function CountryProfile(props: Props) {
                         </div>
                     )}
                     date={`${disasterTimeRangeActual[0]} - ${disasterTimeRangeActual[1]}`}
-                    chart={disasterData?.disasterStatistics.timeseries && (
+                    chart={lineChartData && (
                         <ErrorBoundary>
                             <ResponsiveContainer>
                                 <LineChart
-                                    data={disasterData.disasterStatistics.timeseries}
+                                    data={lineChartData}
                                     margin={chartMargins}
                                 >
                                     <CartesianGrid
@@ -298,15 +395,37 @@ function CountryProfile(props: Props) {
                                         formatter={formatNumber}
                                     />
                                     <Legend />
-                                    <Line
-                                        dataKey="total"
-                                        key="total"
-                                        stroke="var(--color-disaster)"
-                                        name="Internal Displacements"
-                                        strokeWidth={2}
-                                        connectNulls
-                                        dot
-                                    />
+                                    {isMultiline ? (
+                                        selectedCountries.map((item, i) => (
+                                            <Line
+                                                key={item}
+                                                dataKey={item}
+                                                name={
+                                                    selectedCountries.length > 1
+                                                        ? countries.find(
+                                                            (c) => c.iso3 === item,
+                                                        )?.name || item
+                                                        : 'Disaster internal displacements'
+                                                }
+                                                strokeWidth={2}
+                                                connectNulls
+                                                dot
+                                                stroke={disasterColorSchemes[
+                                                    i % disasterColorSchemes.length
+                                                ]}
+                                            />
+                                        ))
+                                    ) : (
+                                        <Line
+                                            dataKey="total"
+                                            key="total"
+                                            stroke="var(--color-disaster)"
+                                            name="Internal Displacements"
+                                            strokeWidth={2}
+                                            connectNulls
+                                            dot
+                                        />
+                                    )}
                                 </LineChart>
                             </ResponsiveContainer>
                         </ErrorBoundary>

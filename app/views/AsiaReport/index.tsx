@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import { _cs } from '@togglecorp/fujs';
 import {
     MdPictureAsPdf,
@@ -7,12 +7,13 @@ import {
 import { SelectInput } from '@togglecorp/toggle-ui';
 
 import TooltipIcon from '#components/TooltipIcon';
+import Button from '#components/Button';
 import Header from '#components/Header';
 import TextOutput from '#components/TextOutput';
 import Tabs from '#components/Tabs';
 import TabPanel from '#components/Tabs/TabPanel';
-import TabList from '#components/Tabs/TabList';
 import Tab from '#components/Tabs/Tab';
+import ButtonLikeLink from '#components/ButtonLikeLink';
 
 import idmcLogo from '#resources/img/idmc.svg';
 import nrcLogo from '#resources/img/nrc.png';
@@ -137,34 +138,50 @@ function AsiaReport(props: Props) {
         return `#page=${selectedSectionObj.startPage}`;
     }, [selectedSection]);
 
+    const handleNavClick = useCallback((itemHash) => {
+        const elementToScrollTo = document.getElementById(itemHash);
+
+        if (elementToScrollTo) {
+            elementToScrollTo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, []);
+
     return (
         <div className={_cs(styles.asiaReport, className)}>
             <nav className={styles.nav}>
                 <div className={styles.itemsContainer}>
-                    <a
-                        href="#at-a-glance"
+                    <Button
+                        name="at-a-glance"
+                        onClick={handleNavClick}
                         className={styles.navItem}
+                        variant="transparent"
                     >
                         At a glance
-                    </a>
-                    <a
-                        href="#key-findings"
+                    </Button>
+                    <Button
+                        name="key-findings"
+                        onClick={handleNavClick}
                         className={styles.navItem}
+                        variant="transparent"
                     >
                         Key findings
-                    </a>
-                    <a
-                        href="#explore-the-data"
+                    </Button>
+                    <Button
+                        name="explore-the-data"
+                        onClick={handleNavClick}
                         className={styles.navItem}
+                        variant="transparent"
                     >
                         Explore the data
-                    </a>
-                    <a
-                        href="#download-report"
+                    </Button>
+                    <Button
+                        name="download-report"
+                        onClick={handleNavClick}
                         className={styles.navItem}
+                        variant="transparent"
                     >
                         Download report
-                    </a>
+                    </Button>
                 </div>
             </nav>
             <section className={_cs(styles.hero, styles.section)}>
@@ -221,7 +238,10 @@ function AsiaReport(props: Props) {
                     </div>
                 </div>
             </div>
-            <section className={_cs(styles.glance, styles.section)}>
+            <section
+                className={_cs(styles.glance, styles.section)}
+                id="at-a-glance"
+            >
                 <div className={_cs(styles.glanceContent, styles.sectionContent)}>
                     <Header
                         heading="At a glance"
@@ -309,7 +329,10 @@ function AsiaReport(props: Props) {
                     </div>
                 </div>
             </div>
-            <section className={_cs(styles.keyMessages, styles.section)}>
+            <section
+                id="key-findings"
+                className={_cs(styles.keyMessages, styles.section)}
+            >
                 <div className={_cs(styles.keyMessagesContent, styles.sectionContent)}>
                     <Header
                         heading="Key Messages"
@@ -341,7 +364,10 @@ function AsiaReport(props: Props) {
                     </div>
                 </div>
             </div>
-            <section className={_cs(styles.idTrends, styles.section)}>
+            <section
+                className={_cs(styles.idTrends, styles.section)}
+                id="explore-the-data"
+            >
                 <div className={_cs(styles.idTrendsContent, styles.sectionContent)}>
                     <Header
                         heading="Internal Displacement Trends in Asia and the Pacific (2010-2021)"
@@ -597,59 +623,75 @@ function AsiaReport(props: Props) {
                     </div>
                 </div>
             </div>
-            <section className={_cs(styles.download, styles.section)}>
+            <section
+                className={_cs(styles.download, styles.section)}
+                id="download-report"
+            >
                 <div className={_cs(styles.downloadContent, styles.sectionContent)}>
-                    <div className={styles.leftContent}>
-                        <img
-                            src={bookCover}
-                            className={styles.bookCover}
-                            alt=""
-                        />
-                    </div>
-                    <div className={styles.rightContent}>
-                        <a
-                            className={styles.downloadLink}
-                            href="https://www.internal-displacement.org/sites/default/files/publications/documents/IDMC_GRID_2022_LR.pdf"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                        >
-                            <MdPictureAsPdf />
-                            Download full report
-                            <MdArrowRightAlt />
-                        </a>
-                        <a
-                            className={styles.downloadLink}
-                            href="https://www.internal-displacement.org/sites/default/files/publications/documents/IDMC_GRID_2022_LR.pdf"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                        >
-                            <MdPictureAsPdf />
-                            Download full report (High quality)
-                            <MdArrowRightAlt />
-                        </a>
-                        <div className={styles.selectSectionContainer}>
-                            Or select a section
-                            <SelectInput
-                                className={styles.selectInput}
-                                inputSectionClassName={styles.inputSection}
-                                placeholder=""
-                                name="section"
-                                value={selectedSection}
-                                options={sectionOptions}
-                                keySelector={sectionKeySelector}
-                                labelSelector={sectionLabelSelector}
-                                onChange={setSelectedSection}
+                    <Header
+                        heading="Download"
+                        headingSize="large"
+                        hideHeadingBorder
+                    />
+                    <div className={styles.topContent}>
+                        <div className={styles.leftContent}>
+                            <img
+                                src={bookCover}
+                                className={styles.bookCover}
+                                alt=""
                             />
-                            <a
-                                className={styles.downloadLink}
-                                href={`https://www.internal-displacement.org/sites/default/files/publications/documents/IDMC_GRID_2022_LR.pdf${pageSuffix}`}
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                <MdPictureAsPdf />
-                                View Section
-                                <MdArrowRightAlt />
-                            </a>
+                        </div>
+                        <div className={styles.rightContent}>
+                            <div className={styles.linksContainer}>
+                                <a
+                                    className={styles.downloadLink}
+                                    href="https://www.internal-displacement.org/sites/default/files/publications/documents/IDMC_GRID_2022_LR.pdf"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    <MdPictureAsPdf />
+                                    Download full report
+                                    <MdArrowRightAlt />
+                                </a>
+                                <a
+                                    className={styles.downloadLink}
+                                    href="https://www.internal-displacement.org/sites/default/files/publications/documents/IDMC_GRID_2022_LR.pdf"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    <MdPictureAsPdf />
+                                    Download full report (High quality)
+                                    <MdArrowRightAlt />
+                                </a>
+                            </div>
+                            <div className={styles.selectSectionContainer}>
+                                Or select a section
+                                <SelectInput
+                                    className={styles.selectInput}
+                                    inputSectionClassName={styles.inputSection}
+                                    placeholder=""
+                                    name="section"
+                                    value={selectedSection}
+                                    options={sectionOptions}
+                                    keySelector={sectionKeySelector}
+                                    labelSelector={sectionLabelSelector}
+                                    onChange={setSelectedSection}
+                                />
+                                <ButtonLikeLink
+                                    className={styles.button}
+                                    href={`https://www.internal-displacement.org/sites/default/files/publications/documents/IDMC_GRID_2022_LR.pdf${pageSuffix}`}
+                                    target="_blank"
+                                    icons={(
+                                        <MdPictureAsPdf />
+                                    )}
+                                    actions={(
+                                        <MdArrowRightAlt />
+                                    )}
+                                    rel="noreferrer noopener"
+                                >
+                                    View Section
+                                </ButtonLikeLink>
+                            </div>
                         </div>
                     </div>
                 </div>

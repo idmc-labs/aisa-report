@@ -18,6 +18,9 @@
     --tui-font-size-mega-large: 3rem;
     --tui-font-size-ultra-large: 4rem;
 
+    --tui-color-background-scrollbar: transparent;
+    --tui-color-foreground-scrollbar: #cccccc;
+
     --tui-spacing-ultra-small: 0.1rem;
     --tui-spacing-extra-extra-small: 0.3rem;
     --tui-spacing-extra-small: 0.7rem;
@@ -33,6 +36,9 @@
     --tui-color-accent: rgb(65, 131, 196);
     --tui-color-brand: rgb(25, 50, 86);
     --tui-color-brand-hover: #06179E;
+
+    --tui-width-scrollbar: 0.5rem;
+    --tui-radius-scrollbar-border: 0.25rem;
 
     --tui-color-text: rgb(100,99,99);
     --tui-filter-background-color: #EFF4FA;
@@ -58,7 +64,7 @@
     --color-disaster: var(--color-blue);
     --color-other: var(--color-green);
 
-    --width-page-max: 69rem;
+    --width-page-max: 80rem;
     --width-readable-content-max: 46rem;
 }
 
