@@ -46,4 +46,30 @@
         width: 2ch;
         height: var(--tui-width-separator-thick);
     }
+
+    @media (max-width: 720px) {
+        &.extra-large {
+            font-size: var(--tui-font-size-super-large);
+        }
+
+        &.large {
+            font-size: var(--tui-font-size-extra-large);
+        }
+
+        &.medium {
+            font-size: var(--tui-font-size-large);
+        }
+
+        &.small {
+            font-size: var(--tui-font-size-medium);
+        }
+
+        &.small-alt {
+            font-size: var(--tui-font-size-medium);
+        }
+
+        &.extra-small {
+            font-size: var(--tui-font-size-small);
+        }
+    }
 }

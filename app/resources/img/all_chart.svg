@@ -2,231 +2,175 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg width="656.2" height="833.5" version="1.1" viewBox="0 0 656.2 833.5" xmlns="http://www.w3.org/2000/svg">
  <defs>
-  <clipPath id="clipPath801">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1255">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath816">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1270">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath831">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1285">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath846">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1300">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath861">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1315">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath876">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1330">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath891">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1345">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath906">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1360">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath921">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1375">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath936">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1390">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath951">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1405">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath966">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1420">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath981">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1435">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath996">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1450">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1011">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1465">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1026">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1480">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1041">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1495">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1056">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1510">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1071">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1525">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1086">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1540">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1101">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1555">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1116">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1570">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1131">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1585">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1146">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1600">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1161">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1615">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1176">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1630">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1191">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1645">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
-  <clipPath id="clipPath1206">
-   <g transform="translate(-2.4194e-7 1.2809e-5)">
-    <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
-   </g>
+  <clipPath id="clipPath1660">
+   <path d="M 0,841.89 H 595.276 V 0 H 0 Z"/>
   </clipPath>
  </defs>
  <g transform="matrix(1.3333 0 0 -1.3333 -39.57 1062.2)">
   <g font-family="'Proxima Nova'">
-   <text transform="matrix(1 0 0 -1 328.89 660.7)" fill="#06179e" font-size="17px" font-weight="bold" xml:space="preserve"><tspan x="0 6.987 13.974 18.326 28.628" y="0">11.8m</tspan></text>
-   <text transform="matrix(1 0 0 -1 328.84 651.1)" fill="#06179e" font-size="8px" xml:space="preserve"><tspan x="0 5.704 10.208 14.784 19.375999 23.792 27.712 31.431999 33.231998 37.192001 41.408001" y="0">Geophysical</tspan></text>
-   <text transform="matrix(1 0 0 -1 258.5 660.7)" fill="#018eca" font-size="17px" font-weight="bold" xml:space="preserve"><tspan x="0 10.2 17.187 27.166 31.518 41.854" y="0">213.5m</tspan></text>
-   <text transform="matrix(1 0 0 -1 258.64 651.1)" fill="#018eca" font-size="8px" xml:space="preserve"><tspan x="0 6.744 11.248 15.464 17.816 22.232 26.736 29.375999 31.440001 34.080002 38.584 40.383999 44.599998 46.952 51.456001" y="0">Weather related</tspan></text>
+   <text transform="scale(1,-1)" x="328.88821" y="-660.70209" fill="#06179e" font-size="17px" font-weight="bold" xml:space="preserve"><tspan x="328.88821 335.87521 342.86221 347.2142 357.5162" y="-660.70209">11.8m</tspan></text>
+   <text transform="scale(1,-1)" x="328.8403" y="-651.10211" fill="#06179e" font-size="8px" xml:space="preserve"><tspan x="328.8403 334.54431 339.04831 343.6243 348.21631 352.63229 356.55231 360.27231 362.0723 366.03229 370.24829" y="-651.10211">Geophysical</tspan></text>
+   <text transform="scale(1,-1)" x="258.49799" y="-660.70172" fill="#018eca" font-size="17px" font-weight="bold" xml:space="preserve"><tspan x="258.49799 268.698 275.685 285.664 290.01599 300.35199" y="-660.70172">213.5m</tspan></text>
+   <text transform="scale(1,-1)" x="258.63919" y="-651.10162" fill="#018eca" font-size="8px" xml:space="preserve"><tspan x="258.63919 265.38321 269.88721 274.10321 276.4552 280.87119 285.37521 288.0152 290.07919 292.71921 297.22321 299.02319 303.2392 305.59119 310.09521" y="-651.10162">Weather related</tspan></text>
   </g>
   <path d="m320.67 672.04v-21.035" fill="none" stroke="#646363" stroke-miterlimit="10" stroke-width=".5"/>
   <g fill="#646363" font-family="'Proxima Nova'">
-   <text transform="matrix(1 0 0 -1 260.1 707.45)" font-size="31px" font-weight="bold" xml:space="preserve"><tspan x="0 18.6 37.200001 56.048 63.984001 82.181" y="0">225.3m</tspan></text>
-   <text transform="matrix(1 0 0 -1 368.69 717.78)" font-size="18.073px" font-weight="bold" xml:space="preserve"><tspan x="0" y="0">*</tspan></text>
-   <text transform="matrix(1 0 0 -1 261.32 690.98)" font-size="11.077px" xml:space="preserve"><tspan x="0 7.7539001 10.246225 15.39703 21.23461 26.385414 29.642052 35.878403 39.533813 42.391678 48.760956 51.253281 56.404083 62.762283 65.254608 71.092186 76.575302 82.811653 91.761871 97.998222 104.10165 107.35828 112.50909" y="0">Disaster displacements </tspan></text>
+   <text transform="scale(1,-1)" x="260.10349" y="-707.45258" font-size="31px" font-weight="bold" xml:space="preserve"><tspan x="260.10349 278.70349 297.3035 316.15149 324.08749 342.28448" y="-707.45258">225.3m</tspan></text>
+   <text transform="scale(1,-1)" x="368.69479" y="-717.77539" font-size="18.073px" font-weight="bold" xml:space="preserve"><tspan x="368.69479" y="-717.77539">*</tspan></text>
+   <text transform="scale(1,-1)" x="261.31741" y="-690.97949" font-size="11.077px" xml:space="preserve"><tspan x="261.31741 269.07129 271.56363 276.71442 282.552 287.70282 290.95944 297.1958 300.85123 303.70908 310.07837 312.57068 317.7215 324.07968 326.57202 332.40958 337.8927 344.12906 353.07928 359.31561 365.41904 368.67569 373.82648" y="-690.97949">Disaster displacements </tspan></text>
   </g>
-  <path d="m444.4 564.75c-7.777 0-14.082-6.305-14.082-14.082s6.305-14.082 14.082-14.082 14.082 6.305 14.082 14.082-6.305 14.082-14.082 14.082" clip-path="url(#clipPath816)" fill="#06179e"/>
-  <path d="m406.03 653.89c-18.622-49.086-73.51-73.782-122.6-55.16-49.085 18.622-73.781 73.51-55.159 122.6 18.622 49.085 73.509 73.781 122.6 55.159s73.781-73.51 55.16-122.6z" clip-path="url(#clipPath1161)" fill="none" stroke="#018eca" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"/>
-  <path d="m320.09 782.62c10.967-0.34 20.514-2.244 30.772-6.135" clip-path="url(#clipPath1176)" fill="none" stroke="#06179e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"/>
-  <path d="m178.58 610.53c-33.06 0-59.86-26.8-59.86-59.86s26.8-59.86 59.86-59.86 59.86 26.8 59.86 59.86-26.8 59.86-59.86 59.86" clip-path="url(#clipPath1206)" fill="#018eca"/>
-  <path d="m179.36 397.35v54.201c-2.407-30.607-27.378-31.13-81.425-31.12-26.516 5e-3 -35.331-15.531-37.925-29.359-0.383-2.039-0.558-4.111-0.558-6.186v-62.345" clip-path="url(#clipPath1191)" fill="none" stroke="#018eca" stroke-miterlimit="10" stroke-width=".68"/>
-  <path d="m179.36 436.07v-121.14" clip-path="url(#clipPath861)" fill="#fff" stroke="#018eca" stroke-miterlimit="10" stroke-width=".68"/>
+  <path d="m444.4 564.75c-7.777 0-14.082-6.305-14.082-14.082s6.305-14.082 14.082-14.082 14.082 6.305 14.082 14.082-6.305 14.082-14.082 14.082" clip-path="url(#clipPath1300)" fill="#06179e"/>
+  <path d="m406.03 653.89c-18.622-49.086-73.51-73.782-122.6-55.16-49.085 18.622-73.781 73.51-55.159 122.6 18.622 49.085 73.509 73.781 122.6 55.159s73.781-73.51 55.16-122.6z" clip-path="url(#clipPath1255)" fill="none" stroke="#018eca" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"/>
+  <path d="m320.09 782.62c10.967-.34 20.514-2.244 30.772-6.135" clip-path="url(#clipPath1330)" fill="none" stroke="#06179e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"/>
+  <path d="m178.58 610.53c-33.06 0-59.86-26.8-59.86-59.86s26.8-59.86 59.86-59.86 59.86 26.8 59.86 59.86-26.8 59.86-59.86 59.86" clip-path="url(#clipPath1345)" fill="#018eca"/>
+  <path d="m179.36 397.35v54.201c-2.407-30.607-27.378-31.13-81.425-31.12-26.516.005-35.331-15.531-37.925-29.359-.383-2.039-.558-4.111-.558-6.186v-62.345" clip-path="url(#clipPath1615)" fill="none" stroke="#018eca" stroke-miterlimit="10" stroke-width=".68"/>
+  <path d="m179.36 436.07v-121.14" clip-path="url(#clipPath1660)" fill="#ffffff" stroke="#018eca" stroke-miterlimit="10" stroke-width=".68"/>
   <g fill="none" stroke="#018eca" stroke-miterlimit="10" stroke-width=".68">
-   <path d="m179.36 452.66v-54.201c0.819-13.097 9.773-12.937 28.179-13.24 3.615-0.059 6.607-0.779 9.077-1.949 6.322-2.993 10.358-10.828 10.358-19.317v-46.085" clip-path="url(#clipPath876)"/>
-   <path d="m179.36 424.45c1.931-25.266 22.197-21.202 65.354-25.689 31.216-3.246 30.568-27.603 30.568-27.603v-53.291" clip-path="url(#clipPath831)"/>
-   <path d="m179.36 541.24v-91.122c2.887-25.265 32.878-28.323 97.676-25.688 54.891 2.232 47.214-41.597 48.533-42.81l0.482-18.972v-47.716" clip-path="url(#clipPath1131)"/>
+   <path d="m179.36 452.66v-54.201c.819-13.097 9.773-12.937 28.179-13.24 3.615-.059 6.607-.779 9.077-1.949 6.322-2.993 10.358-10.828 10.358-19.317v-46.085" clip-path="url(#clipPath1645)"/>
+   <path d="m179.36 424.45c1.931-25.266 22.197-21.202 65.354-25.689 31.216-3.246 30.568-27.603 30.568-27.603v-53.291" clip-path="url(#clipPath1315)"/>
+   <path d="m179.36 541.24v-91.122c2.887-25.265 32.878-28.323 97.676-25.688 54.891 2.232 47.214-41.597 48.533-42.81l.482-18.972v-47.716" clip-path="url(#clipPath1630)"/>
   </g>
   <g fill="#06179e">
-   <text transform="matrix(1 0 0 -1 426.28 517.25)" font-family="'Proxima Nova'" font-size="17px" font-weight="bold" xml:space="preserve"><tspan x="0 6.987 13.974 18.326 28.628" y="0">11.8m</tspan></text>
-   <text transform="matrix(1 0 0 -1 426.24 507.65)" font-family="'Proxima Nova'" font-size="8px" xml:space="preserve"><tspan x="0 5.704 10.208 14.784 19.375999 23.792 27.712 31.431999 33.231998 37.192001 41.408001" y="0">Geophysical</tspan></text>
-   <path d="m377.17 447.94c0 7.879 6.387 14.266 14.266 14.266s14.265-6.387 14.265-14.266-6.386-14.266-14.265-14.266-14.266 6.387-14.266 14.266" clip-path="url(#clipPath1146)"/>
-   <path d="m439.68 439.75c0 3.314 2.687 6 6.001 6 3.313 0 6.001-2.686 6.001-6s-2.688-6.001-6.001-6.001c-3.314 0-6.001 2.687-6.001 6.001" clip-path="url(#clipPath846)"/>
-   <path d="m498.74 436.12c0 1.31 1.062 2.372 2.371 2.372 1.31 0 2.371-1.062 2.371-2.372s-1.061-2.372-2.371-2.372c-1.309 0-2.371 1.062-2.371 2.372" clip-path="url(#clipPath891)"/>
+   <text transform="scale(1,-1)" x="426.2847" y="-517.24707" font-family="'Proxima Nova'" font-size="17px" font-weight="bold" xml:space="preserve"><tspan x="426.2847 433.2717 440.2587 444.61069 454.91269" y="-517.24707">11.8m</tspan></text>
+   <text transform="scale(1,-1)" x="426.23679" y="-507.647" font-family="'Proxima Nova'" font-size="8px" xml:space="preserve"><tspan x="426.23679 431.9408 436.44479 441.02081 445.61279 450.02881 453.94879 457.66879 459.46881 463.4288 467.64481" y="-507.647">Geophysical</tspan></text>
+   <path d="m377.17 447.94c0 7.879 6.387 14.266 14.266 14.266s14.265-6.387 14.265-14.266-6.386-14.266-14.265-14.266-14.266 6.387-14.266 14.266" clip-path="url(#clipPath1270)"/>
+   <path d="m439.68 439.75c0 3.314 2.687 6 6.001 6 3.313 0 6.001-2.686 6.001-6s-2.688-6.001-6.001-6.001c-3.314 0-6.001 2.687-6.001 6.001" clip-path="url(#clipPath1360)"/>
+   <path d="m498.74 436.12c0 1.31 1.062 2.372 2.371 2.372 1.31 0 2.371-1.062 2.371-2.372s-1.061-2.372-2.371-2.372c-1.309 0-2.371 1.062-2.371 2.372" clip-path="url(#clipPath1375)"/>
   </g>
-  <path d="m445.68 501.39v-10.77c0.954-10.325 12.268-9.402 33.693-9.641 4.208-0.047 7.691-0.615 10.567-1.537 7.358-2.36 11.167-9.332 11.167-16.024v-27.299" clip-path="url(#clipPath906)" fill="none" stroke="#06179e" stroke-miterlimit="10" stroke-width=".68"/>
-  <path d="m445.68 490.24v-47.974" clip-path="url(#clipPath921)" fill="none" stroke="#06179e" stroke-miterlimit="10" stroke-width=".68"/>
+  <path d="m445.68 501.39v-10.77c.954-10.325 12.268-9.402 33.693-9.641 4.208-.047 7.691-.615 10.567-1.537 7.358-2.36 11.167-9.332 11.167-16.024v-27.299" clip-path="url(#clipPath1390)" fill="none" stroke="#06179e" stroke-miterlimit="10" stroke-width=".68"/>
+  <path d="m445.68 490.24v-47.974" clip-path="url(#clipPath1405)" fill="none" stroke="#06179e" stroke-miterlimit="10" stroke-width=".68"/>
   <g fill="#06179e" font-family="'Proxima Nova'">
-   <text transform="matrix(1 0 0 -1 374.71 418.94)" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="0 4.119946 10.124442 12.690638 18.705156" y="0">10.2m</tspan></text>
-   <text transform="matrix(1 0 0 -1 362.56 408.14)" font-size="9px" xml:space="preserve"><tspan x="0 5.1209998 9.8640003 12.834 15.48 20.448 25.614 30.573 35.316002 39.735001 44.801998" y="0">Earthquakes</tspan><tspan x="-2.4300001 2.313 7.2719998 12.447 14.769 19.08 23.264999 28.224001 33.182999 37.925999 45.198002 47.223" y="10.8">and Tsunamis</tspan></text>
-   <text transform="matrix(1 0 0 -1 435.41 419.01)" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="0 4.119946 6.6861415 12.780855" y="0">1.6m</tspan></text>
-   <text transform="matrix(1 0 0 -1 428.2 408.21)" font-size="9px" xml:space="preserve"><tspan x="0 5.382 10.53 12.555 17.01 21.753 26.712 28.737 33.192001" y="0">Volcanic </tspan><tspan x="-1.962 3.105 6.0749998 11.034 16.200001 18.846001 20.871 26.018999 30.978001" y="10.8">eruptions</tspan></text>
-   <text transform="matrix(1 0 0 -1 485.43 419.01)" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="0 4.119946 10.134466 12.700662 18.915665 25.130669 31.345673" y="0">12,000 </tspan></text>
-   <text transform="matrix(1 0 0 -1 480.1 408.21)" font-size="9px" xml:space="preserve"><tspan x="0 4.4640002 9.2069998 14.166 19.341 23.525999 25.551001 27.576 32.750999 37.818001" y="0">Landslides</tspan></text>
+   <text transform="scale(1,-1)" x="374.71021" y="-418.93649" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="374.71021 378.83014 384.83466 387.40085 393.41534" y="-418.93649">10.2m</tspan></text>
+   <text transform="scale(1,-1)" x="362.55661" y="-408.13669" font-size="9px" xml:space="preserve"><tspan x="362.55661 367.67761 372.42059 375.39059 378.03659 383.00461 388.17059 393.12961 397.87259 402.2916 407.35861" y="-408.13669">Earthquakes</tspan><tspan x="360.12659 364.8696 369.82861 375.0036 377.32559 381.6366 385.82159 390.78061 395.73959 400.4826 407.75461 409.7796" y="-397.3367">and Tsunamis</tspan></text>
+   <text transform="scale(1,-1)" x="435.41391" y="-419.0127" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="435.41391 439.53384 442.10004 448.19476" y="-419.0127">1.6m</tspan></text>
+   <text transform="scale(1,-1)" x="428.1958" y="-408.21289" font-size="9px" xml:space="preserve"><tspan x="428.1958 433.57779 438.7258 440.75079 445.20581 449.94879 454.90781 456.9328 461.38779" y="-408.21289">Volcanic </tspan><tspan x="426.2338 431.30081 434.27081 439.2298 444.39581 447.04181 449.0668 454.21481 459.1738" y="-397.4129">eruptions</tspan></text>
+   <text transform="scale(1,-1)" x="485.43359" y="-419.0127" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="485.43359 489.55356 495.56805 498.13425 504.34927 510.56427 516.7793" y="-419.0127">12,000 </tspan></text>
+   <text transform="scale(1,-1)" x="480.10501" y="-408.21289" font-size="9px" xml:space="preserve"><tspan x="480.10501 484.569 489.31201 494.271 499.44601 503.63101 505.65601 507.681 512.85602 517.92297" y="-408.21289">Landslides</tspan></text>
   </g>
   <g fill="#018eca">
-   <path d="m29.678 341.74c0 17.037 13.812 30.849 30.85 30.849 17.037 0 30.849-13.812 30.849-30.849 0-17.038-13.812-30.85-30.849-30.85-17.038 0-30.85 13.812-30.85 30.85" clip-path="url(#clipPath996)"/>
-   <path d="m169.24 322.31c0 6.302 5.109 11.411 11.411 11.411s11.411-5.109 11.411-11.411c0-6.303-5.109-11.411-11.411-11.411s-11.411 5.108-11.411 11.411" clip-path="url(#clipPath801)"/>
-   <path d="m220.5 317.65c0 3.731 3.025 6.757 6.757 6.757 3.733 0 6.758-3.026 6.758-6.757 0-3.732-3.025-6.758-6.758-6.758-3.732 0-6.757 3.026-6.757 6.758" clip-path="url(#clipPath936)"/>
-   <path d="m271.45 314.73c0 2.12 1.719 3.839 3.839 3.839s3.839-1.719 3.839-3.839-1.719-3.839-3.839-3.839-3.839 1.719-3.839 3.839" clip-path="url(#clipPath951)"/>
-   <path d="m322.75 314.2c0 1.823 1.479 3.302 3.302 3.302 1.824 0 3.302-1.479 3.302-3.302s-1.478-3.302-3.302-3.302c-1.823 0-3.302 1.479-3.302 3.302" clip-path="url(#clipPath966)"/>
+   <path d="m29.678 341.74c0 17.037 13.812 30.849 30.85 30.849 17.037 0 30.849-13.812 30.849-30.849 0-17.038-13.812-30.85-30.849-30.85-17.038 0-30.85 13.812-30.85 30.85" clip-path="url(#clipPath1285)"/>
+   <path d="m169.24 322.31c0 6.302 5.109 11.411 11.411 11.411s11.411-5.109 11.411-11.411c0-6.303-5.109-11.411-11.411-11.411s-11.411 5.108-11.411 11.411" clip-path="url(#clipPath1420)"/>
+   <path d="m220.5 317.65c0 3.731 3.025 6.757 6.757 6.757 3.733 0 6.758-3.026 6.758-6.757 0-3.732-3.025-6.758-6.758-6.758-3.732 0-6.757 3.026-6.757 6.758" clip-path="url(#clipPath1435)"/>
+   <path d="m271.45 314.73c0 2.12 1.719 3.839 3.839 3.839s3.839-1.719 3.839-3.839-1.719-3.839-3.839-3.839-3.839 1.719-3.839 3.839" clip-path="url(#clipPath1450)"/>
+   <path d="m322.75 314.2c0 1.823 1.479 3.302 3.302 3.302 1.824 0 3.302-1.479 3.302-3.302s-1.478-3.302-3.302-3.302c-1.823 0-3.302 1.479-3.302 3.302" clip-path="url(#clipPath1465)"/>
   </g>
-  <path d="m179.23 451.55v-54.201c-0.935-13.097-28.187-12.129-37.497-12.393-4.121-0.118-7.534-0.781-10.351-1.95-7.209-2.994-6.451-11.674-6.451-20.163v-35.832" clip-path="url(#clipPath981)" fill="none" stroke="#018eca" stroke-miterlimit="10" stroke-width=".68"/>
+  <path d="m179.23 451.55v-54.201c-.935-13.097-28.187-12.129-37.497-12.393-4.121-.118-7.534-.781-10.351-1.95-7.209-2.994-6.451-11.674-6.451-20.163v-35.832" clip-path="url(#clipPath1480)" fill="none" stroke="#018eca" stroke-miterlimit="10" stroke-width=".68"/>
   <g font-family="'Proxima Nova'">
-   <text transform="matrix(1 0 0 -1 43.792 297.57)" fill="#0097d1" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="0 4.119946 8.239892 14.124098 16.690292 22.785007" y="0">113.6m</tspan></text>
-   <text transform="matrix(1 0 0 -1 46.139 286.77)" fill="#0097d1" font-size="9px" xml:space="preserve"><tspan x="0 4.9499998 6.9749999 12.123 17.271 22.445999" y="0">Floods</tspan></text>
-   <text transform="matrix(1 0 0 -1 110.27 297.57)" fill="#73519d" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="0 6.0947137 12.169379 14.735574 20.750093" y="0">98.2m</tspan></text>
-   <text transform="matrix(1 0 0 -1 111.24 286.77)" fill="#73519d" font-size="9px" xml:space="preserve"><tspan x="0 5.1209998 7.7670002 12.915 15.885 23.157" y="0">Storms</tspan></text>
+   <text transform="scale(1,-1)" x="43.7915" y="-297.56839" fill="#0097d1" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="43.7915 47.911446 52.031391 57.915596 60.481792 66.576508" y="-297.56839">113.6m</tspan></text>
+   <text transform="scale(1,-1)" x="46.138699" y="-286.76859" fill="#0097d1" font-size="9px" xml:space="preserve"><tspan x="46.138699 51.088699 53.113701 58.2617 63.409698 68.584702" y="-286.76859">Floods</tspan></text>
+   <text transform="scale(1,-1)" x="110.2651" y="-297.56839" fill="#73519d" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="110.2651 116.35981 122.43448 125.00067 131.0152" y="-297.56839">98.2m</tspan></text>
+   <text transform="scale(1,-1)" x="111.2393" y="-286.76859" fill="#73519d" font-size="9px" xml:space="preserve"><tspan x="111.2393 116.3603 119.0063 124.1543 127.1243 134.3963" y="-286.76859">Storms</tspan></text>
   </g>
   <g fill="#0097d1" font-family="'Proxima Nova'">
-   <text transform="matrix(1 0 0 -1 159.64 297.57)" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="0 6.0746651 12.089185 17.973391 20.539585 26.754589 32.969593 39.184597" y="0">829,000 </tspan></text>
-   <text transform="matrix(1 0 0 -1 158.23 286.77)" font-size="9px" xml:space="preserve"><tspan x="0 4.4640002 9.2069998 14.166 19.341 23.525999 25.551001 27.576 32.750999 37.818001" y="0">Landslides</tspan></text>
-   <text transform="matrix(1 0 0 -1 207.35 297.57)" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="0 5.9844475 11.968895 18.04356 20.609755 26.824759 33.039764 39.254768" y="0">448,000 </tspan></text>
-   <text transform="matrix(1 0 0 -1 208.81 286.77)" font-size="9px" xml:space="preserve"><tspan x="0 6.3000002 9.2700005 14.418 19.377001 24.542999 29.511 32.157001" y="0">Droughts</tspan></text>
-   <text transform="matrix(1 0 0 -1 256.62 297.57)" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="0 6.0145202 11.998967 16.118914 18.685108 24.900112 31.115116 37.33012" y="0">241,000 </tspan></text>
-   <text transform="matrix(1 0 0 -1 258.3 286.77)" font-size="9px" xml:space="preserve"><tspan x="0 7.947 9.9720001 11.997 17.172001 21.753 24.723 29.790001" y="0">Wildfres</tspan></text>
-   <text transform="matrix(1 0 0 -1 307.9 297.57)" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="0 6.0145202 10.134466 16.229179 18.795376 25.01038 31.225384 37.440388" y="0">216,000 </tspan></text>
-   <text transform="matrix(1 0 0 -1 310.36 286.77)" font-size="9px" xml:space="preserve"><tspan x="0 5.1209998 9.4949999 12.141 15.111 20.177999 27.450001 32.516998" y="0">Extreme </tspan><tspan x="-10.116 -7.4699998 -2.4030001 4.869 10.035 15.102 18.072001 22.815001 25.461 30.42 33.389999 38.457001" y="10.8">temperatures</tspan></text>
+   <text transform="scale(1,-1)" x="159.64011" y="-297.56641" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="159.64011 165.71477 171.72928 177.61349 180.17969 186.39468 192.6097 198.82469" y="-297.56641">829,000 </tspan></text>
+   <text transform="scale(1,-1)" x="158.2305" y="-286.7666" font-size="9px" xml:space="preserve"><tspan x="158.2305 162.6945 167.4375 172.3965 177.5715 181.7565 183.78149 185.8065 190.98151 196.04851" y="-286.7666">Landslides</tspan></text>
+   <text transform="scale(1,-1)" x="207.34959" y="-297.56839" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="207.34959 213.33405 219.3185 225.39316 227.95935 234.17436 240.38936 246.60437" y="-297.56839">448,000 </tspan></text>
+   <text transform="scale(1,-1)" x="208.80569" y="-286.76859" font-size="9px" xml:space="preserve"><tspan x="208.80569 215.1057 218.0757 223.22369 228.18269 233.34869 238.3167 240.96271" y="-286.76859">Droughts</tspan></text>
+   <text transform="scale(1,-1)" x="256.62109" y="-297.56839" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="256.62109 262.63562 268.62006 272.74002 275.30621 281.52121 287.73621 293.95123" y="-297.56839">241,000 </tspan></text>
+   <text transform="scale(1,-1)" x="258.29831" y="-286.76859" font-size="9px" xml:space="preserve"><tspan x="258.29831 266.2453 268.27029 270.29529 275.47031 280.0513 283.0213 288.08829" y="-286.76859">Wildfres</tspan></text>
+   <text transform="scale(1,-1)" x="307.89499" y="-297.56641" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="307.89499 313.90952 318.02948 324.12418 326.69037 332.90536 339.12039 345.33539" y="-297.56641">216,000 </tspan></text>
+   <text transform="scale(1,-1)" x="310.35641" y="-286.7666" font-size="9px" xml:space="preserve"><tspan x="310.35641 315.47739 319.85141 322.49741 325.46741 330.53439 337.8064 342.87341" y="-286.7666">Extreme </tspan><tspan x="300.24039 302.88641 307.9534 315.2254 320.39139 325.4584 328.42841 333.17139 335.81741 340.7764 343.7464 348.81342" y="-275.96661">temperatures</tspan></text>
   </g>
   <g fill="none" stroke-miterlimit="10" stroke-width=".68">
-   <path d="m445.87 501.39v-10.77c-0.954-10.325-12.268-9.402-33.694-9.641-4.208-0.047-7.691-0.615-10.566-1.537-7.359-2.36-11.167-9.332-11.167-16.024v-15.925" clip-path="url(#clipPath1011)" stroke="#06179e"/>
-   <path d="m92.166 255.38s-2.646 14.819 10.398 14.816c14.757-3e-3 21.575 0.151 22.231 9.143" clip-path="url(#clipPath1026)" stroke="#73519d"/>
-   <path d="m124.8 279.35c0.657-8.991 7.475-9.145 22.231-9.142 5.214 1e-3 7.921-2.366 9.292-5.208 0.749-1.551 1.057-3.279 1.057-5.001v-36.204" clip-path="url(#clipPath1041)" stroke="#73519d"/>
+   <path d="m445.87 501.39v-10.77c-.954-10.325-12.268-9.402-33.694-9.641-4.208-.047-7.691-.615-10.566-1.537-7.359-2.36-11.167-9.332-11.167-16.024v-15.925" clip-path="url(#clipPath1495)" stroke="#06179e"/>
+   <path d="m92.166 255.38s-2.646 14.819 10.398 14.816c14.757-.003 21.575.151 22.231 9.143" clip-path="url(#clipPath1510)" stroke="#73519d"/>
+   <path d="m124.8 279.35c.657-8.991 7.475-9.145 22.231-9.142 5.214.001 7.921-2.366 9.292-5.208.749-1.551 1.057-3.279 1.057-5.001v-36.204" clip-path="url(#clipPath1525)" stroke="#73519d"/>
   </g>
   <g fill="#73519d">
-   <path d="m69.049 235.69c0 12.442 10.087 22.529 22.529 22.529 12.443 0 22.529-10.087 22.529-22.529s-10.086-22.529-22.529-22.529c-12.442 0-22.529 10.087-22.529 22.529" clip-path="url(#clipPath1056)"/>
-   <path d="m147.08 223.46c0 5.686 4.609 10.295 10.295 10.295s10.295-4.609 10.295-10.295c0-5.687-4.609-10.296-10.295-10.296s-10.295 4.609-10.295 10.296" clip-path="url(#clipPath1071)"/>
+   <path d="m69.049 235.69c0 12.442 10.087 22.529 22.529 22.529 12.443 0 22.529-10.087 22.529-22.529s-10.086-22.529-22.529-22.529c-12.442 0-22.529 10.087-22.529 22.529" clip-path="url(#clipPath1540)"/>
+   <path d="m147.08 223.46c0 5.686 4.609 10.295 10.295 10.295s10.295-4.609 10.295-10.295c0-5.687-4.609-10.296-10.295-10.296s-10.295 4.609-10.295 10.296" clip-path="url(#clipPath1555)"/>
    <g font-family="'Proxima Nova'">
-    <text transform="matrix(1 0 0 -1 77.314 195.29)" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="0 5.4631891 11.537854 14.10405 19.988255" y="0">78.3m</tspan></text>
-    <text transform="matrix(1 0 0 -1 56.285 184.49)" font-size="9px" xml:space="preserve"><tspan x="0 4.3649998 7.335 12.483 17.649 19.674 24.129 28.872 30.896999 33.219002 37.674 42.084 46.539001 48.563999 53.712002 58.671001 63.737999 67.922997 70.586998" y="0">Tropical cyclones/ </tspan><tspan x="16.038 20.556 24.966 30.132 35.099998 40.248001 45.396 50.355" y="10.8">Typhoons</tspan></text>
-    <text transform="matrix(1 0 0 -1 143.77 195.29)" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="0 4.119946 10.004151 12.570347 18.66506" y="0">19.9m</tspan></text>
-    <text transform="matrix(1 0 0 -1 146.11 184.49)" font-size="9px" xml:space="preserve"><tspan x="0 6.8850002 9.5310001 14.499 19.566 22.535999" y="0">Other </tspan><tspan x="-1.9349999 2.25 4.8959999 10.044 13.014 20.285999" y="10.8">storms</tspan></text>
+    <text transform="scale(1,-1)" x="77.313499" y="-195.28999" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="77.313499 82.776688 88.851357 91.417549 97.301758" y="-195.28999">78.3m</tspan></text>
+    <text transform="scale(1,-1)" x="56.285198" y="-184.4902" font-size="9px" xml:space="preserve"><tspan x="56.285198 60.6502 63.620201 68.768196 73.934196 75.959198 80.4142 85.157196 87.182198 89.504204 93.959198 98.369202 102.8242 104.8492 109.9972 114.9562 120.0232 124.2082 126.8722" y="-184.4902">Tropical cyclones/ </tspan><tspan x="72.323196 76.841202 81.251198 86.417198 91.385201 96.533203 101.6812 106.6402" y="-173.6902">Typhoons</tspan></text>
+    <text transform="scale(1,-1)" x="143.77251" y="-195.291" font-size="10.024px" font-weight="bold" xml:space="preserve"><tspan x="143.77251 147.89244 153.77666 156.34285 162.43756" y="-195.291">19.9m</tspan></text>
+    <text transform="scale(1,-1)" x="146.10741" y="-184.4912" font-size="9px" xml:space="preserve"><tspan x="146.10741 152.9924 155.6384 160.6064 165.6734 168.6434" y="-184.4912">Other </tspan><tspan x="144.17239 148.35741 151.0034 156.1514 159.1214 166.3934" y="-173.69119">storms</tspan></text>
    </g>
-   <path d="m102.38 333.42c0 12.442 10.086 22.528 22.529 22.528 12.442 0 22.529-10.086 22.529-22.528 0-12.443-10.087-22.529-22.529-22.529-12.443 0-22.529 10.086-22.529 22.529" clip-path="url(#clipPath1086)"/>
+   <path d="m102.38 333.42c0 12.442 10.086 22.528 22.529 22.528 12.442 0 22.529-10.086 22.529-22.528 0-12.443-10.087-22.529-22.529-22.529-12.443 0-22.529 10.086-22.529 22.529" clip-path="url(#clipPath1570)"/>
   </g>
-  <path d="m444.4 547.81v204.3c0 21.17-17.162 38.331-38.332 38.331h-70.59" clip-path="url(#clipPath1101)" fill="none" stroke="#06179e" stroke-miterlimit="10" stroke-width=".68"/>
-  <path d="m179.55 547.81v204.3c0 21.17 17.162 38.331 38.332 38.331h70.59" clip-path="url(#clipPath1116)" fill="none" stroke="#018eca" stroke-miterlimit="10" stroke-width=".68"/>
-  <text transform="matrix(1 0 0 -1 148.42 549.86)" fill="#ffffff" font-family="'Proxima Nova'" font-size="17px" font-weight="bold" xml:space="preserve"><tspan x="0 10.2 17.187 27.166 31.518 41.854" y="0">213.5m</tspan></text>
-  <text transform="matrix(1 0 0 -1 148.57 540.26)" fill="#ffffff" font-family="'Proxima Nova'" font-size="8px" xml:space="preserve"><tspan x="0 6.744 11.248 15.464 17.816 22.232 26.736 29.375999 31.440001 34.080002 38.584 40.383999 44.599998 46.952 51.456001" y="0">Weather related</tspan></text>
+  <path d="m444.4 547.81v204.3c0 21.17-17.162 38.331-38.332 38.331h-70.59" clip-path="url(#clipPath1585)" fill="none" stroke="#06179e" stroke-miterlimit="10" stroke-width=".68"/>
+  <path d="m179.55 547.81v204.3c0 21.17 17.162 38.331 38.332 38.331h70.59" clip-path="url(#clipPath1600)" fill="none" stroke="#018eca" stroke-miterlimit="10" stroke-width=".68"/>
+  <text transform="scale(1,-1)" x="148.4248" y="-549.86182" fill="#ffffff" font-family="'Proxima Nova'" font-size="17px" font-weight="bold" xml:space="preserve"><tspan x="148.4248 158.6248 165.6118 175.59081 179.94279 190.27879" y="-549.86182">213.5m</tspan></text>
+  <text transform="scale(1,-1)" x="148.5659" y="-540.26172" fill="#ffffff" font-family="'Proxima Nova'" font-size="8px" xml:space="preserve"><tspan x="148.5659 155.30991 159.8139 164.02991 166.3819 170.7979 175.3019 177.94189 180.00591 182.6459 187.1499 188.94991 193.16589 195.5179 200.0219" y="-540.26172">Weather related</tspan></text>
  </g>
 </svg>

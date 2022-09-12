@@ -3,6 +3,8 @@ import { _cs } from '@togglecorp/fujs';
 import {
     MdPictureAsPdf,
     MdArrowRightAlt,
+    MdArrowLeft,
+    MdMenu,
 } from 'react-icons/md';
 import { SelectInput } from '@togglecorp/toggle-ui';
 
@@ -14,9 +16,11 @@ import Tabs from '#components/Tabs';
 import TabPanel from '#components/Tabs/TabPanel';
 import Tab from '#components/Tabs/Tab';
 import ButtonLikeLink from '#components/ButtonLikeLink';
+import Svg from '#components/Svg';
 import Carousel from '#components/Carousel';
 import CarouselItem from '#components/Carousel/CarouselItem';
 import CarouselButton from '#components/Carousel/CarouselButton';
+import useBooleanState from '#hooks/useBooleanState';
 
 import idmcLogo from '#resources/img/idmc.svg';
 import nrcLogo from '#resources/img/nrc.png';
@@ -130,6 +134,7 @@ function AsiaReport(props: Props) {
 
     const [selectedSection, setSelectedSection] = useState<string | undefined>(undefined);
     const [selectedChart, setSelectedChart] = useState<ChartSelections>('all');
+    const [isNavShown, , , , toggleNavVisibility] = useBooleanState(false);
 
     const pageSuffix = useMemo(() => {
         const selectedSectionObj = sectionOptions.find(
@@ -176,7 +181,33 @@ function AsiaReport(props: Props) {
     return (
         <div className={_cs(styles.asiaReport, className)}>
             <nav className={styles.nav}>
-                <div className={styles.itemsContainer}>
+                <div className={styles.leftContainer}>
+                    <ButtonLikeLink
+                        className={styles.button}
+                        href="https://www.internal-displacement.org"
+                        target="_blank"
+                        icons={(
+                            <MdArrowLeft />
+                        )}
+                        rel="noreferrer noopener"
+                    >
+                        Back to IDMC Website
+                    </ButtonLikeLink>
+                    <Button
+                        className={styles.menu}
+                        name="toggle"
+                        onClick={toggleNavVisibility}
+                        variant="transparent"
+                    >
+                        <MdMenu />
+                    </Button>
+                </div>
+                <div
+                    className={_cs(
+                        styles.itemsContainer,
+                        isNavShown && styles.navShown,
+                    )}
+                >
                     <Button
                         name="at-a-glance"
                         onClick={handleNavClick}
@@ -402,6 +433,11 @@ function AsiaReport(props: Props) {
                         hideHeadingBorder
                     />
                     <DisasterDashboard />
+                    <Header
+                        heading="Disaster Displacement Breakdown"
+                        headingSize="large"
+                        hideHeadingBorder
+                    />
                     <Tabs
                         value={selectedChart}
                         onChange={setSelectedChart}
@@ -446,40 +482,58 @@ function AsiaReport(props: Props) {
                                     The Pacific
                                 </Tab>
                             </div>
-                            <TabPanel name="all">
-                                <img
+                            <TabPanel
+                                className={styles.tabPanel}
+                                name="all"
+                            >
+                                <Svg
+                                    className={styles.chart}
                                     src={chartAllRegions}
-                                    alt=""
                                 />
                             </TabPanel>
-                            <TabPanel name="ea">
-                                <img
+                            <TabPanel
+                                className={styles.tabPanel}
+                                name="ea"
+                            >
+                                <Svg
+                                    className={styles.chart}
                                     src={chartEa}
-                                    alt=""
                                 />
                             </TabPanel>
-                            <TabPanel name="sea">
-                                <img
+                            <TabPanel
+                                className={styles.tabPanel}
+                                name="sea"
+                            >
+                                <Svg
+                                    className={styles.chart}
                                     src={chartSea}
-                                    alt=""
                                 />
                             </TabPanel>
-                            <TabPanel name="cwa">
-                                <img
+                            <TabPanel
+                                className={styles.tabPanel}
+                                name="cwa"
+                            >
+                                <Svg
+                                    className={styles.chart}
                                     src={chartCwa}
-                                    alt=""
                                 />
                             </TabPanel>
-                            <TabPanel name="sa">
-                                <img
+                            <TabPanel
+                                className={styles.tabPanel}
+                                name="sa"
+                            >
+                                <Svg
+                                    className={styles.chart}
                                     src={chartSa}
-                                    alt=""
                                 />
                             </TabPanel>
-                            <TabPanel name="tp">
-                                <img
+                            <TabPanel
+                                className={styles.tabPanel}
+                                name="tp"
+                            >
+                                <Svg
+                                    className={styles.chart}
                                     src={chartTp}
-                                    alt=""
                                 />
                             </TabPanel>
                         </div>

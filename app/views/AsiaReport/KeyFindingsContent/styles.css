@@ -46,5 +46,14 @@
                 object-fit: contain;
             }
         }
+
+        @media (max-width: 720px) {
+            .right-container {
+                .image {
+                    width: 8rem;
+                    height: 8rem;
+                }
+            }
+        }
     }
 }

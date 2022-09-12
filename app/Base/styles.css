@@ -35,11 +35,12 @@
     --tui-color-primary: rgb(65, 131, 196);
     --tui-color-accent: rgb(65, 131, 196);
     --tui-color-brand: rgb(25, 50, 86);
-    --tui-color-brand-hover: #06179E;
+    --tui-color-brand-hover: --tui-color-brand;
 
     --tui-width-scrollbar: 0.5rem;
     --tui-radius-scrollbar-border: 0.25rem;
     --tui-border-radius-medium: 0.5rem;
+    --tui-border-radius-large: 0.8rem;
 
     --tui-color-text: rgb(100,99,99);
     --tui-filter-background-color: #EFF4FA;
@@ -67,6 +68,8 @@
 
     --width-page-max: 80rem;
     --width-readable-content-max: 46rem;
+
+    --tui-duration-transition-medium: 200ms;
 }
 
 .base {

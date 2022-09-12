@@ -238,6 +238,14 @@ function CountryProfile(props: Props) {
         );
     }, [disasterData, isMultiline]);
 
+    const filteredCountries = useMemo(() => {
+        const filteredCountriesList = regions
+            .filter((region) => regionValues.includes(region.key))
+            .map((region) => region.countries).flat();
+
+        return countries.filter((country) => filteredCountriesList.includes(country.iso3));
+    }, [regionValues]);
+
     return (
         <Container
             className={_cs(className, styles.displacementData)}
@@ -311,7 +319,7 @@ function CountryProfile(props: Props) {
                                 placeholder="Countries"
                                 name="countries"
                                 value={countriesValues}
-                                options={countries}
+                                options={filteredCountries}
                                 keySelector={countryKeySelector}
                                 labelSelector={countryLabelSelector}
                                 onChange={setCountriesValues}

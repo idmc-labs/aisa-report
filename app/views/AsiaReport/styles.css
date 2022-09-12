@@ -13,23 +13,69 @@
         display: flex;
         position: sticky;
         top: 0;
-        justify-content: center;
         z-index: 111111;
         background-color: var(--tui-color-brand);
-        padding: var(--tui-spacing-large);
         width: 100%;
+
+        .left-container {
+            display: flex;
+            flex-grow: 1;
+            justify-content: space-between;
+            background-color: var(--tui-color-brand);
+            padding: var(--tui-spacing-large);
+        }
 
         .items-container {
             display: flex;
             align-items: center;
+            flex-shrink: 0;
             justify-content: flex-end;
-            width: 100%;
+            padding: var(--tui-spacing-large);
             max-width: var(--width-page-max);
             gap: var(--tui-spacing-large);
 
             .nav-item {
                 color: #ffffff;
                 font-weight: var(--tui-font-weight-bold);
+            }
+        }
+
+        .button {
+            padding: 0;
+        }
+
+        .menu {
+            display: none;
+            border: var(--tui-width-separator-thin) solid #ffffff;
+            border-radius: var(--tui-border-radius-medium);
+            padding: var(--tui-spacing-extra-small);
+            color: var(--tui-color-text-on-accent);
+
+            &:hover {
+                color: var(--tui-color-text-on-accent);
+            }
+        }
+
+        @media (max-width: 720px) {
+            .items-container {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                flex-direction: column;
+                transform: translateY(-100%);
+                transition: 200ms all ease-in-out;
+                z-index: -1;
+                background-color: var(--tui-color-brand);
+                padding: var(--tui-spacing-large);
+                width: 100%;
+
+                &.nav-shown {
+                    transform: translateY(0);
+                }
+            }
+
+            .menu {
+                display: block;
             }
         }
     }
@@ -51,21 +97,35 @@
             padding: var(--tui-spacing-ultra-large) var(--tui-spacing-mega-large);
             width: 100%;
             max-width: var(--width-page-max);
-            gap: var(--tui-spacing-large);
+            gap: var(--tui-spacing-extra-large);
+
+            @media (max-width: 720px) {
+                padding: var(--tui-spacing-super-large) var(--tui-spacing-extra-large);
+            }
         }
     }
 
     .logo {
         width: 12rem;
+
+        @media (max-width: 720px) {
+            width: 6rem;
+        }
     }
 
     .adb-logo {
         height: 4rem;
+
+        @media (max-width: 720px) {
+            height: 3rem;
+        }
     }
 
     .hero {
         position: relative;
         background-image: url('../../resources/img/hero-bg.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
         width: 100%;
         min-height: 90vh;
 
@@ -144,15 +204,16 @@
         .glance-content {
             display: flex;
             flex-direction: column;
-            padding: var(--tui-spacing-ultra-large);
             width: 100%;
             max-width: var(--width-page-max);
             gap: var(--tui-spacing-large);
         }
 
         .video-iframe {
+            border-radius: var(--tui-border-radius-large);
             width: 100%;
-            height: 60vh;
+            height: min(100vh, 100vw);
+            max-height: 40rem;
         }
 
         .bubbles-chart {
@@ -169,6 +230,14 @@
 
             .pie {
                 height: 5rem;
+            }
+
+            @media (max-width: 720px) {
+                justify-content: flex-start;
+
+                .pie {
+                    height: 3.6rem;
+                }
             }
         }
     }
@@ -208,13 +277,14 @@
             .svg {
                 flex-grow: 1;
                 min-width: 20rem;
-                max-width: 30rem;
+                max-width: 26rem;
             }
         }
 
         .bottom-container {
             display: flex;
             position: relative;
+            justify-content: center;
             gap: var(--tui-spacing-large);
             overflow: none;
 
@@ -335,24 +405,23 @@
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: space-around;
-                padding: var(--tui-spacing-ultra-large);
                 gap: var(--tui-spacing-extra-large);
 
                 .left-content {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    width: 20rem;
+                    max-width: 20rem;
 
                     .book-cover {
+                        max-width: 96vw;
                         height: 16rem;
-                        object-fit: cover;
+                        object-fit: contain;
                     }
                 }
 
                 .right-content {
                     display: flex;
-                    align-items: flex-start;
                     align-self: stretch;
                     flex-direction: column;
                     background-color: var(--tui-color-background);
@@ -381,7 +450,7 @@
                         gap: var(--tui-spacing-large);
 
                         .select-input {
-                            width: 20rem;
+                            max-width: 20rem;
                         }
 
                         .button {
@@ -414,6 +483,16 @@
 
                     .tab {
                         width: auto;
+                    }
+                }
+
+                .tab-panel {
+                    display: flex;
+                    justify-content: center;
+                    padding: var(--tui-spacing-large) var(--tui-spacing-small);
+
+                    .chart {
+                        max-width: 50rem;
                     }
                 }
             }
