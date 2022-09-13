@@ -8,7 +8,6 @@ import {
 } from 'react-icons/md';
 import { SelectInput } from '@togglecorp/toggle-ui';
 
-import TooltipIcon from '#components/TooltipIcon';
 import Button from '#components/Button';
 import Header from '#components/Header';
 import TextOutput from '#components/TextOutput';
@@ -50,55 +49,37 @@ import tent from '#resources/img/tent.jpg';
 import vanautu from '#resources/img/vanautu.jpg';
 import vietnam from '#resources/img/vietnam.jpg';
 import bookCover from '#resources/img/book-cover.png';
+import { regionCountriesLabel } from '#utils/common';
 
 import {
     heroParagraph1,
     heroParagraph2,
     heroParagraph3,
+    pieChartCaption,
+    pieChartCaptionSource,
     costOfDisasterParagraph1,
     costOfDisasterParagraph2,
     wayForwardParagraph1,
     wayForwardParagraph2,
-    wayForwardListItem1,
-    wayForwardListItem2,
-    wayForwardListItem3,
-    wayForwardListItem4,
-    wayForwardListItem5,
     contactParagraph,
     copyrightParagraph,
+    tentCaption,
+    tentSubCaption,
+    vietnamCaption,
+    vietnamSubCaption,
+    chinaCaption,
+    chinaSubCaption,
+    regionalBreakdownCaption,
+    regionalBreakdownDescription,
 } from './data';
 import CostOfDisasterImage from './CostOfDisasterImage';
 
 import DisasterDashboard from './DisasterDashboard';
 import KeyMessagesContent from './KeyMessagesContent';
 import KeyFindingsContent from './KeyFindingsContent';
+import WayForwardContent from './WayForwardContent';
 
 import styles from './styles.css';
-
-interface WayForwardListItemProps {
-    className?: string;
-    order: string;
-    description: string;
-}
-
-function WayForwardListItem(props: WayForwardListItemProps) {
-    const {
-        className,
-        order,
-        description,
-    } = props;
-
-    return (
-        <div className={_cs(styles.wayForwardListItem, className)}>
-            <div className={styles.order}>
-                {order}
-            </div>
-            <div className={styles.description}>
-                {description}
-            </div>
-        </div>
-    );
-}
 
 const sectionOptions = [
     {
@@ -153,19 +134,19 @@ function AsiaReport(props: Props) {
             elementToScrollTo.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     }, []);
-    const [visibleItems, setVisibleItems] = useState(3);
+    const [visibleItems, setVisibleItems] = useState(2);
     const debounceTimeoutRef = React.useRef<number>();
     React.useEffect(() => {
         const onNumberOfVisibleItemsChange = () => {
             window.clearTimeout(debounceTimeoutRef.current);
             debounceTimeoutRef.current = window.setTimeout(() => {
                 const width = document.documentElement.clientWidth;
-                if (width < 710) {
+                if (width < 720) {
                     setVisibleItems(1);
-                } else if (width < 1200) {
-                    setVisibleItems(2);
+                // } else if (width < 1200) {
+                //     setVisibleItems(2);
                 } else {
-                    setVisibleItems(3);
+                    setVisibleItems(2);
                 }
             }, 200);
         };
@@ -179,7 +160,10 @@ function AsiaReport(props: Props) {
     }, []);
 
     return (
-        <div className={_cs(styles.asiaReport, className)}>
+        <div
+            id="asia-report"
+            className={_cs(styles.asiaReport, className)}
+        >
             <nav className={styles.nav}>
                 <div className={styles.leftContainer}>
                     <ButtonLikeLink
@@ -204,7 +188,7 @@ function AsiaReport(props: Props) {
                 </div>
                 <div
                     className={_cs(
-                        styles.itemsContainer,
+                        styles.navItemsContainer,
                         isNavShown && styles.navShown,
                     )}
                 >
@@ -222,7 +206,7 @@ function AsiaReport(props: Props) {
                         className={styles.navItem}
                         variant="transparent"
                     >
-                        Key findings
+                        Key messages and findings
                     </Button>
                     <Button
                         name="explore-the-data"
@@ -231,6 +215,22 @@ function AsiaReport(props: Props) {
                         variant="transparent"
                     >
                         Explore the data
+                    </Button>
+                    <Button
+                        name="cost-of-displacement"
+                        onClick={handleNavClick}
+                        className={styles.navItem}
+                        variant="transparent"
+                    >
+                        Cost of Displacement
+                    </Button>
+                    <Button
+                        name="way-forward"
+                        onClick={handleNavClick}
+                        className={styles.navItem}
+                        variant="transparent"
+                    >
+                        The way forward
                     </Button>
                     <Button
                         name="download-report"
@@ -290,10 +290,8 @@ function AsiaReport(props: Props) {
                     className={styles.background}
                     alt=""
                 />
-                <div className={styles.imageCaptionContainer}>
-                    <div className={styles.imageCaption}>
-                        Caption of Image
-                    </div>
+                <div className={styles.imageCaption}>
+                    Caption of Image
                 </div>
             </div>
             <section
@@ -304,7 +302,6 @@ function AsiaReport(props: Props) {
                     <Header
                         heading="At a glance"
                         headingSize="large"
-                        hideHeadingBorder
                     />
                     <iframe
                         className={styles.videoIframe}
@@ -317,61 +314,42 @@ function AsiaReport(props: Props) {
                         className={styles.bubblesChart}
                     />
                     <div className={styles.pieContainer}>
-                        <TooltipIcon
-                            infoLabel={(
-                                <img
-                                    alt="pie-ea"
-                                    src={pieEa}
-                                    className={styles.pie}
-                                />
-                            )}
-                        >
-                            East Asia Countries
-                        </TooltipIcon>
-                        <TooltipIcon
-                            infoLabel={(
-                                <img
-                                    alt="pie-sa"
-                                    src={pieSa}
-                                    className={styles.pie}
-                                />
-                            )}
-                        >
-                            South Asia Countries
-                        </TooltipIcon>
-                        <TooltipIcon
-                            infoLabel={(
-                                <img
-                                    alt="pie-sea"
-                                    src={pieSea}
-                                    className={styles.pie}
-                                />
-                            )}
-                        >
-                            South East Asia Countries
-                        </TooltipIcon>
-                        <TooltipIcon
-                            infoLabel={(
-                                <img
-                                    alt="pie-cwa"
-                                    src={pieCwa}
-                                    className={styles.pie}
-                                />
-                            )}
-                        >
-                            Central West Asia Countries
-                        </TooltipIcon>
-                        <TooltipIcon
-                            infoLabel={(
-                                <img
-                                    alt="pie-tp"
-                                    src={pieTp}
-                                    className={styles.pie}
-                                />
-                            )}
-                        >
-                            The Pacific Countries
-                        </TooltipIcon>
+                        <img
+                            alt="pie-ea"
+                            src={pieEa}
+                            className={styles.pie}
+                            title={regionCountriesLabel.ea}
+                        />
+                        <img
+                            alt="pie-sa"
+                            src={pieSa}
+                            className={styles.pie}
+                            title={regionCountriesLabel.sa}
+                        />
+                        <img
+                            alt="pie-sea"
+                            src={pieSea}
+                            className={styles.pie}
+                            title={regionCountriesLabel.sea}
+                        />
+                        <img
+                            alt="pie-cwa"
+                            src={pieCwa}
+                            className={styles.pie}
+                            title={regionCountriesLabel.cwa}
+                        />
+                        <img
+                            alt="pie-tp"
+                            src={pieTp}
+                            className={styles.pie}
+                            title={regionCountriesLabel.tp}
+                        />
+                    </div>
+                    <div className={styles.captionContainer}>
+                        <i>{pieChartCaption}</i>
+                        <i className={styles.subCaption}>
+                            {pieChartCaptionSource}
+                        </i>
                     </div>
                 </div>
             </section>
@@ -381,9 +359,10 @@ function AsiaReport(props: Props) {
                     className={styles.background}
                     alt=""
                 />
-                <div className={styles.imageCaptionContainer}>
-                    <div className={styles.imageCaption}>
-                        Caption of Image of Indonesia
+                <div className={styles.imageCaption}>
+                    {tentCaption}
+                    <div className={styles.subCaption}>
+                        {tentSubCaption}
                     </div>
                 </div>
             </div>
@@ -395,7 +374,6 @@ function AsiaReport(props: Props) {
                     <Header
                         heading="Key Messages"
                         headingSize="large"
-                        hideHeadingBorder
                     />
                     <KeyMessagesContent />
                 </div>
@@ -405,7 +383,6 @@ function AsiaReport(props: Props) {
                     <Header
                         heading="Key Findings"
                         headingSize="large"
-                        hideHeadingBorder
                     />
                     <KeyFindingsContent />
                 </div>
@@ -416,10 +393,8 @@ function AsiaReport(props: Props) {
                     className={styles.background}
                     alt=""
                 />
-                <div className={styles.imageCaptionContainer}>
-                    <div className={styles.imageCaption}>
-                        Caption of Image of Pakistan
-                    </div>
+                <div className={styles.imageCaption}>
+                    Caption of Image of Pakistan
                 </div>
             </div>
             <section
@@ -430,114 +405,120 @@ function AsiaReport(props: Props) {
                     <Header
                         heading="Internal Displacement Trends in Asia and the Pacific (2010-2021)"
                         headingSize="large"
-                        hideHeadingBorder
                     />
                     <DisasterDashboard />
                     <Header
                         heading="Disaster Displacement Breakdown"
                         headingSize="large"
-                        hideHeadingBorder
                     />
-                    <Tabs
-                        value={selectedChart}
-                        onChange={setSelectedChart}
-                        variant="secondary"
-                    >
-                        <div className={styles.regionalBreakdown}>
-                            <div className={styles.regionalBreakdownTabs}>
-                                <Tab
-                                    className={styles.tab}
+                    <div className={styles.idTrendTopContainer}>
+                        <p className={styles.descriptionParagraph}>
+                            {regionalBreakdownDescription}
+                        </p>
+                        <Tabs
+                            value={selectedChart}
+                            onChange={setSelectedChart}
+                            variant="secondary"
+                        >
+                            <div className={styles.regionalBreakdown}>
+                                <div className={styles.regionalBreakdownTabs}>
+                                    <Tab
+                                        className={styles.tab}
+                                        name="all"
+                                    >
+                                        All Regions
+                                    </Tab>
+                                    <Tab
+                                        className={styles.tab}
+                                        name="ea"
+                                    >
+                                        East Asia
+                                    </Tab>
+                                    <Tab
+                                        className={styles.tab}
+                                        name="sea"
+                                    >
+                                        Southeast Asia
+                                    </Tab>
+                                    <Tab
+                                        className={styles.tab}
+                                        name="sa"
+                                    >
+                                        South Asia
+                                    </Tab>
+                                    <Tab
+                                        className={styles.tab}
+                                        name="cwa"
+                                    >
+                                        Central and West Asia
+                                    </Tab>
+                                    <Tab
+                                        className={styles.tab}
+                                        name="tp"
+                                    >
+                                        The Pacific
+                                    </Tab>
+                                </div>
+                                <TabPanel
+                                    className={styles.tabPanel}
                                     name="all"
                                 >
-                                    All Regions
-                                </Tab>
-                                <Tab
-                                    className={styles.tab}
+                                    <Svg
+                                        className={styles.chart}
+                                        src={chartAllRegions}
+                                    />
+                                </TabPanel>
+                                <TabPanel
+                                    className={styles.tabPanel}
                                     name="ea"
                                 >
-                                    East Asia
-                                </Tab>
-                                <Tab
-                                    className={styles.tab}
+                                    <Svg
+                                        className={styles.chart}
+                                        src={chartEa}
+                                    />
+                                </TabPanel>
+                                <TabPanel
+                                    className={styles.tabPanel}
                                     name="sea"
                                 >
-                                    Southeast Asia
-                                </Tab>
-                                <Tab
-                                    className={styles.tab}
-                                    name="sa"
-                                >
-                                    South Asia
-                                </Tab>
-                                <Tab
-                                    className={styles.tab}
+                                    <Svg
+                                        className={styles.chart}
+                                        src={chartSea}
+                                    />
+                                </TabPanel>
+                                <TabPanel
+                                    className={styles.tabPanel}
                                     name="cwa"
                                 >
-                                    Central and West Asia
-                                </Tab>
-                                <Tab
-                                    className={styles.tab}
+                                    <Svg
+                                        className={styles.chart}
+                                        src={chartCwa}
+                                    />
+                                </TabPanel>
+                                <TabPanel
+                                    className={styles.tabPanel}
+                                    name="sa"
+                                >
+                                    <Svg
+                                        className={styles.chart}
+                                        src={chartSa}
+                                    />
+                                </TabPanel>
+                                <TabPanel
+                                    className={styles.tabPanel}
                                     name="tp"
                                 >
-                                    The Pacific
-                                </Tab>
+                                    <Svg
+                                        className={styles.chart}
+                                        src={chartTp}
+                                    />
+                                </TabPanel>
+                                <i>
+                                    {regionalBreakdownCaption}
+                                </i>
                             </div>
-                            <TabPanel
-                                className={styles.tabPanel}
-                                name="all"
-                            >
-                                <Svg
-                                    className={styles.chart}
-                                    src={chartAllRegions}
-                                />
-                            </TabPanel>
-                            <TabPanel
-                                className={styles.tabPanel}
-                                name="ea"
-                            >
-                                <Svg
-                                    className={styles.chart}
-                                    src={chartEa}
-                                />
-                            </TabPanel>
-                            <TabPanel
-                                className={styles.tabPanel}
-                                name="sea"
-                            >
-                                <Svg
-                                    className={styles.chart}
-                                    src={chartSea}
-                                />
-                            </TabPanel>
-                            <TabPanel
-                                className={styles.tabPanel}
-                                name="cwa"
-                            >
-                                <Svg
-                                    className={styles.chart}
-                                    src={chartCwa}
-                                />
-                            </TabPanel>
-                            <TabPanel
-                                className={styles.tabPanel}
-                                name="sa"
-                            >
-                                <Svg
-                                    className={styles.chart}
-                                    src={chartSa}
-                                />
-                            </TabPanel>
-                            <TabPanel
-                                className={styles.tabPanel}
-                                name="tp"
-                            >
-                                <Svg
-                                    className={styles.chart}
-                                    src={chartTp}
-                                />
-                            </TabPanel>
-                        </div>
-                    </Tabs>
+                        </Tabs>
+                    </div>
                 </div>
             </section>
             <div className={styles.dividerImage}>
@@ -546,18 +527,18 @@ function AsiaReport(props: Props) {
                     className={styles.background}
                     alt=""
                 />
-                <div className={styles.imageCaptionContainer}>
-                    <div className={styles.imageCaption}>
-                        Caption of Image of Philippines
-                    </div>
+                <div className={styles.imageCaption}>
+                    Caption of Image of Philippines
                 </div>
             </div>
-            <section className={_cs(styles.costOfDisaster, styles.section)}>
+            <section
+                className={_cs(styles.costOfDisaster, styles.section)}
+                id="cost-of-displacement"
+            >
                 <div className={_cs(styles.sectionContent)}>
                     <Header
                         heading="Cost of Disaster Displacement"
                         headingSize="large"
-                        hideHeadingBorder
                     />
                     <div className={styles.topContainer}>
                         <div className={styles.description}>
@@ -568,9 +549,14 @@ function AsiaReport(props: Props) {
                                 {costOfDisasterParagraph2}
                             </p>
                         </div>
-                        <CostOfDisasterImage
-                            className={styles.svg}
-                        />
+                        <div className={styles.rightContainer}>
+                            <CostOfDisasterImage
+                                className={styles.svg}
+                            />
+                            <i>
+                                Figure: Internal displacement’s impacts
+                            </i>
+                        </div>
                     </div>
                     <Carousel
                         className={styles.bottomContainer}
@@ -667,50 +653,27 @@ function AsiaReport(props: Props) {
                     className={styles.background}
                     alt=""
                 />
-                <div className={styles.imageCaptionContainer}>
-                    <div className={styles.imageCaption}>
-                        Caption of Image of Vietnam
+                <div className={styles.imageCaption}>
+                    {vietnamCaption}
+                    <div className={styles.subCaption}>
+                        {vietnamSubCaption}
                     </div>
                 </div>
             </div>
-            <section className={_cs(styles.wayForward, styles.section)}>
+            <section
+                className={_cs(styles.wayForward, styles.section)}
+                id="way-forward"
+            >
                 <div className={_cs(styles.wayForwardContent, styles.sectionContent)}>
                     <Header
                         heading="The Way Forward"
                         headingSize="large"
-                        hideHeadingBorder
                     />
                     <div className={styles.description}>
                         <p className={styles.descriptionParagraph}>
                             {wayForwardParagraph1}
                         </p>
-                        <div className={styles.listContainer}>
-                            <WayForwardListItem
-                                order="1"
-                                description={wayForwardListItem1}
-                                className={styles.item}
-                            />
-                            <WayForwardListItem
-                                order="2"
-                                description={wayForwardListItem2}
-                                className={styles.item}
-                            />
-                            <WayForwardListItem
-                                order="3"
-                                description={wayForwardListItem3}
-                                className={styles.item}
-                            />
-                            <WayForwardListItem
-                                order="4"
-                                description={wayForwardListItem4}
-                                className={styles.item}
-                            />
-                            <WayForwardListItem
-                                order="5"
-                                description={wayForwardListItem5}
-                                className={styles.item}
-                            />
-                        </div>
+                        <WayForwardContent className={styles.listContainer} />
                         <p className={styles.descriptionParagraph}>
                             {wayForwardParagraph2}
                         </p>
@@ -723,9 +686,10 @@ function AsiaReport(props: Props) {
                     className={styles.background}
                     alt=""
                 />
-                <div className={styles.imageCaptionContainer}>
-                    <div className={styles.imageCaption}>
-                        Caption of Image of China
+                <div className={styles.imageCaption}>
+                    {chinaCaption}
+                    <div className={styles.subCaption}>
+                        {chinaSubCaption}
                     </div>
                 </div>
             </div>
@@ -737,7 +701,6 @@ function AsiaReport(props: Props) {
                     <Header
                         heading="Download"
                         headingSize="large"
-                        hideHeadingBorder
                     />
                     <div className={styles.topContent}>
                         <div className={styles.leftContent}>
@@ -785,6 +748,7 @@ function AsiaReport(props: Props) {
                                 />
                                 <ButtonLikeLink
                                     className={styles.button}
+                                    disabled={!selectedSection}
                                     href={`https://www.internal-displacement.org/sites/default/files/publications/documents/IDMC_GRID_2022_LR.pdf${pageSuffix}`}
                                     target="_blank"
                                     icons={(
@@ -820,7 +784,6 @@ function AsiaReport(props: Props) {
                         <Header
                             heading="Contact"
                             headingDescription="Internal Displacement Monitoring Center (IDMC)"
-                            hideHeadingBorder
                         />
                         <div>
                             <p className={styles.paragraph}>
@@ -856,7 +819,6 @@ function AsiaReport(props: Props) {
                     <div className={styles.rightContainer}>
                         <Header
                             heading="About us"
-                            hideHeadingBorder
                         />
                         <p className={styles.paragraph}>
                             {contactParagraph}

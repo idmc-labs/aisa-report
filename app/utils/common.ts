@@ -2,6 +2,7 @@ import { memo } from 'react';
 import {
     isFalsy,
     isFalsyString,
+    listToMap,
     caseInsensitiveSubmatch,
     compareStringSearch,
 } from '@togglecorp/fujs';
@@ -250,3 +251,18 @@ export const countries = [
     { iso3: 'VNM', name: 'Viet Nam' },
     { iso3: 'WLF', name: 'Wallis and Futuna Islands' },
 ];
+
+export const countriesNameMap = listToMap(
+    countries,
+    (country) => country.iso3,
+    (country) => country.name,
+);
+
+export const regionCountriesLabel = listToMap(
+    regions,
+    (region) => region.key,
+    (region) => {
+        const countriesLabels = region.countries.map((country) => countriesNameMap[country]);
+        return `Countries: ${countriesLabels.join(', ')}`;
+    },
+);

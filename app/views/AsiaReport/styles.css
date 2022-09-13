@@ -25,10 +25,10 @@
             padding: var(--tui-spacing-large);
         }
 
-        .items-container {
+        .nav-items-container {
             display: flex;
             align-items: center;
-            flex-shrink: 0;
+            flex-wrap: wrap;
             justify-content: flex-end;
             padding: var(--tui-spacing-large);
             max-width: var(--width-page-max);
@@ -57,7 +57,7 @@
         }
 
         @media (max-width: 720px) {
-            .items-container {
+            .nav-items-container {
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -124,10 +124,10 @@
     .hero {
         position: relative;
         background-image: url('../../resources/img/hero-bg.jpg');
+        background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
-        min-height: 90vh;
 
         .hero-content {
             .heading-description {
@@ -155,6 +155,10 @@
                 gap: var(--tui-spacing-large);
             }
         }
+
+        @media (max-width: 720px) {
+            min-height: 90vh;
+        }
     }
 
     .divider-image {
@@ -172,21 +176,28 @@
             position: absolute;
             top: 0;
             left: 0;
-            transform: translateZ(-20px) scale(1.2);
+            transform: translateZ(-80px) scale(2);
             z-index: -100;
             background-color: transparent;
             width: 100vw;
-            height: 600px;
+            height: 800px;
             object-position: center center;
             object-fit: cover;
         }
 
-        .image-caption-container {
-            max-width: var(--width-page-max);
+        .image-caption {
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: var(--tui-spacing-large);
+            width: 100%;
+            text-align: right;
+            color: #ffffff;
+            font-size: var(--tui-font-size-small);
 
-            .image-caption {
-                padding: var(--tui-spacing-large);
-                color: #ffffff;
+            >* {
+                text-align: right;
             }
         }
     }
@@ -240,6 +251,18 @@
                 }
             }
         }
+
+        .caption-container {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            color: var(--tui-color-text-label);
+            font-size: var(--tui-font-size-medium);
+
+            .sub-caption {
+                font-size: var(--tui-font-size-small);
+            }
+        }
     }
 
     .key-messages {
@@ -274,17 +297,24 @@
                 }
             }
 
-            .svg {
+            .right-container {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
                 flex-grow: 1;
-                min-width: 20rem;
-                max-width: 26rem;
+                gap: var(--tui-spacing-extra-small);
+
+                .svg {
+                    width: 100%;
+                    min-width: 20rem;
+                    max-width: 32rem;
+                }
             }
         }
 
         .bottom-container {
             display: flex;
             position: relative;
-            justify-content: center;
             gap: var(--tui-spacing-large);
             overflow: none;
 
@@ -323,14 +353,15 @@
 
             .item-list {
                 display: flex;
+                flex-grow: 1;
                 flex-shrink: 0;
                 gap: var(--tui-spacing-large);
 
                 .spotlight-item {
                     position: relative;
+                    flex-grow: 1;
                     flex-shrink: 0;
-                    width: 20rem;
-                    height: 12rem;
+                    height: 18rem;
 
                     .spotlight-image {
                         border-radius: var(--tui-border-radius-medium);
@@ -375,19 +406,18 @@
     .way-forward {
         .way-forward-content {
             .description {
+                display: flex;
+                flex-direction: column;
+                gap: var(--tui-spacing-medium);
+
                 .description-paragraph {
                     font-size: var(--tui-font-size-medium);
                 }
 
                 .list-container {
                     display: flex;
-                    align-items: stretch;
-                    flex-wrap: wrap;
+                    flex-direction: column;
                     gap: var(--tui-spacing-large);
-
-                    .item {
-                        width: 18rem;
-                    }
                 }
             }
         }
@@ -454,6 +484,7 @@
                         }
 
                         .button {
+                            padding: var(--tui-spacing-extra-small);
                             width: fit-content;
                         }
                     }
@@ -468,31 +499,50 @@
             flex-direction: column;
             gap: var(--tui-spacing-large);
 
-            .regional-breakdown {
+            .id-trend-top-container {
                 display: flex;
-                flex-direction: column;
                 gap: var(--tui-spacing-large);
 
-                .regional-breakdown-tabs {
-                    display: flex;
-                    align-items: stretch;
-                    flex-wrap: wrap;
-                    border-bottom: var(--tui-width-separator-thin) solid var(--tui-color-separator);
-                    padding: var(--tui-spacing-small) 0;
-                    gap: var(--tui-spacing-small);
+                .description-paragraph {
+                    max-width: 20rem;
+                }
 
-                    .tab {
-                        width: auto;
+                .regional-breakdown {
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    text-align: center;
+                    gap: var(--tui-spacing-large);
+
+                    .regional-breakdown-tabs {
+                        display: flex;
+                        flex-wrap: wrap;
+                        border-bottom: var(--tui-width-separator-thin) solid var(--tui-color-separator);
+                        padding: var(--tui-spacing-small) 0;
+                        gap: var(--tui-spacing-small);
+
+                        .tab {
+                            padding: var(--tui-spacing-extra-small) var(--tui-spacing-small);
+                        }
+                    }
+
+                    .tab-panel {
+                        display: flex;
+                        justify-content: center;
+                        padding: var(--tui-spacing-large) var(--tui-spacing-small);
+
+                        .chart {
+                            max-width: 30rem;
+                            min-height: 40rem;
+                        }
                     }
                 }
 
-                .tab-panel {
-                    display: flex;
-                    justify-content: center;
-                    padding: var(--tui-spacing-large) var(--tui-spacing-small);
+                @media (max-width: 880px) {
+                    flex-wrap: wrap;
 
-                    .chart {
-                        max-width: 50rem;
+                    .description-paragraph {
+                        max-width: 100%;
                     }
                 }
             }
@@ -562,30 +612,5 @@
         }:hover{
             background-color: unset;
         }
-    }
-}
-
-.way-forward-list-item {
-    display: flex;
-    flex-direction: column;
-    border: var(--tui-width-separator-thin) solid var(--tui-color-separator);
-    border-radius: 10px;
-    padding: var(--tui-spacing-medium);
-    gap: var(--tui-spacing-large);
-
-    .order {
-        display: flex;
-        align-items: center;
-        align-self: flex-start;
-        justify-content: center;
-        border-radius: 50%;
-        background-color: var(--tui-color-brand);
-        width: 2.5rem;
-        height: 2.5rem;
-        color: #ffffff;
-    }
-
-    .description {
-        font-size: var(--tui-font-size-medium);
     }
 }

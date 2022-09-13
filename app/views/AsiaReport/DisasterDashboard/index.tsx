@@ -10,7 +10,7 @@ import {
     useQuery,
 } from '@apollo/client';
 import {
-    // IoDownloadOutline,
+    IoDownloadOutline,
     IoExitOutline,
 } from 'react-icons/io5';
 
@@ -31,6 +31,8 @@ import {
 import {
     DisasterDataQuery,
     DisasterDataQueryVariables,
+    DisasterCategoriesQuery,
+    DisasterCategoriesQueryVariables,
     CategoryStatisticsType,
 } from '#generated/types';
 
@@ -60,13 +62,11 @@ function suffixDrupalEndpoing(path: string) {
     return `${DRUPAL_ENDPOINT}${path}`;
 }
 
-/*
 const REST_ENDPOINT = process.env.REACT_APP_REST_ENDPOINT as string;
 
 function suffixGiddRestEndpoint(path: string) {
     return `${REST_ENDPOINT}${path}`;
 }
-*/
 
 const disasterCategoryKeySelector = (d: CategoryStatisticsType) => d.label;
 const regionKeySelector = (region: { key: string }) => region.key;
@@ -132,6 +132,19 @@ const DISASTER_DATA = gql`
     }
 `;
 
+const DISASTER_CATEGORIES = gql`
+    query DisasterCategories(
+        $countryIso3: [String!],
+    ) {
+        disasterStatistics(filters: { countriesIso3: $countryIso3 }) {
+            categories {
+                label
+                total
+            }
+        }
+    }
+`;
+
 interface Props {
     className?: string;
 }
@@ -155,7 +168,7 @@ function CountryProfile(props: Props) {
 
     const selectedCountries = useMemo(() => {
         if (regionValues.length === 0 && countriesValues.length === 0) {
-            return [];
+            return countries.map((country) => country.iso3);
         }
         if (countriesValues.length > 0) {
             return countriesValues;
@@ -167,6 +180,15 @@ function CountryProfile(props: Props) {
         regionValues,
         countriesValues,
     ]);
+
+    const {
+        data: disasterCategoryOptions,
+    } = useQuery<DisasterCategoriesQuery, DisasterCategoriesQueryVariables>(
+        DISASTER_CATEGORIES,
+        {
+            variables: { countryIso3: selectedCountries },
+        },
+    );
 
     const {
         previousData: previousDisasterData,
@@ -239,6 +261,9 @@ function CountryProfile(props: Props) {
     }, [disasterData, isMultiline]);
 
     const filteredCountries = useMemo(() => {
+        if (regionValues.length <= 0) {
+            return countries;
+        }
         const filteredCountriesList = regions
             .filter((region) => regionValues.includes(region.key))
             .map((region) => region.countries).flat();
@@ -246,6 +271,7 @@ function CountryProfile(props: Props) {
         return countries.filter((country) => filteredCountriesList.includes(country.iso3));
     }, [regionValues]);
 
+    const dataDownloadLink = suffixGiddRestEndpoint(`/countries/multiple-countries-disaster-export/?countries_iso3=${selectedCountries.join(',')}&start_year=${disasterTimeRange[0]}&end_year=${disasterTimeRange[1]}&hazard_type=${disasterCategories.join(',')}`);
     return (
         <Container
             className={_cs(className, styles.displacementData)}
@@ -260,13 +286,8 @@ function CountryProfile(props: Props) {
             )}
             footerActions={(
                 <>
-                    {/*
                     <ButtonLikeLink
-                        href={suffixGiddRestEndpoint(`/countries/
-                        ${currentCountry}/disaster-export/
-                        ?start_year=${disasterTimeRange[0]}
-                        &end_year=${disasterTimeRange[1]}
-                        &hazard_type=${disasterCategories.join(',')}`)}
+                        href={dataDownloadLink}
                         target="_blank"
                         className={styles.disasterButton}
                         rel="noopener noreferrer"
@@ -276,7 +297,6 @@ function CountryProfile(props: Props) {
                     >
                         Download Disaster Data
                     </ButtonLikeLink>
-                    */}
                     <ButtonLikeLink
                         href={giddLink}
                         className={styles.disasterButton}
@@ -293,13 +313,13 @@ function CountryProfile(props: Props) {
             filters={(
                 <>
                     <Header
-                        heading="Regions"
+                        heading="Subregions"
                         headingSize="extraSmall"
                         description={(
                             <MultiSelectInput
                                 className={styles.selectInput}
                                 inputSectionClassName={styles.inputSection}
-                                placeholder="Regions"
+                                placeholder="Subregions"
                                 name="regions"
                                 value={regionValues}
                                 options={regions}
@@ -336,7 +356,7 @@ function CountryProfile(props: Props) {
                                 placeholder="Disaster Category"
                                 name="disasterCategory"
                                 value={disasterCategories}
-                                options={disasterData?.disasterStatistics.categories}
+                                options={disasterCategoryOptions?.disasterStatistics.categories}
                                 keySelector={disasterCategoryKeySelector}
                                 labelSelector={disasterCategoryKeySelector}
                                 onChange={setDisasterCategories}

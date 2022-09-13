@@ -16,3 +16,18 @@ export const wayForwardParagraph2 = 'There are signs of renewed regional commitm
 
 export const contactParagraph = 'IDMC\'s Global Report on Internal Displacement (GRID) is the world’s leading source of data and analysis on internal displacement Since our establishment in 1998 as part of the Norwegian Refugee Council (NRC), we have offered a rigorous, independent and trusted service to the international community. Our work informs policy and operational decisions that improve the lives of the millions of people living in internal displacement, or at risk of becoming displaced in the future.';
 export const copyrightParagraph = 'Copyright © Internal Displacement Monitoring Centre (IDMC). Unless otherwise indicated, all materials on this page may be shared freely providing an acknowledgement of IDMC as the source is included. Materials may not be adapted without prior permission from IDMC.';
+
+export const pieChartCaption = 'Figure 1: Internal Displacements by Disasters in the Asia and Pacific Region (2010−2021)';
+export const pieChartCaptionSource = 'Source: Internal Displacement Monitoring Centre, 2022';
+
+export const tentCaption = '"My house fell down in the middle of the night,” says Fiona. “Sometime after three in the morning, we woke up because the earth was shaking.';
+export const tentSubCaption = '© UNICEF/UN0186480/Nybo';
+
+export const vietnamCaption = 'A kid plays on the side of My Khe beach in Quang Ngai Province, Vietnam on October 29, 2020, in the aftermath of Typhoon Molave.';
+export const vietnamSubCaption = '© UNICEF/UN0356644/Pham/AFP-Services';
+
+export const chinaCaption = 'ZHENGZHOU, CHINA - JULY 22: Aerial view of res cue teams evacuating patients and medial workers from flooded Fuwai Central China Cardiovascular Hospital after the torrential rains, on July 22, 2021 in Zhengzhou, Henan Province of China.';
+export const chinaSubCaption = '(Photo by Wang Fuxiao/VCG via Getty Images)';
+
+export const regionalBreakdownCaption = 'Figure: Internal Displacements in Asia and the Pacific: Breakdown by Hazard (2010−2021)';
+export const regionalBreakdownDescription = 'Weather-related hazards such as monsoon rains, floods, storms, and cyclones, were responsible for 95% of all disaster displacements across the region between 2010−2021. Although less frequent, geophysical events such as earthquakes, tsunamis, and volcanic eruptions triggered an estimated 11.8 million internal displacements, equivalent to 5.2% of the total. Displacement associated with slow-onset hazards including riverbank erosion, extreme temperatures, droughts, and glacial melt has also been reported across the region, with 760,000 internal displacements, or 0.3% of the total. However, this is a significant underestimate, given the lack of data on slow-onset hazards.';
