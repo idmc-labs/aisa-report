@@ -18,7 +18,7 @@ const keyMessages = [
     },
     {
         key: '2',
-        message: 'The annual cost of disasters in the region is estimated to be around $780 billion, equivalent to 2.5% of the regional GDP. This does not include the economic impact of displacement itself.',
+        message: 'The cost of disasters in the region is estimated to be several hundred billions of dollars each year. This does not include the economic impact of displacement itself.',
     },
     {
         key: '3',

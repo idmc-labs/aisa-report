@@ -32,6 +32,7 @@ function CarouselButton(props: Props) {
     } = props;
 
     const {
+        onActiveItemManualChange,
         setActiveItem,
         activeItem,
     } = React.useContext(CarouselContext);
@@ -41,6 +42,9 @@ function CarouselButton(props: Props) {
         if (props.action === 'set') {
             // eslint-disable-next-line react/destructuring-assignment
             setActiveItem(props.order);
+            if (onActiveItemManualChange) {
+                onActiveItemManualChange();
+            }
         }
 
         // eslint-disable-next-line react/destructuring-assignment
@@ -48,6 +52,9 @@ function CarouselButton(props: Props) {
             setActiveItem(
                 (prevItem) => (isDefined(prevItem) ? (prevItem - 1) : undefined),
             );
+            if (onActiveItemManualChange) {
+                onActiveItemManualChange();
+            }
         }
 
         // eslint-disable-next-line react/destructuring-assignment
@@ -55,10 +62,13 @@ function CarouselButton(props: Props) {
             setActiveItem(
                 (prevItem) => (isDefined(prevItem) ? (prevItem + 1) : undefined),
             );
+            if (onActiveItemManualChange) {
+                onActiveItemManualChange();
+            }
         }
 
         // eslint-disable-next-line react/destructuring-assignment
-    }, [props.action, props.order, setActiveItem]);
+    }, [props.action, props.order, setActiveItem, onActiveItemManualChange]);
 
     // eslint-disable-next-line react/destructuring-assignment
     const isActive = props.action === 'set' && activeItem === props.order;

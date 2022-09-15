@@ -4,6 +4,7 @@ import {
 } from '@togglecorp/toggle-ui';
 import {
     _cs,
+    compareNumber,
 } from '@togglecorp/fujs';
 import {
     gql,
@@ -272,6 +273,15 @@ function CountryProfile(props: Props) {
     }, [regionValues]);
 
     const dataDownloadLink = suffixGiddRestEndpoint(`/countries/multiple-countries-disaster-export/?countries_iso3=${selectedCountries.join(',')}&start_year=${disasterTimeRange[0]}&end_year=${disasterTimeRange[1]}&hazard_type=${disasterCategories.join(',')}`);
+
+    const pieChartData = useMemo(() => (
+        [...(disasterData?.disasterStatistics.categories ?? [])]?.sort(
+            (a, b) => compareNumber(a.total, b.total, -1),
+        )
+    ), [
+        disasterData?.disasterStatistics.categories,
+    ]);
+
     return (
         <Container
             className={_cs(className, styles.displacementData)}
@@ -476,7 +486,7 @@ function CountryProfile(props: Props) {
                         />
                     )}
                     date={`${disasterTimeRangeActual[0]} - ${disasterTimeRangeActual[1]}`}
-                    chart={disasterData?.disasterStatistics.categories && (
+                    chart={pieChartData && (
                         <ErrorBoundary>
                             <ResponsiveContainer>
                                 <PieChart>
@@ -485,9 +495,11 @@ function CountryProfile(props: Props) {
                                     />
                                     <Legend />
                                     <Pie
-                                        data={disasterData.disasterStatistics.categories}
+                                        data={pieChartData}
                                         dataKey="total"
                                         nameKey="label"
+                                        startAngle={90}
+                                        endAngle={450}
                                     >
                                         {disasterData
                                             ?.disasterStatistics

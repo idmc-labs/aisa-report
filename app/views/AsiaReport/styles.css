@@ -9,6 +9,19 @@
     overflow-x: hidden;
     overflow-y: auto;
 
+
+    .caption-container {
+        display: flex;
+        flex-direction: column;
+        /* text-align: center; */
+        color: var(--tui-color-text-label);
+        font-size: var(--tui-font-size-medium);
+
+        .sub-caption {
+            font-size: var(--tui-font-size-small);
+        }
+    }
+
     .nav {
         display: flex;
         position: sticky;
@@ -123,13 +136,23 @@
 
     .hero {
         position: relative;
-        background-image: url('../../resources/img/hero-bg.jpg');
-        background-position: center;
+        background-color: var(--tui-color-brand-light);
+        background-image: url('../../resources/img/hero.jpg');
+        background-position: right top;
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
+        background-blend-mode: soft-light;
+
+        >* {
+            color: white;
+        }
 
         .hero-content {
+            .heading {
+                color: white;
+            }
+
             .heading-description {
                 font-family: var(--tui-font-family-heading);
                 font-size: var(--tui-font-size-extra-large);
@@ -251,18 +274,6 @@
                 }
             }
         }
-
-        .caption-container {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            color: var(--tui-color-text-label);
-            font-size: var(--tui-font-size-medium);
-
-            .sub-caption {
-                font-size: var(--tui-font-size-small);
-            }
-        }
     }
 
     .key-messages {
@@ -319,7 +330,7 @@
             overflow: none;
 
             .carousel-button {
-                display: none;
+                display: block;
                 position: absolute;
                 flex-shrink: 0;
                 border-radius: 50%;
@@ -480,7 +491,8 @@
                         gap: var(--tui-spacing-large);
 
                         .select-input {
-                            max-width: 20rem;
+                            min-width: 20rem;
+                            max-width: 30rem;
                         }
 
                         .button {
@@ -503,8 +515,16 @@
                 display: flex;
                 gap: var(--tui-spacing-large);
 
-                .description-paragraph {
-                    max-width: 20rem;
+                .description-container {
+                    display: flex;
+                    flex-direction: column;
+                    padding: var(--tui-spacing-small) 0;
+                    gap: var(--tui-spacing-small);
+
+                    .description-paragraph {
+                        margin: 0;
+                        max-width: 20rem;
+                    }
                 }
 
                 .regional-breakdown {
@@ -551,16 +571,27 @@
 
     .footer {
         position: relative;
-        background-image: url('../../resources/img/hero-bg.jpg');
+        background-color: var(--tui-color-brand-light);
+        background-image: url('../../resources/img/hero.jpg');
+        background-position: right top;
         background-repeat: no-repeat;
         background-size: cover;
+        background-blend-mode: soft-light;
         width: 100vw;
+
+        >* {
+            color: white;
+        }
 
         .footer-content {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             gap: var(--tui-spacing-medium);
+
+            .text {
+                color: white;
+            }
 
             .paragraph {
                 max-width: 30rem;
@@ -575,11 +606,16 @@
 
                 .logo-container {
                     display: flex;
+                    align-items: center;
                     gap: var(--tui-spacing-small);
 
                     .logo {
                         width: auto;
                         height: 2rem;
+                    }
+
+                    .adb-logo {
+                        height: 3rem;
                     }
                 }
 
@@ -595,6 +631,17 @@
                 flex-direction: column;
                 flex-grow: 1;
                 gap: var(--tui-spacing-medium);
+
+                .social-links {
+                    display: flex;
+                    align-items: center;
+                    font-size: var(--tui-font-size-large);
+                    gap: var(--tui-spacing-extra-small);
+
+                    >* {
+                        color: #ffffff;
+                    }
+                }
             }
         }
     }

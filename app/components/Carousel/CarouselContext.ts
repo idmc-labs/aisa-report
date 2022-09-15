@@ -9,6 +9,7 @@ export interface CarouselContextProps {
     registerItem: (order: number) => void;
     unregisterItem: (order: number) => void;
     numberOfVisibleItems: number;
+    onActiveItemManualChange?: () => void;
 }
 
 const CarouselContext = React.createContext<CarouselContextProps>({
@@ -30,6 +31,10 @@ const CarouselContext = React.createContext<CarouselContextProps>({
     unregisterItem: () => {
         // eslint-disable-next-line no-console
         console.warn('CarouselContext::unregisterItem called before it was initialized');
+    },
+    onActiveItemManualChange: () => {
+        // eslint-disable-next-line no-console
+        console.warn('CarouselContext::onActiveItemManualChange called before it was initialized');
     },
     numberOfVisibleItems: 1,
 });

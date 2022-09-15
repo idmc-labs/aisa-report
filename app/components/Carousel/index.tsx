@@ -9,7 +9,7 @@ import CarouselContext from './CarouselContext';
 
 import styles from './styles.css';
 
-const CAROUSEL_ITEM_CHANGE_DURATION = 2; // in seconds
+const CAROUSEL_ITEM_CHANGE_DURATION = 3; // in seconds
 
 function bound(value: number, min: number, max: number) {
     const diff = (max - min + 1); // 5

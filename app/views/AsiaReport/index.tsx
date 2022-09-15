@@ -6,6 +6,12 @@ import {
     MdArrowLeft,
     MdMenu,
 } from 'react-icons/md';
+import {
+    IoLogoFacebook,
+    IoLogoTwitter,
+    IoLogoLinkedin,
+    IoLogoYoutube,
+} from 'react-icons/io5';
 import { SelectInput } from '@togglecorp/toggle-ui';
 
 import Button from '#components/Button';
@@ -21,8 +27,7 @@ import CarouselItem from '#components/Carousel/CarouselItem';
 import CarouselButton from '#components/Carousel/CarouselButton';
 import useBooleanState from '#hooks/useBooleanState';
 
-import idmcLogo from '#resources/img/idmc.svg';
-import nrcLogo from '#resources/img/nrc.png';
+import idmcLogo from '#resources/img/idmc-white.svg';
 import adbLogo from '#resources/img/adb.png';
 import bubbles from '#resources/img/bubbles.png';
 import pieEa from '#resources/img/pie_ea.png';
@@ -40,15 +45,16 @@ import chartTp from '#resources/img/tp_chart.svg';
 
 import china from '#resources/img/china.jpg';
 import indonesia from '#resources/img/indonesia.jpg';
-import japan from '#resources/img/japan.jpg';
-import nepal from '#resources/img/nepal.jpg';
 import pakistan from '#resources/img/pakistan.jpg';
-import philippines from '#resources/img/philippines.jpg';
-import philippines2 from '#resources/img/philippines-2.jpg';
+import japan2 from '#resources/img/japan2.jpg';
 import tent from '#resources/img/tent.jpg';
+import nepal2 from '#resources/img/nepal2.jpg';
+import indonesia2 from '#resources/img/indonesia2.jpg';
+import papua from '#resources/img/papua.jpg';
 import vanautu from '#resources/img/vanautu.jpg';
 import vietnam from '#resources/img/vietnam.jpg';
-import bookCover from '#resources/img/book-cover.png';
+import bookCover from '#resources/img/book-cover.jpg';
+
 import { regionCountriesLabel } from '#utils/common';
 
 import {
@@ -64,13 +70,23 @@ import {
     contactParagraph,
     copyrightParagraph,
     tentCaption,
+    videoCaption,
     tentSubCaption,
     vietnamCaption,
     vietnamSubCaption,
     chinaCaption,
     chinaSubCaption,
+    pakistanCaption,
+    pakistanSubCaption,
+    japanCaption,
+    japanSubCaption,
     regionalBreakdownCaption,
-    regionalBreakdownDescription,
+    regionalBreakdownDescription1,
+    regionalBreakdownDescription2,
+    regionalBreakdownDescription3,
+    regionalBreakdownDescription4,
+    papuaSpotlightTitle,
+    reportLink,
 } from './data';
 import CostOfDisasterImage from './CostOfDisasterImage';
 
@@ -83,19 +99,19 @@ import styles from './styles.css';
 
 const sectionOptions = [
     {
-        key: '1st-section',
-        label: '1st section',
-        startPage: '12',
+        key: 'Foreward',
+        label: 'Foreward',
+        startPage: '7',
     },
     {
-        key: '2nd-section',
-        label: '2nd section',
-        startPage: '25',
+        key: 'key-messages',
+        label: 'Key Messages and Findings',
+        startPage: '8',
     },
     {
-        key: '3rd-section',
-        label: '3rd section',
-        startPage: '50',
+        key: 'introduction',
+        label: 'Introduction',
+        startPage: '9',
     },
 ];
 
@@ -250,6 +266,7 @@ function AsiaReport(props: Props) {
                         alt=""
                     />
                     <Header
+                        headingClassName={styles.heading}
                         heading="Disaster Displacement"
                         headingDescription="in Asia and the Pacific"
                         headingDescriptionClassName={styles.headingDescription}
@@ -308,6 +325,9 @@ function AsiaReport(props: Props) {
                         title="glance-video"
                         src="https://www.youtube.com/embed/AvJKuUM3vjk"
                     />
+                    <div className={styles.captionContainer}>
+                        <i>{videoCaption}</i>
+                    </div>
                     <img
                         alt="bubbles"
                         src={bubbles}
@@ -394,7 +414,10 @@ function AsiaReport(props: Props) {
                     alt=""
                 />
                 <div className={styles.imageCaption}>
-                    Caption of Image of Pakistan
+                    {pakistanCaption}
+                    <div className={styles.subCaption}>
+                        {pakistanSubCaption}
+                    </div>
                 </div>
             </div>
             <section
@@ -412,9 +435,20 @@ function AsiaReport(props: Props) {
                         headingSize="large"
                     />
                     <div className={styles.idTrendTopContainer}>
-                        <p className={styles.descriptionParagraph}>
-                            {regionalBreakdownDescription}
-                        </p>
+                        <div className={styles.descriptionContainer}>
+                            <p className={styles.descriptionParagraph}>
+                                {regionalBreakdownDescription1}
+                            </p>
+                            <p className={styles.descriptionParagraph}>
+                                {regionalBreakdownDescription2}
+                            </p>
+                            <p className={styles.descriptionParagraph}>
+                                {regionalBreakdownDescription3}
+                            </p>
+                            <p className={styles.descriptionParagraph}>
+                                {regionalBreakdownDescription4}
+                            </p>
+                        </div>
                         <Tabs
                             value={selectedChart}
                             onChange={setSelectedChart}
@@ -427,6 +461,12 @@ function AsiaReport(props: Props) {
                                         name="all"
                                     >
                                         All Regions
+                                    </Tab>
+                                    <Tab
+                                        className={styles.tab}
+                                        name="cwa"
+                                    >
+                                        Central and West Asia
                                     </Tab>
                                     <Tab
                                         className={styles.tab}
@@ -445,12 +485,6 @@ function AsiaReport(props: Props) {
                                         name="sa"
                                     >
                                         South Asia
-                                    </Tab>
-                                    <Tab
-                                        className={styles.tab}
-                                        name="cwa"
-                                    >
-                                        Central and West Asia
                                     </Tab>
                                     <Tab
                                         className={styles.tab}
@@ -523,12 +557,15 @@ function AsiaReport(props: Props) {
             </section>
             <div className={styles.dividerImage}>
                 <img
-                    src={philippines}
+                    src={japan2}
                     className={styles.background}
                     alt=""
                 />
                 <div className={styles.imageCaption}>
-                    Caption of Image of Philippines
+                    {japanCaption}
+                    <div className={styles.subCaption}>
+                        {japanSubCaption}
+                    </div>
                 </div>
             </div>
             <section
@@ -571,73 +608,97 @@ function AsiaReport(props: Props) {
                                 className={styles.spotlightItem}
                                 order={1}
                             >
-                                <img
-                                    className={styles.spotlightImage}
-                                    src={vanautu}
-                                    alt=""
-                                />
-                                <div className={styles.caption}>
-                                    <div className={styles.heading}>
-                                        Spotlight 1
+                                <a
+                                    href={`${reportLink}#page=30`}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    <img
+                                        className={styles.spotlightImage}
+                                        src={indonesia2}
+                                        alt=""
+                                    />
+                                    <div className={styles.caption}>
+                                        <div className={styles.heading}>
+                                            Spotlight:
+                                        </div>
+                                        <div className={styles.subHeading}>
+                                            Flood-related Displacement in Jakarta, Indonesia
+                                        </div>
                                     </div>
-                                    <div className={styles.subHeading}>
-                                        Food related displacement in Jakarta, Indonesia
-                                    </div>
-                                </div>
+                                </a>
                             </CarouselItem>
                             <CarouselItem
                                 className={styles.spotlightItem}
                                 order={2}
                             >
-                                <img
-                                    className={styles.spotlightImage}
-                                    src={philippines2}
-                                    alt=""
-                                />
-                                <div className={styles.caption}>
-                                    <div className={styles.heading}>
-                                        Spotlight 2
+                                <a
+                                    href={`${reportLink}#page=32`}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    <img
+                                        className={styles.spotlightImage}
+                                        src={nepal2}
+                                        alt=""
+                                    />
+                                    <div className={styles.caption}>
+                                        <div className={styles.heading}>
+                                            Spotlight:
+                                        </div>
+                                        <div className={styles.subHeading}>
+                                            7 Years after the Gorkha Earthquake in Nepal
+                                        </div>
                                     </div>
-                                    <div className={styles.subHeading}>
-                                        Food related displacement in Jakarta, Indonesia
-                                    </div>
-                                </div>
+                                </a>
                             </CarouselItem>
                             <CarouselItem
                                 className={styles.spotlightItem}
                                 order={3}
                             >
-                                <img
-                                    className={styles.spotlightImage}
-                                    src={nepal}
-                                    alt=""
-                                />
-                                <div className={styles.caption}>
-                                    <div className={styles.heading}>
-                                        Spotlight 3
+                                <a
+                                    href={`${reportLink}#page=33`}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    <img
+                                        className={styles.spotlightImage}
+                                        src={papua}
+                                        alt=""
+                                    />
+                                    <div className={styles.caption}>
+                                        <div className={styles.heading}>
+                                            Spotlight:
+                                        </div>
+                                        <div className={styles.subHeading}>
+                                            {papuaSpotlightTitle}
+                                        </div>
                                     </div>
-                                    <div className={styles.subHeading}>
-                                        Food related displacement in Jakarta, Indonesia
-                                    </div>
-                                </div>
+                                </a>
                             </CarouselItem>
                             <CarouselItem
                                 className={styles.spotlightItem}
                                 order={4}
                             >
-                                <img
-                                    className={styles.spotlightImage}
-                                    src={japan}
-                                    alt=""
-                                />
-                                <div className={styles.caption}>
-                                    <div className={styles.heading}>
-                                        Spotlight 4
+                                <a
+                                    href={`${reportLink}#page=35`}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    <img
+                                        className={styles.spotlightImage}
+                                        src={vanautu}
+                                        alt=""
+                                    />
+                                    <div className={styles.caption}>
+                                        <div className={styles.heading}>
+                                            Spotlight:
+                                        </div>
+                                        <div className={styles.subHeading}>
+                                            Differentiated Impacts of Displacement in Vanuatu
+                                        </div>
                                     </div>
-                                    <div className={styles.subHeading}>
-                                        Food related displacement in Jakarta, Indonesia
-                                    </div>
-                                </div>
+                                </a>
                             </CarouselItem>
                         </div>
                         <CarouselButton
@@ -714,22 +775,12 @@ function AsiaReport(props: Props) {
                             <div className={styles.linksContainer}>
                                 <a
                                     className={styles.downloadLink}
-                                    href="https://www.internal-displacement.org/sites/default/files/publications/documents/IDMC_GRID_2022_LR.pdf"
+                                    href={reportLink}
                                     target="_blank"
                                     rel="noreferrer noopener"
                                 >
                                     <MdPictureAsPdf />
                                     Download full report
-                                    <MdArrowRightAlt />
-                                </a>
-                                <a
-                                    className={styles.downloadLink}
-                                    href="https://www.internal-displacement.org/sites/default/files/publications/documents/IDMC_GRID_2022_LR.pdf"
-                                    target="_blank"
-                                    rel="noreferrer noopener"
-                                >
-                                    <MdPictureAsPdf />
-                                    Download full report (High quality)
                                     <MdArrowRightAlt />
                                 </a>
                             </div>
@@ -749,7 +800,7 @@ function AsiaReport(props: Props) {
                                 <ButtonLikeLink
                                     className={styles.button}
                                     disabled={!selectedSection}
-                                    href={`https://www.internal-displacement.org/sites/default/files/publications/documents/IDMC_GRID_2022_LR.pdf${pageSuffix}`}
+                                    href={`${reportLink}${pageSuffix}`}
                                     target="_blank"
                                     icons={(
                                         <MdPictureAsPdf />
@@ -776,13 +827,14 @@ function AsiaReport(props: Props) {
                                 alt=""
                             />
                             <img
-                                className={styles.logo}
-                                src={nrcLogo}
+                                className={styles.adbLogo}
+                                src={adbLogo}
                                 alt=""
                             />
                         </div>
                         <Header
                             heading="Contact"
+                            headingClassName={styles.text}
                             headingDescription="Internal Displacement Monitoring Center (IDMC)"
                         />
                         <div>
@@ -790,6 +842,7 @@ function AsiaReport(props: Props) {
                                 Humanitarian Hub Office, La Voie Creuse 16, 1202 Geneva, Switzerland
                             </p>
                             <TextOutput
+                                labelContainerClassName={styles.text}
                                 label="General Inquiries"
                                 value={(
                                     <a
@@ -801,6 +854,7 @@ function AsiaReport(props: Props) {
                                 )}
                             />
                             <TextOutput
+                                labelContainerClassName={styles.text}
                                 label="Media Inquiries"
                                 value={(
                                     <a
@@ -818,11 +872,42 @@ function AsiaReport(props: Props) {
                     </div>
                     <div className={styles.rightContainer}>
                         <Header
+                            headingClassName={styles.text}
                             heading="About us"
                         />
                         <p className={styles.paragraph}>
                             {contactParagraph}
                         </p>
+                        <div className={styles.socialLinks}>
+                            <a
+                                href="https://www.facebook.com/IDMC.Geneva"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                            >
+                                <IoLogoFacebook />
+                            </a>
+                            <a
+                                href="https://twitter.com/IDMC_Geneva"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                            >
+                                <IoLogoTwitter />
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/company/internal-displacement-monitoring-centre-idmc-"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                            >
+                                <IoLogoLinkedin />
+                            </a>
+                            <a
+                                href="https://www.youtube.com/channel/UCKEgRCcKKPNezkF3FLlfBRQ"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                            >
+                                <IoLogoYoutube />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>

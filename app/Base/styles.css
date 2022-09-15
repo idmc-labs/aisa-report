@@ -35,6 +35,7 @@
     --tui-color-primary: rgb(65, 131, 196);
     --tui-color-accent: rgb(65, 131, 196);
     --tui-color-brand: rgb(25, 50, 86);
+    --tui-color-brand-light: #6e7892;
     --tui-color-brand-hover: var(--tui-color-brand);
 
     --tui-width-scrollbar: 0.5rem;
