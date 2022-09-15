@@ -1,10 +1,11 @@
-import React, { useMemo, useCallback, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
     MultiSelectInput,
 } from '@togglecorp/toggle-ui';
 import {
     _cs,
     compareNumber,
+    unique,
 } from '@togglecorp/fujs';
 import {
     gql,
@@ -47,6 +48,9 @@ import TooltipIcon from '#components/TooltipIcon';
 
 import {
     formatNumber,
+    countryWithRegionMap,
+    countriesNameMap,
+    regionsNameMap,
     countries,
     regions,
 } from '#utils/common';
@@ -162,21 +166,18 @@ function CountryProfile(props: Props) {
     const [disasterTimeRangeActual, setDisasterTimeRange] = useState([START_YEAR, END_YEAR]);
     const disasterTimeRange = useDebouncedValue(disasterTimeRangeActual);
 
-    const handleRegionValueChange = useCallback((newVal: string[]) => {
-        setRegionValues(newVal);
-        setCountriesValues([]);
-    }, []);
-
     const selectedCountries = useMemo(() => {
         if (regionValues.length === 0 && countriesValues.length === 0) {
             return countries.map((country) => country.iso3);
         }
-        if (countriesValues.length > 0) {
-            return countriesValues;
-        }
-        return regions
+        const countriesFromRegions = regions
             .filter((region) => regionValues.includes(region.key))
             .map((region) => region.countries).flat();
+
+        return (unique([
+            ...countriesFromRegions,
+            ...countriesValues,
+        ], (d) => d));
     }, [
         regionValues,
         countriesValues,
@@ -209,34 +210,70 @@ function CountryProfile(props: Props) {
         },
     );
 
-    const isMultiline = selectedCountries.length > 1 && selectedCountries.length < 5;
+    const noOfSelections = useMemo(() => ([
+        ...regionValues,
+        ...countriesValues,
+    ]), [regionValues, countriesValues]);
+
+    const isMultiline = noOfSelections.length > 1 && noOfSelections.length < 5;
 
     const lineChartData = useMemo(() => {
         const data = disasterData?.disasterStatistics?.timeseries;
         if (!data) {
             return undefined;
         }
-        /*
-        if (selectedCountries.length < 6) {
-            const itemsGroupedByCountry = listToGroupList(
-                data,
-                (item) => item.country.id,
-                (item) => ({ ...item, countryName: item.country.countryName }),
-            );
-            return Object.values(itemsGroupedByCountry);
-        }
-        */
         if (isMultiline) {
-            return data.map((item) => ({
-                [item.country.iso3]: item.total,
-                year: item.year,
-                total: Number(item.total),
-            }));
+            const countriesChartData = data
+                .filter((item) => countriesValues.includes(item.country.iso3))
+                .map((item) => ({
+                    [item.country.iso3]: item.total,
+                    year: item.year,
+                    type: 'country',
+                    total: Number(item.total),
+                }));
+
+            const regionChartData = data
+                .map((item) => ({ ...item, regionKey: countryWithRegionMap[item.country.iso3] }))
+                .filter((item) => regionValues.includes(item.regionKey))
+                .reduce((acc, item) => {
+                    const itemInAccIndex = acc.findIndex(
+                        (accItem) => (
+                            accItem.year === Number(item.year)
+                            && accItem.regionKey === item.regionKey
+                        ),
+                    );
+                    if (itemInAccIndex === -1) {
+                        return [
+                            ...acc,
+                            {
+                                [item.regionKey]: item.total,
+                                year: Number(item.year),
+                                total: item.total,
+                                regionKey: item.regionKey,
+                            },
+                        ];
+                    }
+                    const newItem = {
+                        [item.regionKey]: item.total + acc[itemInAccIndex].total,
+                        year: Number(item.year),
+                        total: item.total + acc[itemInAccIndex].total,
+                        regionKey: item.regionKey,
+                    };
+                    acc.splice(itemInAccIndex, 1);
+                    return ([
+                        ...acc,
+                        newItem,
+                    ]);
+                }, [] as { year: number; total: number; regionKey: string; }[]);
+
+            return [...countriesChartData, ...regionChartData];
         }
         return data.reduce(
             (acc, item) => {
                 const itemInAccIndex = acc.findIndex(
-                    (accItem) => accItem.year === Number(item.year),
+                    (accItem) => (
+                        accItem.year === Number(item.year)
+                    ),
                 );
                 if (itemInAccIndex === -1) {
                     return [
@@ -259,18 +296,7 @@ function CountryProfile(props: Props) {
             },
             [] as { year: number; total: number}[],
         );
-    }, [disasterData, isMultiline]);
-
-    const filteredCountries = useMemo(() => {
-        if (regionValues.length <= 0) {
-            return countries;
-        }
-        const filteredCountriesList = regions
-            .filter((region) => regionValues.includes(region.key))
-            .map((region) => region.countries).flat();
-
-        return countries.filter((country) => filteredCountriesList.includes(country.iso3));
-    }, [regionValues]);
+    }, [disasterData, isMultiline, countriesValues, regionValues]);
 
     const dataDownloadLink = suffixGiddRestEndpoint(`/countries/multiple-countries-disaster-export/?countries_iso3=${selectedCountries.join(',')}&start_year=${disasterTimeRange[0]}&end_year=${disasterTimeRange[1]}&hazard_type=${disasterCategories.join(',')}`);
 
@@ -335,7 +361,7 @@ function CountryProfile(props: Props) {
                                 options={regions}
                                 keySelector={regionKeySelector}
                                 labelSelector={regionLabelSelector}
-                                onChange={handleRegionValueChange}
+                                onChange={setRegionValues}
                             />
                         )}
                     />
@@ -349,7 +375,7 @@ function CountryProfile(props: Props) {
                                 placeholder="Countries"
                                 name="countries"
                                 value={countriesValues}
-                                options={filteredCountries}
+                                options={countries}
                                 keySelector={countryKeySelector}
                                 labelSelector={countryLabelSelector}
                                 onChange={setCountriesValues}
@@ -434,16 +460,17 @@ function CountryProfile(props: Props) {
                                     />
                                     <Legend />
                                     {isMultiline ? (
-                                        selectedCountries.map((item, i) => (
+                                        noOfSelections.map((item, i) => (
                                             <Line
                                                 key={item}
                                                 dataKey={item}
                                                 name={
                                                     selectedCountries.length > 1
-                                                        ? countries.find(
-                                                            (c) => c.iso3 === item,
-                                                        )?.name || item
-                                                        : 'Disaster internal displacements'
+                                                        ? (
+                                                            countriesNameMap[item]
+                                                                ?? regionsNameMap[item]
+                                                                ?? item
+                                                        ) : 'Disaster internal displacements'
                                                 }
                                                 strokeWidth={2}
                                                 connectNulls

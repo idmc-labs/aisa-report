@@ -600,7 +600,7 @@ function AsiaReport(props: Props) {
                         numberOfVisibleItems={visibleItems}
                     >
                         <CarouselButton
-                            className={_cs(styles.carouselButton, styles.prev)}
+                            className={styles.carouselButton}
                             action="prev"
                         />
                         <div className={styles.itemList}>
@@ -619,9 +619,6 @@ function AsiaReport(props: Props) {
                                         alt=""
                                     />
                                     <div className={styles.caption}>
-                                        <div className={styles.heading}>
-                                            Spotlight:
-                                        </div>
                                         <div className={styles.subHeading}>
                                             Flood-related Displacement in Jakarta, Indonesia
                                         </div>
@@ -643,9 +640,6 @@ function AsiaReport(props: Props) {
                                         alt=""
                                     />
                                     <div className={styles.caption}>
-                                        <div className={styles.heading}>
-                                            Spotlight:
-                                        </div>
                                         <div className={styles.subHeading}>
                                             7 Years after the Gorkha Earthquake in Nepal
                                         </div>
@@ -667,9 +661,6 @@ function AsiaReport(props: Props) {
                                         alt=""
                                     />
                                     <div className={styles.caption}>
-                                        <div className={styles.heading}>
-                                            Spotlight:
-                                        </div>
                                         <div className={styles.subHeading}>
                                             {papuaSpotlightTitle}
                                         </div>
@@ -691,9 +682,6 @@ function AsiaReport(props: Props) {
                                         alt=""
                                     />
                                     <div className={styles.caption}>
-                                        <div className={styles.heading}>
-                                            Spotlight:
-                                        </div>
                                         <div className={styles.subHeading}>
                                             Differentiated Impacts of Displacement in Vanuatu
                                         </div>
@@ -702,7 +690,7 @@ function AsiaReport(props: Props) {
                             </CarouselItem>
                         </div>
                         <CarouselButton
-                            className={_cs(styles.carouselButton, styles.next)}
+                            className={styles.carouselButton}
                             action="next"
                         />
                     </Carousel>

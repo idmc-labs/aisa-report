@@ -326,13 +326,14 @@
         .bottom-container {
             display: flex;
             position: relative;
+            align-items: center;
             gap: var(--tui-spacing-large);
             overflow: none;
 
             .carousel-button {
                 display: block;
-                position: absolute;
                 flex-shrink: 0;
+                z-index: 1;
                 border-radius: 50%;
                 background-color: rgba(0, 0, 0, 0.5);
                 padding: 0;
@@ -340,20 +341,6 @@
                 height: 2rem;
                 color: #ffffff;
                 font-size: var(--tui-font-size-small);
-
-                &.prev {
-                    top: 50%;
-                    left: var(--tui-spacing-medium);
-                    transform: translateY(-50%);
-                    z-index: 1;
-                }
-
-                &.next {
-                    top: 50%;
-                    right: var(--tui-spacing-medium);
-                    transform: translateY(-50%);
-                    z-index: 1;
-                }
             }
 
             &:hover {
@@ -365,13 +352,11 @@
             .item-list {
                 display: flex;
                 flex-grow: 1;
-                flex-shrink: 0;
                 gap: var(--tui-spacing-large);
 
                 .spotlight-item {
                     position: relative;
                     flex-grow: 1;
-                    flex-shrink: 0;
                     height: 18rem;
 
                     .spotlight-image {
@@ -406,7 +391,7 @@
                         }
 
                         .sub-heading {
-                            font-size: var(--tui-font-size-medium);
+                            font-size: var(--tui-font-size-large);
                         }
                     }
                 }

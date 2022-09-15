@@ -252,10 +252,27 @@ export const countries = [
     { iso3: 'WLF', name: 'Wallis and Futuna Islands' },
 ];
 
+export const countriesByRegion = listToMap(
+    regions,
+    (region) => region.key,
+    (region) => region.countries,
+);
+
+export const countryWithRegionMap = Object.entries(countriesByRegion)
+    .map(([key, value]) => (
+        listToMap(value, (d) => d, () => key)
+    )).reduce((acc, item) => ({ ...item, ...acc }), {});
+
 export const countriesNameMap = listToMap(
     countries,
     (country) => country.iso3,
     (country) => country.name,
+);
+
+export const regionsNameMap = listToMap(
+    regions,
+    (country) => country.key,
+    (country) => country.value,
 );
 
 export const regionCountriesLabel = listToMap(
