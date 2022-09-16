@@ -1,0 +1,28 @@
+.infographic-caption {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--tui-spacing-small);
+    flex-wrap: wrap;
+
+    .left-container {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        .information {
+            display: flex;
+            gap: var(--tui-spacing-small);
+            color: var(--tui-color-text-label);
+            font-size: var(--tui-font-size-small);
+        }
+    }
+
+    .download-link {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        color: var(--tui-font-color-text);
+        font-weight: var(--tui-font-weight-bold);
+        gap: var(--tui-spacing-extra-small);
+    }
+}

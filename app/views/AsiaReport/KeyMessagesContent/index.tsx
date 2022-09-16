@@ -11,64 +11,53 @@ interface KeyMessage {
 
 const keyMessageKeySelector = (item: KeyMessage) => item.key;
 
-const keyMessages = [
-    {
-        key: '1',
-        message: 'Asia and the Pacific is the region most affected by disaster displacement worldwide. ',
-    },
-    {
-        key: '2',
-        message: 'The cost of disasters in the region is estimated to be several hundred billions of dollars each year. This does not include the economic impact of displacement itself.',
-    },
-    {
-        key: '3',
-        message: 'Climate change—combined with the rapid urbanization of the region and other factors—may significantly heighten future displacement risk and related costs.',
-    },
-    {
-        key: '4',
-        message: 'Investment in the prevention of disaster displacement is displacement worldwide. the only sustainable course of action for the socioeconomic development of the region.',
-    },
-    {
-        key: '5',
-        message: 'The region already has successful initiatives to prevent, monitor, respond to, and end disaster displacement that can inform future action.',
-    },
-];
-
 interface KeyMessageProps {
     className?: string;
     message: string;
+    order: string;
 }
 
 function KeyMessageItem(props: KeyMessageProps) {
     const {
         className,
         message,
+        order,
     } = props;
 
     return (
         <div className={_cs(styles.keyMessage, className)}>
-            {message}
+            <div className={styles.order}>
+                {order}
+            </div>
+            <p
+                className={styles.paragraph}
+            >
+                {message}
+            </p>
         </div>
     );
 }
 
 interface Props {
     className?: string;
+    data: { key: string; message: string }[];
 }
 
 function KeyMessageContent(props: Props) {
     const {
         className,
+        data,
     } = props;
 
-    const keyMessageRendererParams = useCallback((_, item) => ({
+    const keyMessageRendererParams = useCallback((_, item: KeyMessage) => ({
+        order: item.key,
         message: item.message,
     }), []);
 
     return (
         <div className={_cs(className, styles.keyMessagesContent)}>
             <List
-                data={keyMessages}
+                data={data}
                 renderer={KeyMessageItem}
                 rendererParams={keyMessageRendererParams}
                 keySelector={keyMessageKeySelector}

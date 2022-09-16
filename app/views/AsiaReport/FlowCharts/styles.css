@@ -1,0 +1,32 @@
+.flow-charts {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: center;
+    gap: var(--tui-spacing-large);
+
+    .regional-breakdown-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: var(--tui-width-separator-thin) solid var(--tui-color-separator);
+        padding: var(--tui-spacing-small) 0;
+        gap: var(--tui-spacing-small);
+
+        .tab {
+            padding: var(--tui-spacing-extra-small) var(--tui-spacing-small);
+        }
+    }
+
+    .tab-panel {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        padding: var(--tui-spacing-large) var(--tui-spacing-small);
+
+        .chart {
+            max-width: 30rem;
+            min-height: 40rem;
+        }
+    }
+}

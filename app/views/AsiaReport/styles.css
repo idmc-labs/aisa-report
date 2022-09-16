@@ -9,19 +9,6 @@
     overflow-x: hidden;
     overflow-y: auto;
 
-
-    .caption-container {
-        display: flex;
-        flex-direction: column;
-        /* text-align: center; */
-        color: var(--tui-color-text-label);
-        font-size: var(--tui-font-size-medium);
-
-        .sub-caption {
-            font-size: var(--tui-font-size-small);
-        }
-    }
-
     .nav {
         display: flex;
         position: sticky;
@@ -142,6 +129,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
+        min-height: 94vh;
         background-blend-mode: soft-light;
 
         >* {
@@ -211,16 +199,34 @@
         .image-caption {
             display: flex;
             align-items: flex-end;
+            align-self: flex-end;
             flex-direction: column;
             justify-content: flex-end;
             padding: var(--tui-spacing-large);
             width: 100%;
+            max-width: 30rem;
             text-align: right;
             color: #ffffff;
             font-size: var(--tui-font-size-small);
 
             >* {
                 text-align: right;
+            }
+        }
+
+        &.center {
+            justify-content: center;
+
+            .image-caption {
+                display: flex;
+                align-items: center;
+                align-self: center;
+                padding: var(--tui-spacing-small) var(--tui-spacing-ultra-large);
+                max-width: 70rem;
+                text-align: center;
+                text-shadow: 1px 1px 6px rgba(0, 0, 0, 1);
+                font-size: var(--tui-font-size-large);
+                gap: var(--tui-spacing-large);
             }
         }
     }
@@ -310,12 +316,12 @@
 
             .right-container {
                 display: flex;
-                align-items: center;
                 flex-direction: column;
                 flex-grow: 1;
                 gap: var(--tui-spacing-extra-small);
 
                 .svg {
+                    align-self: center;
                     width: 100%;
                     min-width: 20rem;
                     max-width: 32rem;
@@ -403,10 +409,12 @@
         .way-forward-content {
             .description {
                 display: flex;
+                align-items: center;
                 flex-direction: column;
                 gap: var(--tui-spacing-medium);
 
                 .description-paragraph {
+                    max-width: 60rem;
                     font-size: var(--tui-font-size-medium);
                 }
 
@@ -452,19 +460,19 @@
                     flex-direction: column;
                     background-color: var(--tui-color-background);
 
-                    .download-link {
-                        display: flex;
-                        align-items: center;
-                        color: var(--tui-font-color-text);
-                        font-weight: var(--tui-font-weight-bold);
-                        gap: var(--tui-spacing-extra-small);
-                    }
-
                     .links-container {
                         display: flex;
                         flex-direction: column;
                         padding: var(--tui-spacing-large);
                         gap: var(--tui-spacing-large);
+
+                        .download-link {
+                            display: flex;
+                            align-items: center;
+                            color: var(--tui-font-color-text);
+                            font-weight: var(--tui-font-weight-bold);
+                            gap: var(--tui-spacing-extra-small);
+                        }
                     }
 
                     .select-section-container {
@@ -512,37 +520,6 @@
                     }
                 }
 
-                .regional-breakdown {
-                    display: flex;
-                    flex-direction: column;
-                    flex-grow: 1;
-                    text-align: center;
-                    gap: var(--tui-spacing-large);
-
-                    .regional-breakdown-tabs {
-                        display: flex;
-                        flex-wrap: wrap;
-                        border-bottom: var(--tui-width-separator-thin) solid var(--tui-color-separator);
-                        padding: var(--tui-spacing-small) 0;
-                        gap: var(--tui-spacing-small);
-
-                        .tab {
-                            padding: var(--tui-spacing-extra-small) var(--tui-spacing-small);
-                        }
-                    }
-
-                    .tab-panel {
-                        display: flex;
-                        justify-content: center;
-                        padding: var(--tui-spacing-large) var(--tui-spacing-small);
-
-                        .chart {
-                            max-width: 30rem;
-                            min-height: 40rem;
-                        }
-                    }
-                }
-
                 @media (max-width: 880px) {
                     flex-wrap: wrap;
 
@@ -569,11 +546,6 @@
         }
 
         .footer-content {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: var(--tui-spacing-medium);
-
             .text {
                 color: white;
             }
@@ -583,48 +555,52 @@
                 font-size: var(--tui-font-size-medium);
             }
 
-            .left-container {
+            .logo-container {
                 display: flex;
-                flex-direction: column;
-                flex-grow: 1;
-                gap: var(--tui-spacing-medium);
+                align-items: center;
+                gap: var(--tui-spacing-small);
 
-                .logo-container {
-                    display: flex;
-                    align-items: center;
-                    gap: var(--tui-spacing-small);
-
-                    .logo {
-                        width: auto;
-                        height: 2rem;
-                    }
-
-                    .adb-logo {
-                        height: 3rem;
-                    }
+                .logo {
+                    width: auto;
+                    height: 2rem;
                 }
 
-                .link {
-                    text-decoration: underline;
-                    color: var(--tui-font-color-text);
-                    font-weight: var(--tui-font-weight-heading);
+                .adb-logo {
+                    height: 3rem;
                 }
             }
 
-            .right-container {
+            .bottom-container {
                 display: flex;
-                flex-direction: column;
-                flex-grow: 1;
-                gap: var(--tui-spacing-medium);
 
-                .social-links {
+                .left-container {
                     display: flex;
-                    align-items: center;
-                    font-size: var(--tui-font-size-large);
-                    gap: var(--tui-spacing-extra-small);
+                    flex-direction: column;
+                    flex-grow: 1;
+                    gap: var(--tui-spacing-medium);
 
-                    >* {
-                        color: #ffffff;
+                    .link {
+                        text-decoration: underline;
+                        color: var(--tui-font-color-text);
+                        font-weight: var(--tui-font-weight-heading);
+                    }
+                }
+
+                .right-container {
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    gap: var(--tui-spacing-medium);
+
+                    .social-links {
+                        display: flex;
+                        align-items: center;
+                        font-size: var(--tui-font-size-large);
+                        gap: var(--tui-spacing-extra-small);
+
+                        >* {
+                            color: #ffffff;
+                        }
                     }
                 }
             }

@@ -17,11 +17,7 @@ import { SelectInput } from '@togglecorp/toggle-ui';
 import Button from '#components/Button';
 import Header from '#components/Header';
 import TextOutput from '#components/TextOutput';
-import Tabs from '#components/Tabs';
-import TabPanel from '#components/Tabs/TabPanel';
-import Tab from '#components/Tabs/Tab';
 import ButtonLikeLink from '#components/ButtonLikeLink';
-import Svg from '#components/Svg';
 import Carousel from '#components/Carousel';
 import CarouselItem from '#components/Carousel/CarouselItem';
 import CarouselButton from '#components/Carousel/CarouselButton';
@@ -35,13 +31,6 @@ import pieCwa from '#resources/img/pie_cwa.png';
 import pieSa from '#resources/img/pie_sa.png';
 import pieSea from '#resources/img/pie_sea.png';
 import pieTp from '#resources/img/pie_tp.png';
-
-import chartAllRegions from '#resources/img/all_chart.svg';
-import chartEa from '#resources/img/ea_chart.svg';
-import chartCwa from '#resources/img/cwa_chart.svg';
-import chartSa from '#resources/img/sa_chart.svg';
-import chartSea from '#resources/img/sea_chart.svg';
-import chartTp from '#resources/img/tp_chart.svg';
 
 import china from '#resources/img/china.jpg';
 import indonesia from '#resources/img/indonesia.jpg';
@@ -60,9 +49,7 @@ import { regionCountriesLabel } from '#utils/common';
 import {
     heroParagraph1,
     heroParagraph2,
-    heroParagraph3,
     pieChartCaption,
-    pieChartCaptionSource,
     costOfDisasterParagraph1,
     costOfDisasterParagraph2,
     wayForwardParagraph1,
@@ -70,8 +57,9 @@ import {
     contactParagraph,
     copyrightParagraph,
     tentCaption,
-    videoCaption,
     tentSubCaption,
+    mainQuote,
+    mainQuoter,
     vietnamCaption,
     vietnamSubCaption,
     chinaCaption,
@@ -80,42 +68,125 @@ import {
     pakistanSubCaption,
     japanCaption,
     japanSubCaption,
-    regionalBreakdownCaption,
     regionalBreakdownDescription1,
     regionalBreakdownDescription2,
     regionalBreakdownDescription3,
     regionalBreakdownDescription4,
     papuaSpotlightTitle,
     reportLink,
+    idmcAddress,
 } from './data';
 import CostOfDisasterImage from './CostOfDisasterImage';
-
 import DisasterDashboard from './DisasterDashboard';
 import KeyMessagesContent from './KeyMessagesContent';
-import KeyFindingsContent from './KeyFindingsContent';
 import WayForwardContent from './WayForwardContent';
+import InfographicCaption from './InfographicCaption';
+import FlowCharts from './FlowCharts';
 
 import styles from './styles.css';
 
 const sectionOptions = [
     {
-        key: 'Foreward',
-        label: 'Foreward',
+        key: 'foreward',
+        label: 'Foreword',
         startPage: '7',
     },
     {
-        key: 'key-messages',
         label: 'Key Messages and Findings',
+        key: 'Key Messages and Findings',
         startPage: '8',
     },
     {
-        key: 'introduction',
         label: 'Introduction',
+        key: 'Introduction',
         startPage: '9',
+    },
+    {
+        label: 'Definitions, Methodological Considerations, and Caveats',
+        key: 'Definitions, Methodological Considerations, and Caveats',
+        startPage: '9',
+    },
+    {
+        label: 'Part 1: Internal Displacement Trends in Asia and the Pacific (2010−2021)',
+        key: 'Part 1: Internal Displacement Trends in Asia and the Pacific (2010−2021)',
+        startPage: '10',
+    },
+    {
+        label: 'Part 2: Measuring the Social and Economic Impacts of Disaster Displacement in Asia and the Pacific',
+        key: 'Part 2: Measuring the Social and Economic Impacts of Disaster Displacement in Asia and the Pacific',
+        startPage: '28',
+    },
+    {
+        label: 'Part 3: Understanding Displacement in Disaster Prevention, Response, and Recovery',
+        key: 'Part 3: Understanding Displacement in Disaster Prevention, Response, and Recovery',
+        startPage: '37',
+    },
+    {
+        label: 'Part 4: Addressing Disaster Displacement: Progress in Policy and the Way Forward',
+        key: 'Part 4: Addressing Disaster Displacement: Progress in Policy and the Way Forward',
+        startPage: '45',
+    },
+    {
+        label: 'Conclusion',
+        key: 'Conclusion',
+        startPage: '52',
+    },
+    {
+        label: 'Appendix',
+        key: 'Appendix',
+        startPage: '53',
     },
 ];
 
-type ChartSelections = 'all' | 'ea' | 'sea' | 'cwa' | 'tp' | 'sa';
+const keyFindings = [
+    {
+        key: '1',
+        message: 'There were over 225 million internal displacements—or movements—in Asia and the Pacific during 2010−2021, which was over three-quarters of the global total for this period.',
+    },
+    {
+        key: '2',
+        message: 'East Asia and Southeast Asia had the highest number of disaster displacements—nearly two-thirds of the total— closely followed by South Asia. All three subregions are densely populated and highly exposed to various hazards. Pacific island states bear the greatest displacement risk relative to their population size.',
+    },
+    {
+        key: '3',
+        message: 'Weather-related hazards—such as monsoon rains and tropical storms—were responsible for 95% of all disaster displacements across the region during 2010−2021.',
+    },
+    {
+        key: '4',
+        message: 'Financial costs and losses weigh disproportionately on those with limited resources. Each time a person is displaced, costs arise. Economic impacts add up when displaced people are uprooted for months, years, or even decades.',
+    },
+    {
+        key: '5',
+        message: 'Investment in sustainable development and taking early action to address internal displacement will be more effective and less costly than relying on humanitarian aid in the long term. Robust data on the scale, duration, and severity of disaster displacement —as well as its impacts on people and economies—will help guide actions to mitigate the negative consequences and seize potential opportunities for risk reduction and solutions.',
+    },
+    {
+        key: '6',
+        message: ' There has been significant progress across the region to develop disaster displacement policies and translate words into action. Much still remains to be done to effectively mitigate the impact of disaster displacement on individuals, societies, and economies.',
+    },
+];
+
+const keyMessages = [
+    {
+        key: '1',
+        message: 'Asia and the Pacific is the region most affected by disaster displacement worldwide. ',
+    },
+    {
+        key: '2',
+        message: 'The cost of disasters in the region is estimated to be several hundred billions of dollars each year. This does not include the economic impact of displacement itself.',
+    },
+    {
+        key: '3',
+        message: 'Climate change—combined with the rapid urbanization of the region and other factors—may significantly heighten future displacement risk and related costs.',
+    },
+    {
+        key: '4',
+        message: 'Investment in the prevention of disaster displacement is displacement worldwide. the only sustainable course of action for the socioeconomic development of the region.',
+    },
+    {
+        key: '5',
+        message: 'The region already has successful initiatives to prevent, monitor, respond to, and end disaster displacement that can inform future action.',
+    },
+];
 
 const sectionKeySelector = (section: { key: string }) => section.key;
 const sectionLabelSelector = (section: { label: string }) => section.label;
@@ -130,7 +201,6 @@ function AsiaReport(props: Props) {
     } = props;
 
     const [selectedSection, setSelectedSection] = useState<string | undefined>(undefined);
-    const [selectedChart, setSelectedChart] = useState<ChartSelections>('all');
     const [isNavShown, , , , toggleNavVisibility] = useBooleanState(false);
 
     const pageSuffix = useMemo(() => {
@@ -233,12 +303,12 @@ function AsiaReport(props: Props) {
                         Explore the data
                     </Button>
                     <Button
-                        name="cost-of-displacement"
+                        name="social-and-economic-impacts"
                         onClick={handleNavClick}
                         className={styles.navItem}
                         variant="transparent"
                     >
-                        Cost of Displacement
+                        Social and economic impacts
                     </Button>
                     <Button
                         name="way-forward"
@@ -283,9 +353,6 @@ function AsiaReport(props: Props) {
                         <p className={styles.descriptionParagraph}>
                             {heroParagraph2}
                         </p>
-                        <p className={styles.descriptionParagraph}>
-                            {heroParagraph3}
-                        </p>
                     </div>
                     <footer className={styles.heroFooter}>
                         <img
@@ -301,14 +368,17 @@ function AsiaReport(props: Props) {
                     </footer>
                 </div>
             </section>
-            <div className={styles.dividerImage}>
+            <div className={_cs(styles.dividerImage, styles.center)}>
                 <img
                     src={indonesia}
                     className={styles.background}
                     alt=""
                 />
                 <div className={styles.imageCaption}>
-                    Caption of Image
+                    {mainQuote}
+                    <div>
+                        {mainQuoter}
+                    </div>
                 </div>
             </div>
             <section
@@ -325,9 +395,10 @@ function AsiaReport(props: Props) {
                         title="glance-video"
                         src="https://www.youtube.com/embed/AvJKuUM3vjk"
                     />
-                    <div className={styles.captionContainer}>
-                        <i>{videoCaption}</i>
-                    </div>
+                    <Header
+                        heading="Disaster Displacements in the Asia and Pacific Region (2010−2021)"
+                        headingSize="large"
+                    />
                     <img
                         alt="bubbles"
                         src={bubbles}
@@ -365,12 +436,11 @@ function AsiaReport(props: Props) {
                             title={regionCountriesLabel.tp}
                         />
                     </div>
-                    <div className={styles.captionContainer}>
-                        <i>{pieChartCaption}</i>
-                        <i className={styles.subCaption}>
-                            {pieChartCaptionSource}
-                        </i>
-                    </div>
+                    <InfographicCaption
+                        caption={pieChartCaption}
+                        downloadLink="https://www.internal-displacement.org/sites/default/files/220919_IDMC_AsiaReport_InternalDisplacementsbyDisasters.jpg"
+                        informationShown
+                    />
                 </div>
             </section>
             <div className={styles.dividerImage}>
@@ -381,7 +451,7 @@ function AsiaReport(props: Props) {
                 />
                 <div className={styles.imageCaption}>
                     {tentCaption}
-                    <div className={styles.subCaption}>
+                    <div>
                         {tentSubCaption}
                     </div>
                 </div>
@@ -395,7 +465,9 @@ function AsiaReport(props: Props) {
                         heading="Key Messages"
                         headingSize="large"
                     />
-                    <KeyMessagesContent />
+                    <KeyMessagesContent
+                        data={keyMessages}
+                    />
                 </div>
             </section>
             <section className={_cs(styles.keyFindings, styles.section)}>
@@ -404,7 +476,9 @@ function AsiaReport(props: Props) {
                         heading="Key Findings"
                         headingSize="large"
                     />
-                    <KeyFindingsContent />
+                    <KeyMessagesContent
+                        data={keyFindings}
+                    />
                 </div>
             </section>
             <div className={styles.dividerImage}>
@@ -415,7 +489,7 @@ function AsiaReport(props: Props) {
                 />
                 <div className={styles.imageCaption}>
                     {pakistanCaption}
-                    <div className={styles.subCaption}>
+                    <div>
                         {pakistanSubCaption}
                     </div>
                 </div>
@@ -449,109 +523,7 @@ function AsiaReport(props: Props) {
                                 {regionalBreakdownDescription4}
                             </p>
                         </div>
-                        <Tabs
-                            value={selectedChart}
-                            onChange={setSelectedChart}
-                            variant="secondary"
-                        >
-                            <div className={styles.regionalBreakdown}>
-                                <div className={styles.regionalBreakdownTabs}>
-                                    <Tab
-                                        className={styles.tab}
-                                        name="all"
-                                    >
-                                        All Regions
-                                    </Tab>
-                                    <Tab
-                                        className={styles.tab}
-                                        name="cwa"
-                                    >
-                                        Central and West Asia
-                                    </Tab>
-                                    <Tab
-                                        className={styles.tab}
-                                        name="ea"
-                                    >
-                                        East Asia
-                                    </Tab>
-                                    <Tab
-                                        className={styles.tab}
-                                        name="sea"
-                                    >
-                                        Southeast Asia
-                                    </Tab>
-                                    <Tab
-                                        className={styles.tab}
-                                        name="sa"
-                                    >
-                                        South Asia
-                                    </Tab>
-                                    <Tab
-                                        className={styles.tab}
-                                        name="tp"
-                                    >
-                                        The Pacific
-                                    </Tab>
-                                </div>
-                                <TabPanel
-                                    className={styles.tabPanel}
-                                    name="all"
-                                >
-                                    <Svg
-                                        className={styles.chart}
-                                        src={chartAllRegions}
-                                    />
-                                </TabPanel>
-                                <TabPanel
-                                    className={styles.tabPanel}
-                                    name="ea"
-                                >
-                                    <Svg
-                                        className={styles.chart}
-                                        src={chartEa}
-                                    />
-                                </TabPanel>
-                                <TabPanel
-                                    className={styles.tabPanel}
-                                    name="sea"
-                                >
-                                    <Svg
-                                        className={styles.chart}
-                                        src={chartSea}
-                                    />
-                                </TabPanel>
-                                <TabPanel
-                                    className={styles.tabPanel}
-                                    name="cwa"
-                                >
-                                    <Svg
-                                        className={styles.chart}
-                                        src={chartCwa}
-                                    />
-                                </TabPanel>
-                                <TabPanel
-                                    className={styles.tabPanel}
-                                    name="sa"
-                                >
-                                    <Svg
-                                        className={styles.chart}
-                                        src={chartSa}
-                                    />
-                                </TabPanel>
-                                <TabPanel
-                                    className={styles.tabPanel}
-                                    name="tp"
-                                >
-                                    <Svg
-                                        className={styles.chart}
-                                        src={chartTp}
-                                    />
-                                </TabPanel>
-                                <i>
-                                    {regionalBreakdownCaption}
-                                </i>
-                            </div>
-                        </Tabs>
+                        <FlowCharts />
                     </div>
                 </div>
             </section>
@@ -563,18 +535,18 @@ function AsiaReport(props: Props) {
                 />
                 <div className={styles.imageCaption}>
                     {japanCaption}
-                    <div className={styles.subCaption}>
+                    <div>
                         {japanSubCaption}
                     </div>
                 </div>
             </div>
             <section
                 className={_cs(styles.costOfDisaster, styles.section)}
-                id="cost-of-displacement"
+                id="social-and-economic-impacts"
             >
                 <div className={_cs(styles.sectionContent)}>
                     <Header
-                        heading="Cost of Disaster Displacement"
+                        heading="Social and economic impacts"
                         headingSize="large"
                     />
                     <div className={styles.topContainer}>
@@ -590,9 +562,10 @@ function AsiaReport(props: Props) {
                             <CostOfDisasterImage
                                 className={styles.svg}
                             />
-                            <i>
-                                Figure: Internal displacement’s impacts
-                            </i>
+                            <InfographicCaption
+                                caption="Internal displacement’s impacts"
+                                informationShown
+                            />
                         </div>
                     </div>
                     <Carousel
@@ -704,7 +677,7 @@ function AsiaReport(props: Props) {
                 />
                 <div className={styles.imageCaption}>
                     {vietnamCaption}
-                    <div className={styles.subCaption}>
+                    <div>
                         {vietnamSubCaption}
                     </div>
                 </div>
@@ -737,7 +710,7 @@ function AsiaReport(props: Props) {
                 />
                 <div className={styles.imageCaption}>
                     {chinaCaption}
-                    <div className={styles.subCaption}>
+                    <div>
                         {chinaSubCaption}
                     </div>
                 </div>
@@ -807,94 +780,96 @@ function AsiaReport(props: Props) {
             </section>
             <section className={_cs(styles.footer, styles.section)}>
                 <div className={_cs(styles.footerContent, styles.sectionContent)}>
-                    <div className={styles.leftContainer}>
-                        <div className={styles.logoContainer}>
-                            <img
-                                className={styles.logo}
-                                src={idmcLogo}
-                                alt=""
-                            />
-                            <img
-                                className={styles.adbLogo}
-                                src={adbLogo}
-                                alt=""
-                            />
-                        </div>
-                        <Header
-                            heading="Contact"
-                            headingClassName={styles.text}
-                            headingDescription="Internal Displacement Monitoring Center (IDMC)"
+                    <div className={styles.logoContainer}>
+                        <img
+                            className={styles.logo}
+                            src={idmcLogo}
+                            alt=""
                         />
-                        <div>
-                            <p className={styles.paragraph}>
-                                Humanitarian Hub Office, La Voie Creuse 16, 1202 Geneva, Switzerland
-                            </p>
-                            <TextOutput
-                                labelContainerClassName={styles.text}
-                                label="General Inquiries"
-                                value={(
-                                    <a
-                                        className={styles.link}
-                                        href="mailto:info@idmc.ch"
-                                    >
-                                        info@idmc.ch
-                                    </a>
-                                )}
-                            />
-                            <TextOutput
-                                labelContainerClassName={styles.text}
-                                label="Media Inquiries"
-                                value={(
-                                    <a
-                                        className={styles.link}
-                                        href="mailto:media@idmc.ch"
-                                    >
-                                        media@idmc.ch
-                                    </a>
-                                )}
-                            />
-                        </div>
-                        <p className={styles.paragraph}>
-                            {copyrightParagraph}
-                        </p>
+                        <img
+                            className={styles.adbLogo}
+                            src={adbLogo}
+                            alt=""
+                        />
                     </div>
-                    <div className={styles.rightContainer}>
-                        <Header
-                            headingClassName={styles.text}
-                            heading="About us"
-                        />
-                        <p className={styles.paragraph}>
-                            {contactParagraph}
-                        </p>
-                        <div className={styles.socialLinks}>
-                            <a
-                                href="https://www.facebook.com/IDMC.Geneva"
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                <IoLogoFacebook />
-                            </a>
-                            <a
-                                href="https://twitter.com/IDMC_Geneva"
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                <IoLogoTwitter />
-                            </a>
-                            <a
-                                href="https://www.linkedin.com/company/internal-displacement-monitoring-centre-idmc-"
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                <IoLogoLinkedin />
-                            </a>
-                            <a
-                                href="https://www.youtube.com/channel/UCKEgRCcKKPNezkF3FLlfBRQ"
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                <IoLogoYoutube />
-                            </a>
+                    <div className={styles.bottomContainer}>
+                        <div className={styles.leftContainer}>
+                            <Header
+                                heading="Contact"
+                                headingClassName={styles.text}
+                                headingDescription="Internal Displacement Monitoring Center (IDMC)"
+                            />
+                            <div>
+                                <p className={styles.paragraph}>
+                                    {idmcAddress}
+                                </p>
+                                <TextOutput
+                                    labelContainerClassName={styles.text}
+                                    label="General Inquiries"
+                                    value={(
+                                        <a
+                                            className={styles.link}
+                                            href="mailto:info@idmc.ch"
+                                        >
+                                            info@idmc.ch
+                                        </a>
+                                    )}
+                                />
+                                <TextOutput
+                                    labelContainerClassName={styles.text}
+                                    label="Media Inquiries"
+                                    value={(
+                                        <a
+                                            className={styles.link}
+                                            href="mailto:media@idmc.ch"
+                                        >
+                                            media@idmc.ch
+                                        </a>
+                                    )}
+                                />
+                            </div>
+                            <p className={styles.paragraph}>
+                                {copyrightParagraph}
+                            </p>
+                        </div>
+                        <div className={styles.rightContainer}>
+                            <Header
+                                headingClassName={styles.text}
+                                heading="About us"
+                            />
+                            <p className={styles.paragraph}>
+                                {contactParagraph}
+                            </p>
+                            <div className={styles.socialLinks}>
+                                <a
+                                    href="https://www.facebook.com/IDMC.Geneva"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    <IoLogoFacebook />
+                                </a>
+                                <a
+                                    href="https://twitter.com/IDMC_Geneva"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    <IoLogoTwitter />
+                                </a>
+                                <a
+                                    href="https://www.linkedin.com/company/internal-displacement-monitoring-centre-idmc-"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    <IoLogoLinkedin />
+                                </a>
+                                <a
+                                    href="https://www.youtube.com/channel/UCKEgRCcKKPNezkF3FLlfBRQ"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    <IoLogoYoutube />
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

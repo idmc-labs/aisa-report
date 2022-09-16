@@ -5,6 +5,7 @@ import {
 import {
     _cs,
     compareNumber,
+    compareString,
     unique,
 } from '@togglecorp/fujs';
 import {
@@ -192,6 +193,11 @@ function CountryProfile(props: Props) {
         },
     );
 
+    const categories = useMemo(() => (
+        [...(disasterCategoryOptions?.disasterStatistics.categories ?? [])]
+            .sort((a, b) => compareString(a.label, b.label))
+    ), [disasterCategoryOptions?.disasterStatistics.categories]);
+
     const {
         previousData: previousDisasterData,
         data: disasterData = previousDisasterData,
@@ -302,7 +308,7 @@ function CountryProfile(props: Props) {
 
     const pieChartData = useMemo(() => (
         [...(disasterData?.disasterStatistics.categories ?? [])]?.sort(
-            (a, b) => compareNumber(a.total, b.total, -1),
+            (a, b) => compareNumber(a.total, b.total),
         )
     ), [
         disasterData?.disasterStatistics.categories,
@@ -392,7 +398,7 @@ function CountryProfile(props: Props) {
                                 placeholder="Disaster Category"
                                 name="disasterCategory"
                                 value={disasterCategories}
-                                options={disasterCategoryOptions?.disasterStatistics.categories}
+                                options={categories}
                                 keySelector={disasterCategoryKeySelector}
                                 labelSelector={disasterCategoryKeySelector}
                                 onChange={setDisasterCategories}

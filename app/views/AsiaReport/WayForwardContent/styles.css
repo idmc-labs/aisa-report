@@ -24,11 +24,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        font-family: var(--tui-font-family-heading);
+        font-size: var(--tui-font-size-extra-large);
+        /*
         border-radius: 50%;
         background-color: var(--tui-color-brand);
         width: 2.5rem;
         height: 2.5rem;
         color: #ffffff;
+        */
     }
 
     .description {

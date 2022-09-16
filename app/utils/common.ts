@@ -212,7 +212,7 @@ export const countries = [
     { iso3: 'KIR', name: 'Kiribati' },
     { iso3: 'KGZ', name: 'Kyrgyz Republic' },
     { iso3: 'LAO', name: 'Lao People\'s Democratic Republic' },
-    { iso3: 'MAC', name: 'Macao, China' },
+    { iso3: 'MAC', name: 'Macau, China' },
     { iso3: 'MYS', name: 'Malaysia' },
     { iso3: 'MDV', name: 'Maldives' },
     { iso3: 'MHL', name: 'Marshall Islands' },
