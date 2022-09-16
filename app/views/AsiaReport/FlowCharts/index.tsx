@@ -194,7 +194,7 @@ function FlowCharts(props: Props) {
         return () => {
             clearTimeout(timeout);
         };
-    }, []);
+    }, [selectedChart]);
 
     return (
         <Tabs

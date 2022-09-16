@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useMemo } from 'react';
 import { _cs } from '@togglecorp/fujs';
+import ImageZoom from 'react-image-zooom';
 import {
     MdPictureAsPdf,
     MdArrowRightAlt,
@@ -399,7 +400,7 @@ function AsiaReport(props: Props) {
                         heading="Disaster Displacements in the Asia and Pacific Region (2010−2021)"
                         headingSize="large"
                     />
-                    <img
+                    <ImageZoom
                         alt="bubbles"
                         src={bubbles}
                         className={styles.bubblesChart}

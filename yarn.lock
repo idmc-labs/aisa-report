@@ -11218,6 +11218,11 @@ react-icons@^4.2.0, react-icons@^4.3.1:
   resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.3.1.tgz"
   integrity sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ==
 
+react-image-zooom@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-image-zooom/-/react-image-zooom-1.0.4.tgz#710ab9c8e853f92d06d9d1f4aa0875d47165db09"
+  integrity sha512-Mqi++XgazQ1aG9P2rDprKTUQr/h/VNMrbNGIWtxfgi2dCI2oqI/Gx/9MP5nLyrWityzbGccxWZpuCj1DxAUo/Q==
+
 react-is@^16.10.2, react-is@^16.13.1, react-is@^16.6.0, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
