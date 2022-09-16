@@ -228,6 +228,18 @@
                 font-size: var(--tui-font-size-large);
                 gap: var(--tui-spacing-large);
             }
+
+            @media (max-width: 720px) {
+                .image-caption {
+                    font-size: var(--tui-font-size-medium);
+                }
+            }
+
+            @media (max-width: 420px) {
+                .image-caption {
+                    font-size: var(--tui-font-size-small);
+                }
+            }
         }
     }
 
@@ -551,6 +563,7 @@
             }
 
             .paragraph {
+                margin: 0;
                 max-width: 30rem;
                 font-size: var(--tui-font-size-medium);
             }
@@ -572,6 +585,8 @@
 
             .bottom-container {
                 display: flex;
+                flex-wrap: wrap;
+                gap: var(--tui-spacing-medium);
 
                 .left-container {
                     display: flex;

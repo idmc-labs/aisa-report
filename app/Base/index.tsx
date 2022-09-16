@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 // import { Router } from 'react-router-dom';
 import { init, ErrorBoundary } from '@sentry/react';
 import { ApolloClient, ApolloProvider } from '@apollo/client';
@@ -10,9 +10,6 @@ import '@togglecorp/toggle-ui/build/index.css';
 
 import { setMapboxToken } from '@togglecorp/re-map';
 
-import {
-    getAsiaReportLink,
-} from '#utils/common';
 import AsiaReport from '#views/AsiaReport';
 
 import PreloadMessage from '#base/components/PreloadMessage';
@@ -50,40 +47,7 @@ export function parseQueryString(value: string) {
     );
 }
 
-interface Win {
-    standaloneMode?: boolean;
-
-    page?: string;
-}
-
-const standaloneMode = (window as Win).standaloneMode ?? false;
-
-const query: Win = parseQueryString(window.location.search);
-
-const currentPage = (window as Win).page || query.page;
-
 function Base() {
-    const page = useMemo(
-        () => {
-            if (currentPage === 'asia-report') {
-                return (
-                    <AsiaReport className={styles.view} />
-                );
-            }
-            if (standaloneMode) {
-                return (
-                    <>
-                        <a href={getAsiaReportLink()}>
-                            Asia Report
-                        </a>
-                    </>
-                );
-            }
-            return null;
-        },
-        [],
-    );
-
     return (
         <div className={styles.base}>
             <ErrorBoundary
@@ -96,7 +60,7 @@ function Base() {
                 )}
             >
                 <ApolloProvider client={apolloClient}>
-                    {page}
+                    <AsiaReport className={styles.view} />
                 </ApolloProvider>
             </ErrorBoundary>
         </div>
