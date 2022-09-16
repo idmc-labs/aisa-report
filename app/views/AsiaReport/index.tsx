@@ -43,7 +43,7 @@ import indonesia2 from '#resources/img/indonesia2.jpg';
 import papua from '#resources/img/papua.jpg';
 import vanautu from '#resources/img/vanautu.jpg';
 import vietnam from '#resources/img/vietnam.jpg';
-import bookCover from '#resources/img/book-cover.jpg';
+import bookCover from '#resources/img/book-cover.png';
 
 import { regionCountriesLabel } from '#utils/common';
 
@@ -76,10 +76,14 @@ import {
     papuaSpotlightTitle,
     reportLink,
     idmcAddress,
+    wayForwardListItem1,
+    wayForwardListItem2,
+    wayForwardListItem3,
+    wayForwardListItem4,
+    wayForwardListItem5,
 } from './data';
 import CostOfDisasterImage from './CostOfDisasterImage';
 import DisasterDashboard from './DisasterDashboard';
-import KeyMessagesContent from './KeyMessagesContent';
 import WayForwardContent from './WayForwardContent';
 import InfographicCaption from './InfographicCaption';
 import FlowCharts from './FlowCharts';
@@ -142,50 +146,73 @@ const sectionOptions = [
 const keyFindings = [
     {
         key: '1',
-        message: 'There were over 225 million internal displacements—or movements—in Asia and the Pacific during 2010−2021, which was over three-quarters of the global total for this period.',
+        description: 'There were over 225 million internal displacements—or movements—in Asia and the Pacific during 2010−2021, which was over three-quarters of the global total for this period.',
     },
     {
         key: '2',
-        message: 'East Asia and Southeast Asia had the highest number of disaster displacements—nearly two-thirds of the total— closely followed by South Asia. All three subregions are densely populated and highly exposed to various hazards. Pacific island states bear the greatest displacement risk relative to their population size.',
+        description: 'East Asia and Southeast Asia had the highest number of disaster displacements—nearly two-thirds of the total— closely followed by South Asia. All three subregions are densely populated and highly exposed to various hazards. Pacific island states bear the greatest displacement risk relative to their population size.',
     },
     {
         key: '3',
-        message: 'Weather-related hazards—such as monsoon rains and tropical storms—were responsible for 95% of all disaster displacements across the region during 2010−2021.',
+        description: 'Weather-related hazards—such as monsoon rains and tropical storms—were responsible for 95% of all disaster displacements across the region during 2010−2021.',
     },
     {
         key: '4',
-        message: 'Financial costs and losses weigh disproportionately on those with limited resources. Each time a person is displaced, costs arise. Economic impacts add up when displaced people are uprooted for months, years, or even decades.',
+        description: 'Financial costs and losses weigh disproportionately on those with limited resources. Each time a person is displaced, costs arise. Economic impacts add up when displaced people are uprooted for months, years, or even decades.',
     },
     {
         key: '5',
-        message: 'Investment in sustainable development and taking early action to address internal displacement will be more effective and less costly than relying on humanitarian aid in the long term. Robust data on the scale, duration, and severity of disaster displacement —as well as its impacts on people and economies—will help guide actions to mitigate the negative consequences and seize potential opportunities for risk reduction and solutions.',
+        description: 'Investment in sustainable development and taking early action to address internal displacement will be more effective and less costly than relying on humanitarian aid in the long term. Robust data on the scale, duration, and severity of disaster displacement —as well as its impacts on people and economies—will help guide actions to mitigate the negative consequences and seize potential opportunities for risk reduction and solutions.',
     },
     {
         key: '6',
-        message: ' There has been significant progress across the region to develop disaster displacement policies and translate words into action. Much still remains to be done to effectively mitigate the impact of disaster displacement on individuals, societies, and economies.',
+        description: ' There has been significant progress across the region to develop disaster displacement policies and translate words into action. Much still remains to be done to effectively mitigate the impact of disaster displacement on individuals, societies, and economies.',
     },
 ];
 
 const keyMessages = [
     {
         key: '1',
-        message: 'Asia and the Pacific is the region most affected by disaster displacement worldwide. ',
+        description: 'Asia and the Pacific is the region most affected by disaster displacement worldwide. ',
     },
     {
         key: '2',
-        message: 'The cost of disasters in the region is estimated to be several hundred billions of dollars each year. This does not include the economic impact of displacement itself.',
+        description: 'The cost of disasters in the region is estimated to be several hundred billions of dollars each year. This does not include the economic impact of displacement itself.',
     },
     {
         key: '3',
-        message: 'Climate change—combined with the rapid urbanization of the region and other factors—may significantly heighten future displacement risk and related costs.',
+        description: 'Climate change—combined with the rapid urbanization of the region and other factors—may significantly heighten future displacement risk and related costs.',
     },
     {
         key: '4',
-        message: 'Investment in the prevention of disaster displacement is displacement worldwide. the only sustainable course of action for the socioeconomic development of the region.',
+        description: 'Investment in the prevention of disaster displacement is displacement worldwide. the only sustainable course of action for the socioeconomic development of the region.',
     },
     {
         key: '5',
-        message: 'The region already has successful initiatives to prevent, monitor, respond to, and end disaster displacement that can inform future action.',
+        description: 'The region already has successful initiatives to prevent, monitor, respond to, and end disaster displacement that can inform future action.',
+    },
+];
+
+const wayForward = [
+    {
+        key: '1',
+        description: wayForwardListItem1,
+    },
+    {
+        key: '2',
+        description: wayForwardListItem2,
+    },
+    {
+        key: '3',
+        description: wayForwardListItem3,
+    },
+    {
+        key: '4',
+        description: wayForwardListItem4,
+    },
+    {
+        key: '5',
+        description: wayForwardListItem5,
     },
 ];
 
@@ -466,7 +493,7 @@ function AsiaReport(props: Props) {
                         heading="Key Messages"
                         headingSize="large"
                     />
-                    <KeyMessagesContent
+                    <WayForwardContent
                         data={keyMessages}
                     />
                 </div>
@@ -477,7 +504,7 @@ function AsiaReport(props: Props) {
                         heading="Key Findings"
                         headingSize="large"
                     />
-                    <KeyMessagesContent
+                    <WayForwardContent
                         data={keyFindings}
                     />
                 </div>
@@ -564,7 +591,7 @@ function AsiaReport(props: Props) {
                                 className={styles.svg}
                             />
                             <InfographicCaption
-                                caption="Internal displacement’s impacts"
+                                caption="Impacts of internal displacement"
                                 informationShown
                             />
                         </div>
@@ -696,7 +723,10 @@ function AsiaReport(props: Props) {
                         <p className={styles.descriptionParagraph}>
                             {wayForwardParagraph1}
                         </p>
-                        <WayForwardContent className={styles.listContainer} />
+                        <WayForwardContent
+                            className={styles.listContainer}
+                            data={wayForward}
+                        />
                         <p className={styles.descriptionParagraph}>
                             {wayForwardParagraph2}
                         </p>
@@ -747,7 +777,9 @@ function AsiaReport(props: Props) {
                                 </a>
                             </div>
                             <div className={styles.selectSectionContainer}>
-                                Or select a section
+                                <div className={styles.separator}>
+                                    Or, select a section
+                                </div>
                                 <SelectInput
                                     className={styles.selectInput}
                                     inputSectionClassName={styles.inputSection}

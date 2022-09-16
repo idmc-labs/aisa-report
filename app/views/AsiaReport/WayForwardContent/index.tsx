@@ -2,24 +2,27 @@ import React, { useCallback, useRef, useEffect } from 'react';
 import { _cs } from '@togglecorp/fujs';
 
 import useBooleanState from '#hooks/useBooleanState';
+import { List } from '@togglecorp/toggle-ui';
 
 import {
-    wayForwardListItem1,
-    wayForwardListItem2,
-    wayForwardListItem3,
-    wayForwardListItem4,
-    wayForwardListItem5,
 } from '../data';
 
 import styles from './styles.css';
 
-interface WayForwardListItemProps {
-    className?: string;
-    order: string;
-    description: string;
+interface Description {
+    key: string;
+    description: React.ReactNode;
 }
 
-function WayForwardListItem(props: WayForwardListItemProps) {
+const itemKeySelector = (item: Description) => item.key;
+
+interface ItemProps {
+    className?: string;
+    order: string;
+    description: React.ReactNode;
+}
+
+function Item(props: ItemProps) {
     const {
         className,
         order,
@@ -27,7 +30,11 @@ function WayForwardListItem(props: WayForwardListItemProps) {
     } = props;
 
     const itemRef = useRef<HTMLDivElement>(null);
-    const [isAnimationShown, addAnimation, removeAnimation] = useBooleanState(false);
+    const [
+        isAnimationShown,
+        addAnimation,
+        removeAnimation,
+    ] = useBooleanState(false);
 
     const handleScroll = useCallback(() => {
         if (!itemRef.current) {
@@ -76,39 +83,28 @@ function WayForwardListItem(props: WayForwardListItemProps) {
 
 interface Props {
     className?: string;
+    data: Description[];
 }
 
 function WayForwardContent(props: Props) {
     const {
         className,
+        data,
     } = props;
 
+    const itemRendererParams = useCallback((_, item: Description) => ({
+        order: item.key,
+        description: item.description,
+        className: styles.item,
+    }), []);
+
     return (
-        <div className={_cs(styles.wayForwardContentList, className)}>
-            <WayForwardListItem
-                order="1"
-                description={wayForwardListItem1}
-                className={styles.item}
-            />
-            <WayForwardListItem
-                order="2"
-                description={wayForwardListItem2}
-                className={styles.item}
-            />
-            <WayForwardListItem
-                order="3"
-                description={wayForwardListItem3}
-                className={styles.item}
-            />
-            <WayForwardListItem
-                order="4"
-                description={wayForwardListItem4}
-                className={styles.item}
-            />
-            <WayForwardListItem
-                order="5"
-                description={wayForwardListItem5}
-                className={styles.item}
+        <div className={_cs(className, styles.wayForwardContent)}>
+            <List
+                data={data}
+                renderer={Item}
+                rendererParams={itemRendererParams}
+                keySelector={itemKeySelector}
             />
         </div>
     );

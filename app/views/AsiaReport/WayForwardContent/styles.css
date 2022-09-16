@@ -1,6 +1,9 @@
-.way-forward-content-list {
+.way-forward-content {
+    display: flex;
     align-items: center;
+    flex-direction: column;
     overflow-y: hidden;
+    gap: var(--tui-spacing-large);
 
     .item {
         width: auto;
@@ -11,7 +14,6 @@
 .way-forward-list-item {
     display: flex;
     align-items: center;
-    flex-direction: column;
     transform: translateY(100%);
     transition: 500ms transform ease-in-out, 1000ms opacity ease-in-out;
     opacity: 0;
