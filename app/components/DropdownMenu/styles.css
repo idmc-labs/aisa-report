@@ -1,8 +1,0 @@
-.popup {
-    padding: calc(var(--tui-spacing-medium) - var(--tui-spacing-small)) 0;
-    min-width: 10rem;
-}
-
-.hidden {
-    display: none;
-}
