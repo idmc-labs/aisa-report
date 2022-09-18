@@ -421,7 +421,7 @@ function AsiaReport(props: Props) {
                     <iframe
                         className={styles.videoIframe}
                         title="glance-video"
-                        src="https://www.youtube.com/embed/AvJKuUM3vjk"
+                        src="https://www.youtube.com/embed/WcNAba580Vs"
                     />
                     <Header
                         heading="Disaster Displacements in the Asia and Pacific Region (2010−2021)"
