@@ -13,7 +13,6 @@ import { setMapboxToken } from '@togglecorp/re-map';
 import AsiaReport from '#views/AsiaReport';
 
 import PreloadMessage from '#base/components/PreloadMessage';
-import browserHistory from '#base/configs/history';
 import sentryConfig from '#base/configs/sentry';
 import apolloConfig from '#base/configs/apollo';
 import { trackingId, gaConfig } from '#base/configs/googleAnalytics';
@@ -29,11 +28,9 @@ if (sentryConfig) {
 
 if (trackingId) {
     ReactGA.initialize(trackingId, gaConfig);
-    browserHistory.listen((location) => {
-        const page = location.pathname ?? window.location.pathname;
-        ReactGA.set({ page });
-        ReactGA.pageview(page);
-    });
+    const page = window.location.pathname;
+    ReactGA.set({ page });
+    ReactGA.pageview(page);
 }
 
 const apolloClient = new ApolloClient(apolloConfig);
