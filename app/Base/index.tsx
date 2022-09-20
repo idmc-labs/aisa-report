@@ -2,7 +2,7 @@ import React from 'react';
 // import { Router } from 'react-router-dom';
 import { init, ErrorBoundary } from '@sentry/react';
 import { ApolloClient, ApolloProvider } from '@apollo/client';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { listToMap } from '@togglecorp/fujs';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -15,7 +15,7 @@ import AsiaReport from '#views/AsiaReport';
 import PreloadMessage from '#base/components/PreloadMessage';
 import sentryConfig from '#base/configs/sentry';
 import apolloConfig from '#base/configs/apollo';
-import { trackingId, gaConfig } from '#base/configs/googleAnalytics';
+import { trackingId } from '#base/configs/googleAnalytics';
 import { mapboxToken } from '#base/configs/env';
 
 import styles from './styles.css';
@@ -27,10 +27,8 @@ if (sentryConfig) {
 }
 
 if (trackingId) {
-    ReactGA.initialize(trackingId, gaConfig);
-    const page = window.location.pathname;
-    ReactGA.set({ page });
-    ReactGA.pageview(page);
+    ReactGA.initialize(trackingId);
+    ReactGA.send({ hitType: 'pageview', page: window.location.pathname });
 }
 
 const apolloClient = new ApolloClient(apolloConfig);
