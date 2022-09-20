@@ -2,7 +2,7 @@ import React from 'react';
 // import { Router } from 'react-router-dom';
 import { init, ErrorBoundary } from '@sentry/react';
 import { ApolloClient, ApolloProvider } from '@apollo/client';
-import ReactGA from 'react-ga4';
+import ReactGA from 'react-ga';
 import { listToMap } from '@togglecorp/fujs';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -28,7 +28,7 @@ if (sentryConfig) {
 
 if (trackingId) {
     ReactGA.initialize(trackingId);
-    ReactGA.send({ hitType: 'pageview', page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname);
 }
 
 const apolloClient = new ApolloClient(apolloConfig);
