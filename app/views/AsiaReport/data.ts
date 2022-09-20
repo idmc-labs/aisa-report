@@ -25,7 +25,7 @@ export const tentSubCaption = '© UNICEF/UN0186480/Nybo';
 export const vietnamCaption = 'A kid plays on the side of My Khe beach in Quang Ngai Province, Vietnam on October 29, 2020, in the aftermath of Typhoon Molave.';
 export const vietnamSubCaption = '© UNICEF/UN0356644/Pham/AFP-Services';
 
-export const chinaCaption = 'ZHENGZHOU, CHINA - JULY 22: Aerial view of res cue teams evacuating patients and medial workers from flooded Fuwai Central China Cardiovascular Hospital after the torrential rains, on July 22, 2021 in Zhengzhou, Henan Province of China.';
+export const chinaCaption = 'ZHENGZHOU, CHINA - JULY 22: Aerial view of rescue teams evacuating patients and medial workers from flooded Fuwai Central China Cardiovascular Hospital after the torrential rains, on July 22, 2021 in Zhengzhou, Henan Province of China.';
 export const chinaSubCaption = '(Photo by Wang Fuxiao/VCG via Getty Images)';
 
 export const pakistanCaption = 'On flooded roads in Pakistan. In August 2010, floods forced hundreds of thousands of people to leave their homes in one of the worst disasters in Pakistan’s history.';
@@ -44,6 +44,7 @@ export const regionalBreakdownDescription3 = 'Displacement associated with slow-
 export const regionalBreakdownDescription4 = 'However, this is a significant underestimate, given the lack of data on slow-onset hazards.';
 
 export const reportLink = 'https://www.internal-displacement.org/sites/default/files/publications/documents/220919_IDMC_Disaster-Displacement-in-Asia-and-the-Pacific.pdf';
+export const pressReleaseLink = 'https://www.internal-displacement.org/sites/default/files/220919_idmc_asiareport_pressrelease.pdf';
 
 export const videoCaption = 'Disaster Displacements in the Asia and Pacific Region (2010−2021)';
 

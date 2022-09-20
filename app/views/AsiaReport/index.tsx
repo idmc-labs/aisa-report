@@ -75,6 +75,7 @@ import {
     regionalBreakdownDescription4,
     papuaSpotlightTitle,
     reportLink,
+    pressReleaseLink,
     idmcAddress,
     wayForwardListItem1,
     wayForwardListItem2,
@@ -185,11 +186,11 @@ const keyMessages = [
     },
     {
         key: '4',
-        description: 'Investment in the prevention of disaster displacement is displacement worldwide. the only sustainable course of action for the socioeconomic development of the region.',
+        description: 'Investment in the prevention of disaster displacement is the only sustainable course of action for the socioeconomic development of the region.',
     },
     {
         key: '5',
-        description: 'The region already has successful initiatives to prevent, monitor, respond to, and end disaster displacement that can inform future action.',
+        description: 'The region already has successful initiatives to prevent, monitor, respond to and end disaster displacement that can inform future action.',
     },
 ];
 
@@ -806,6 +807,18 @@ function AsiaReport(props: Props) {
                                 >
                                     View Section
                                 </ButtonLikeLink>
+                            </div>
+                            <div className={styles.linksContainer}>
+                                <a
+                                    className={styles.downloadLink}
+                                    href={pressReleaseLink}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    <MdPictureAsPdf />
+                                    Download press release
+                                    <MdArrowRightAlt />
+                                </a>
                             </div>
                         </div>
                     </div>
