@@ -381,6 +381,16 @@ function AsiaReport(props: Props) {
                         </p>
                         <p className={styles.descriptionParagraph}>
                             {heroParagraph2}
+                            <div className={styles.dataReportButton}>
+                                <ButtonLikeLink
+                                    name={undefined}
+                                    href={reportLink}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    Download Report
+                                </ButtonLikeLink>
+                            </div>
                         </p>
                     </div>
                     <footer className={styles.heroFooter}>

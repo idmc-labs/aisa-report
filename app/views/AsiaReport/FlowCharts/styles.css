@@ -18,13 +18,10 @@
     }
 
     .tab-panel {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
         padding: var(--tui-spacing-large) var(--tui-spacing-small);
 
         .chart {
+            margin: auto;
             max-width: 30rem;
             min-height: 40rem;
         }
