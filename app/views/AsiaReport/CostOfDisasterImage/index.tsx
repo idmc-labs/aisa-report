@@ -59,7 +59,7 @@ function CostOfDisasterImage(props: Props) {
                     }
                 });
             },
-            200,
+            2000,
         );
 
         return () => {
