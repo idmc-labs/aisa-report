@@ -43,7 +43,7 @@ module.exports = () => {
         },
         output: {
             path: getPath('build/'),
-            publicPath: '/',
+            publicPath: isProduction ? '/disaster-displacement-in-asia-and-the-pacific-2022/' : '/',
             sourceMapFilename: '[file].map',
             chunkFilename: 'js/[name].chunk.js',
             filename: 'js/[name].bundle.js',

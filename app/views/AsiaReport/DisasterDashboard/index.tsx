@@ -36,7 +36,7 @@ import {
     DisasterDataQueryVariables,
     DisasterCategoriesQuery,
     DisasterCategoriesQueryVariables,
-    CategoryStatisticsType,
+    DisplacementByHazardType,
 } from '#generated/types';
 
 import ErrorBoundary from '#components/ErrorBoundary';
@@ -54,6 +54,8 @@ import {
     regionsNameMap,
     countries,
     regions,
+    prepareUrl,
+    getHazardTypeLabel,
 } from '#utils/common';
 
 import useDebouncedValue from '../../../hooks/useDebouncedValue';
@@ -63,18 +65,23 @@ import { countryMetadata } from './data';
 import styles from './styles.css';
 
 const DRUPAL_ENDPOINT = process.env.REACT_APP_DRUPAL_ENDPOINT as string || '';
+const HELIX_REST_ENDPOINT = process.env.REACT_APP_HELIX_REST_ENDPOINT as string;
+const HELIX_CLIENT_ID = process.env.REACT_APP_HELIX_CLIENT_ID as string || '';
+const DATA_RELEASE = process.env.REACT_APP_DATA_RELEASE as string || '';
 
-function suffixDrupalEndpoing(path: string) {
+function suffixDrupalEndpoint(path: string) {
     return `${DRUPAL_ENDPOINT}${path}`;
 }
 
-const REST_ENDPOINT = process.env.REACT_APP_REST_ENDPOINT as string;
-
-function suffixGiddRestEndpoint(path: string) {
-    return `${REST_ENDPOINT}${path}`;
+export function suffixHelixRestEndpoint(path: string) {
+    if (path.includes('?')) {
+        return `${HELIX_REST_ENDPOINT}/${path}&client_id=${HELIX_CLIENT_ID}&release_environment=${DATA_RELEASE}`;
+    }
+    return `${HELIX_REST_ENDPOINT}/${path}?cliend_id=${HELIX_CLIENT_ID}&release_environment=${DATA_RELEASE}`;
 }
 
-const disasterCategoryKeySelector = (d: CategoryStatisticsType) => d.label;
+const disasterCategoryKeySelector = (d: DisplacementByHazardType) => d.id;
+const disasterCategoryLabelSelector = (d: { id: string, label: string }) => getHazardTypeLabel(d);
 const regionKeySelector = (region: { key: string }) => region.key;
 const regionLabelSelector = (region: { value: string }) => region.value;
 
@@ -84,7 +91,7 @@ const countryLabelSelector = (country: { name: string }) => country.name;
 const START_YEAR = 2010;
 const END_YEAR = 2021;
 
-const giddLink = suffixDrupalEndpoing('/database/displacement-data');
+const giddLink = suffixDrupalEndpoint('/database/displacement-data');
 
 const disasterColorSchemes = [
     // 'rgb(6, 23, 158)',
@@ -109,29 +116,34 @@ const chartMargins = { top: 16, left: 5, right: 5, bottom: 5 };
 const DISASTER_DATA = gql`
     query DisasterData(
         $countryIso3: [String!],
-        $startYear: Int,
-        $endYear: Int,
-        $categories: [String!],
+        $startYear: Float,
+        $endYear: Float,
+        $categories: [ID!],
+        $releaseEnvironment: String!,
+        $clientId: String!,
     ) {
-        disasterStatistics(filters: {
+        giddPublicDisasterStatistics(
             countriesIso3: $countryIso3,
             endYear: $endYear,
             startYear: $startYear,
-            categories: $categories,
-        }) {
-            newDisplacements
+            hazardTypes: $categories,
+            releaseEnvironment: $releaseEnvironment,
+            clientId: $clientId,
+        ) {
+            newDisplacementsRounded
             totalEvents
-            categories {
+            displacementsByHazardType {
+                id
                 label
-                total
+                newDisplacementsRounded
             }
-            timeseries {
+            newDisplacementTimeseriesByCountry {
                 country {
                     id
                     iso3
                     countryName
                 }
-                total
+                totalRounded
                 year
             }
         }
@@ -141,11 +153,18 @@ const DISASTER_DATA = gql`
 const DISASTER_CATEGORIES = gql`
     query DisasterCategories(
         $countryIso3: [String!],
+        $releaseEnvironment: String!,
+        $clientId: String!,
     ) {
-        disasterStatistics(filters: { countriesIso3: $countryIso3 }) {
-            categories {
+        giddPublicDisasterStatistics(
+            countriesIso3: $countryIso3,
+            releaseEnvironment: $releaseEnvironment,
+            clientId: $clientId,
+        ) {
+            displacementsByHazardType {
+                id
                 label
-                total
+                newDisplacementsRounded
             }
         }
     }
@@ -189,14 +208,18 @@ function CountryProfile(props: Props) {
     } = useQuery<DisasterCategoriesQuery, DisasterCategoriesQueryVariables>(
         DISASTER_CATEGORIES,
         {
-            variables: { countryIso3: selectedCountries },
+            variables: {
+                countryIso3: selectedCountries,
+                releaseEnvironment: DATA_RELEASE,
+                clientId: HELIX_CLIENT_ID,
+            },
         },
     );
 
     const categories = useMemo(() => (
-        [...(disasterCategoryOptions?.disasterStatistics.categories ?? [])]
+        [...(disasterCategoryOptions?.giddPublicDisasterStatistics.displacementsByHazardType ?? [])]
             .sort((a, b) => compareString(a.label, b.label))
-    ), [disasterCategoryOptions?.disasterStatistics.categories]);
+    ), [disasterCategoryOptions?.giddPublicDisasterStatistics.displacementsByHazardType]);
 
     const {
         previousData: previousDisasterData,
@@ -212,6 +235,8 @@ function CountryProfile(props: Props) {
                 startYear: disasterTimeRange[0],
                 endYear: disasterTimeRange[1],
                 categories: disasterCategories,
+                releaseEnvironment: DATA_RELEASE,
+                clientId: HELIX_CLIENT_ID,
             },
         },
     );
@@ -224,7 +249,7 @@ function CountryProfile(props: Props) {
     const isMultiline = noOfSelections.length > 1 && noOfSelections.length < 5;
 
     const lineChartData = useMemo(() => {
-        const data = disasterData?.disasterStatistics?.timeseries;
+        const data = disasterData?.giddPublicDisasterStatistics?.newDisplacementTimeseriesByCountry;
         if (!data) {
             return undefined;
         }
@@ -232,10 +257,10 @@ function CountryProfile(props: Props) {
             const countriesChartData = data
                 .filter((item) => countriesValues.includes(item.country.iso3))
                 .map((item) => ({
-                    [item.country.iso3]: item.total,
+                    [item.country.iso3]: item.totalRounded,
                     year: item.year,
                     type: 'country',
-                    total: Number(item.total),
+                    total: item.totalRounded,
                 }));
 
             const regionChartData = data
@@ -244,7 +269,7 @@ function CountryProfile(props: Props) {
                 .reduce((acc, item) => {
                     const itemInAccIndex = acc.findIndex(
                         (accItem) => (
-                            accItem.year === Number(item.year)
+                            accItem.year === item.year
                             && accItem.regionKey === item.regionKey
                         ),
                     );
@@ -252,17 +277,18 @@ function CountryProfile(props: Props) {
                         return [
                             ...acc,
                             {
-                                [item.regionKey]: item.total,
-                                year: Number(item.year),
-                                total: item.total,
+                                [item.regionKey]: item.totalRounded ?? 0,
+                                year: item.year,
+                                totalRounded: item.totalRounded ?? 0,
                                 regionKey: item.regionKey,
                             },
                         ];
                     }
                     const newItem = {
-                        [item.regionKey]: item.total + acc[itemInAccIndex].total,
-                        year: Number(item.year),
-                        total: item.total + acc[itemInAccIndex].total,
+                        [item.regionKey]: (item?.totalRounded ?? 0)
+                            + acc[itemInAccIndex].totalRounded,
+                        year: item.year,
+                        totalRounded: (item?.totalRounded ?? 0) + acc[itemInAccIndex].totalRounded,
                         regionKey: item.regionKey,
                     };
                     acc.splice(itemInAccIndex, 1);
@@ -270,29 +296,32 @@ function CountryProfile(props: Props) {
                         ...acc,
                         newItem,
                     ]);
-                }, [] as { year: number; total: number; regionKey: string; }[]);
+                }, [] as { year: number; totalRounded: number; regionKey: string; }[]);
 
-            return [...countriesChartData, ...regionChartData];
+            return [
+                ...countriesChartData,
+                ...regionChartData,
+            ];
         }
         return data.reduce(
             (acc, item) => {
                 const itemInAccIndex = acc.findIndex(
                     (accItem) => (
-                        accItem.year === Number(item.year)
+                        accItem.year === item.year
                     ),
                 );
                 if (itemInAccIndex === -1) {
                     return [
                         ...acc,
                         {
-                            year: Number(item.year),
-                            total: item.total,
+                            year: item.year,
+                            totalRounded: item.totalRounded ?? 0,
                         },
                     ];
                 }
                 const newItem = {
-                    year: Number(item.year),
-                    total: item.total + acc[itemInAccIndex].total,
+                    year: item.year,
+                    totalRounded: (item.totalRounded ?? 0) + acc[itemInAccIndex].totalRounded,
                 };
                 acc.splice(itemInAccIndex, 1);
                 return ([
@@ -300,18 +329,37 @@ function CountryProfile(props: Props) {
                     newItem,
                 ]);
             },
-            [] as { year: number; total: number}[],
+            [] as { year: number; totalRounded: number}[],
         );
     }, [disasterData, isMultiline, countriesValues, regionValues]);
 
-    const dataDownloadLink = suffixGiddRestEndpoint(`/countries/multiple-countries-disaster-export/?countries_iso3=${selectedCountries.join(',')}&start_year=${disasterTimeRange[0]}&end_year=${disasterTimeRange[1]}&hazard_type=${disasterCategories.join(',')}`);
+    const dataDownloadLink = suffixHelixRestEndpoint(
+        prepareUrl(
+            'gidd/disasters/disaster-export/',
+            {
+                iso3__in: selectedCountries.join(','),
+                start_year: disasterTimeRange[0],
+                end_year: disasterTimeRange[1],
+                hazard_type__in: disasterCategories.join(','),
+            },
+        ),
+    );
+
+    const displacementsByHazardType = useMemo(() => (
+        disasterData?.giddPublicDisasterStatistics.displacementsByHazardType?.map((hazard) => ({
+            ...hazard,
+            label: getHazardTypeLabel(hazard),
+        }))
+    ), [
+        disasterData?.giddPublicDisasterStatistics.displacementsByHazardType,
+    ]);
 
     const pieChartData = useMemo(() => (
-        [...(disasterData?.disasterStatistics.categories ?? [])]?.sort(
-            (a, b) => compareNumber(a.total, b.total),
+        [...(displacementsByHazardType ?? [])]?.sort(
+            (a, b) => compareNumber(a.newDisplacementsRounded, b.newDisplacementsRounded),
         )
     ), [
-        disasterData?.disasterStatistics.categories,
+        displacementsByHazardType,
     ]);
 
     return (
@@ -400,7 +448,7 @@ function CountryProfile(props: Props) {
                                 value={disasterCategories}
                                 options={categories}
                                 keySelector={disasterCategoryKeySelector}
-                                labelSelector={disasterCategoryKeySelector}
+                                labelSelector={disasterCategoryLabelSelector}
                                 onChange={setDisasterCategories}
                             />
                         )}
@@ -423,7 +471,7 @@ function CountryProfile(props: Props) {
                 <Infographic
                     className={styles.disasterInfographic}
                     totalValue={disasterData
-                        ?.disasterStatistics.newDisplacements || 0}
+                        ?.giddPublicDisasterStatistics.newDisplacementsRounded || 0}
                     description={(
                         <div>
                             <Header
@@ -488,8 +536,8 @@ function CountryProfile(props: Props) {
                                         ))
                                     ) : (
                                         <Line
-                                            dataKey="total"
-                                            key="total"
+                                            dataKey="totalRounded"
+                                            key="totalRounded"
                                             stroke="var(--color-disaster)"
                                             name="Internal Displacements"
                                             strokeWidth={2}
@@ -505,7 +553,7 @@ function CountryProfile(props: Props) {
                 <Infographic
                     className={styles.disasterInfographic}
                     totalValue={disasterData
-                        ?.disasterStatistics.totalEvents || 0}
+                        ?.giddPublicDisasterStatistics.totalEvents || 0}
                     description={(
                         <Header
                             headingClassName={styles.heading}
@@ -529,14 +577,14 @@ function CountryProfile(props: Props) {
                                     <Legend />
                                     <Pie
                                         data={pieChartData}
-                                        dataKey="total"
+                                        dataKey="newDisplacementsRounded"
                                         nameKey="label"
                                         startAngle={90}
                                         endAngle={450}
                                     >
                                         {disasterData
-                                            ?.disasterStatistics
-                                            ?.categories
+                                            ?.giddPublicDisasterStatistics
+                                            ?.displacementsByHazardType
                                             ?.map(({ label }, index) => (
                                                 <Cell
                                                     key={label}

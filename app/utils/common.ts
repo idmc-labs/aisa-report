@@ -1,5 +1,7 @@
 import { memo } from 'react';
 import {
+    isDefined,
+    isNotDefined,
     isFalsy,
     isFalsyString,
     listToMap,
@@ -283,3 +285,45 @@ export const regionCountriesLabel = listToMap(
         return `Countries: ${countriesLabels.join(', ')}`;
     },
 );
+
+type Maybe<T> = T | null | undefined;
+
+export interface UrlParams {
+    [key: string]: Maybe<string | number | boolean | (string | number | boolean)[]>;
+}
+export function prepareUrl(url: string, params: UrlParams): string {
+    const paramsString = Object.keys(params)
+        .filter((k) => isDefined(params[k]))
+        .map((k) => {
+            const param = params[k];
+            if (isNotDefined(param)) {
+                return undefined;
+            }
+            let val: string;
+            if (Array.isArray(param)) {
+                val = param.join(',');
+            } else if (typeof param === 'number' || typeof param === 'boolean') {
+                val = String(param);
+            } else {
+                val = param;
+            }
+            return `${encodeURIComponent(k)}=${encodeURIComponent(val)}`;
+        })
+        .filter(isDefined)
+        .join('&');
+
+    if (paramsString) {
+        return `${url}?${paramsString}`;
+    }
+    return url;
+}
+
+export function getHazardTypeLabel(hazardType: { id: string, label: string }) {
+    if (hazardType.id === '2') {
+        return `Dry ${hazardType.label}`;
+    }
+    if (hazardType.id === '11') {
+        return `Wet ${hazardType.label}`;
+    }
+    return hazardType.label;
+}

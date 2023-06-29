@@ -4,7 +4,6 @@
     "version": "1.0.0",
     "description": "Disaster Displacement in Asia and the Pacific",
     "scripts": {
-        "deploy:dev": "test -d build && cp -f build/index.html build/200.html && surge --domain idmc-website-components.surge.sh build/",
         "test": "jest",
         "test:coverage": "jest --coverage",
         "generate": "env-cmd -f .env graphql-codegen --config codegen.yml",
